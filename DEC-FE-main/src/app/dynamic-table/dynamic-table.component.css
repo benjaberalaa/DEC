@@ -1,0 +1,22 @@
+.card-header {
+  background-color: #6c757d !important; /* Gris neutre */
+  color: white !important; /* Texte blanc */
+}
+
+.table-light {
+  background-color: #f8f9fa !important; /* Gris clair pour le header des tables */
+}
+.container {
+  margin-left: 5rem; /* Décale tout le contenu vers la droite */
+}
+/* Effet de survol sur les boutons "Ajouter une ligne" */
+.btn-add-line {
+  border: 1px solid transparent; /* Bordure par défaut */
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* Transition fluide */
+}
+
+.btn-add-line:hover {
+  border-color: #28a745; /* Bordure verte au survol */
+  background-color: rgb(86, 152, 64); /* Fond légèrement vert au survol */
+  color: #ffffff; /* Texte vert au survol */
+}

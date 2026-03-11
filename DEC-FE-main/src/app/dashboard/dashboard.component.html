@@ -1,0 +1,120 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Tableau de bord</h2>
+
+  <!-- Affichage de la date du jour -->
+  <div class="alert alert-info text-center">
+    <strong>Date du jour : {{ currentDate | date: 'dd/MM/yyyy HH:mm:ss' }}</strong>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title text-center">Statistiques Mensuelles</h5>
+      <div class="chart-container">
+        <canvas id="monthlyChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <!-- Section des graphiques camemberts -->
+  <!-- Section des graphiques camemberts -->
+  <div class="row text-center mb-4">
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Type CRS</h5>
+          <canvas id="pieChartCRS" class="canvas-pie"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Type TR</h5>
+          <canvas id="pieChartTR" class="canvas-pie"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Type DC</h5>
+          <canvas id="pieChartDC" class="canvas-pie"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Type DS</h5>
+          <canvas id="pieChartDS" class="canvas-pie"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Widgets statistiques -->
+  <div class="row text-center mb-4">
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Utilisateurs Actifs</h5>
+          <p class="card-text display-4">150</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Transactions</h5>
+          <p class="card-text display-4">1,230</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Périodes Actives</h5>
+          <p class="card-text display-4">12</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Réclamations</h5>
+          <p class="card-text display-4">8</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Espaces pour les dashboards -->
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Performance Globale</h5>
+          <p class="card-text">Un aperçu des performances globales de votre système.</p>
+          <div class="progress" style="height: 20px;">
+            <div
+              class="progress-bar bg-success"
+              role="progressbar"
+              style="width: 75%"
+              aria-valuenow="75"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              75%
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+

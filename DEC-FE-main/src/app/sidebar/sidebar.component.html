@@ -1,0 +1,58 @@
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Reporting</a> <strong>Date du jour : {{ currentDate | date: 'dd/MM/yyyy HH:mm:ss' }}</strong>
+    <div
+      class="sidebar-custom bg-secondary text-white"
+      id="customSidebar"
+      [class.sidebar-collapsed]="isCollapsed"
+      (mouseover)="handleMouseOver()"
+      (mouseout)="handleMouseOut()"
+    >
+      <div class="sidebar-header">
+        <h5 *ngIf="!isCollapsed" align="center">Reporting</h5>
+      </div>
+      <div class="sidebar-body p-3">
+        <ul class="list-unstyled">
+          <li>
+            <button
+              class="btn btn-light w-100 text-start mb-3 btn-hover"
+              (click)="onParametrageClick()"
+            >
+              <i class="bi bi-gear-fill"></i>
+              <span *ngIf="!isCollapsed">Paramétrage</span>
+            </button>
+          </li>
+          <li *ngFor="let type of types" class="mb-2">
+            <button
+              class="btn btn-light w-100 text-start btn-hover"
+              (click)="toggleCollapse(type); showTable = false"
+            >
+              <i class="bi bi-folder-fill"></i>
+              <span *ngIf="!isCollapsed">{{ type }}</span>
+            </button>
+            <ul
+              *ngIf="!collapsedTypes[type] && !isCollapsed"
+              class="list-unstyled ms-3 mt-2"
+            >
+              <li *ngFor="let model of models[type]" class="mb-1">
+                <button
+                  class="btn btn-secondary btn-sm w-100 btn-hover"
+                  (click)="selectModel(type, model); showTable = false"
+                >
+                  <i class="bi bi-file-earmark-fill"></i>
+                  <span>{{ model }}</span>
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Contenu Principal -->
+<div class="content container mt-5">
+  <app-table-parametrage *ngIf="showParameter"></app-table-parametrage>
+  <div *ngIf="!showTable"></div>
+</div>

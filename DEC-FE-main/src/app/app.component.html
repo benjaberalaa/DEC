@@ -1,0 +1,10 @@
+<div class="container-fluid vh-100 d-flex">
+  <!-- Sidebar -->
+  <app-sidebar (modelSelected)="onModelSelected($event)" ></app-sidebar>
+
+  <!-- Main Content -->
+  <div class="content flex-grow-1 p-4">
+    <!-- Contenu dynamique via le routage -->
+    <router-outlet></router-outlet>
+  </div>
+</div>

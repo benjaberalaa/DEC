@@ -1,0 +1,174 @@
+<div class="container">
+  <!-- Bouton Retour en haut à gauche -->
+  <div class="d-flex justify-content-start mb-3" style="margin-top: 40px">
+    <button class="btn btn-secondary" (click)="goToPath()">
+      <i class="bi bi-arrow-left"></i>
+    </button>
+  </div>
+
+
+  <h3 class="text-center mb-4">Liste des Périodes</h3>
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#addPeriodModal"
+            [disabled]="isOpenButtonDisabled"
+            [title]="isOpenButtonDisabled
+          ? 'Impossible d\'ouvrir une nouvelle période : une période est déjà en cours'
+          : 'Créer une nouvelle période'">
+      {{ buttonLabel }}
+    </button>
+
+
+
+
+  </div>
+
+  <div class="container">
+    <table class="table table-bordered">
+      <thead class="table-light">
+      <tr>
+<!--
+        <th>ID</th>
+-->
+        <th>Période Déclarée</th>
+        <th>Type</th>
+        <th>Periodicité</th>
+        <th>État</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let period of periods; let i = index" [class.table-secondary]="i % 2 === 0">
+<!--
+        <td>{{ period.id }}</td>
+-->
+        <td>{{ period.periodDec }}</td>
+
+        <td>{{ period.typePeriode }}</td>
+        <td>{{ period.periodicity }}</td>
+        <td>
+            <span class="badge"
+                  [ngClass]="{
+                'badge-info': period.status === 'EN_COURS',
+                'badge-secondary': period.status === 'CLOTUREE',
+                'badge-success': period.status === 'GENEREE'
+              }">
+              {{ period.status | translate:'status' }}
+            </span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-danger me-2" (click)="openDeleteConfirmation(period.id)" *ngIf=  "period.status == 'EN_COURS' ">Supprimer</button>
+          <button class="btn btn-sm btn-info" (click)="goToDetails(period)">Détails</button>
+        </td>
+      </tr>
+      </tbody>
+      <tbody>
+      <!-- Ajoutez cette ligne avant la boucle ngFor -->
+      <tr *ngIf="periods.length === 0">
+        <td colspan="5" class="text-center py-4 text-muted">
+          <i class="bi bi-info-circle me-2"></i>
+          {{ emptyTableMessage }}
+        </td>
+      </tr>
+
+      <tr *ngFor="let period of periods; let i = index" [class.table-secondary]="i % 2 === 0">
+        <!-- ... le reste de votre code existant ... -->
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <!-- Modal de confirmation de suppression -->
+  <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmation de suppression</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Êtes-vous sûr de vouloir supprimer cette période ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-danger" (click)="confirmDelete()">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+<!-- Modal pour ajouter une période -->
+<div class="modal fade" id="addPeriodModal" tabindex="-1" aria-labelledby="addPeriodModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addPeriodModalLabel">Ouvrir une Période</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="type" class="form-label">Type de Période</label>
+            <input id="type"
+                   class="form-control"
+                   formControlName="typePeriode"
+                   [value]="selectedType"
+                   readonly>
+          </div>
+
+          <div class="mb-3">
+            <label for="periodicity" class="form-label">Périodicité</label>
+            <input type="text"
+                   id="periodicity"
+                   class="form-control"
+                   formControlName="periodicity"
+                   [readonly]="true"
+                   placeholder="Périodicité automatiquement renseignée">
+          </div>
+          <div class="mb-3">
+            <label for="startYear" class="form-label">Année de début</label>
+            <input formControlName="startYear"                    id="startYear"
+                   class="form-control" [readonly]="filteredPeriods.length > 0" placeholder="Ex: 2024">
+
+          </div>
+
+          <div class="mb-3">
+            <label for="details" class="form-label">Détails</label>
+            <textarea id="details" class="form-control" formControlName="details" placeholder="Saisissez les détails (JSON valide)"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+
+</div>
+<!-- Notification de succès -->
+<div
+  *ngIf="notification.show"
+  class="alert position-fixed top-0 end-0 m-3"
+  [ngClass]="{
+    'alert-success': notification.type === 'success',
+    'alert-warning': notification.type === 'warning',
+    'alert-danger': notification.type === 'error'
+  }"
+  role="alert"
+>
+  {{ notification.message }}
+</div>
+
+

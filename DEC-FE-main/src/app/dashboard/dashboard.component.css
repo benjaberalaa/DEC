@@ -1,0 +1,53 @@
+.container-fluid {
+  display: flex;
+  flex-direction: row;
+}
+
+app-sidebar {
+  width: 250px;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #343a40;
+}
+
+.content {
+  margin-left: 260px; /* La largeur de la sidebar + un peu d'espace */
+  width: calc(100% - 260px);
+  padding: 20px;
+}
+button {
+  font-size: 14px;
+}
+
+.progress-bar {
+  transition: width 0.6s ease;
+}
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.canvas-pie {
+  max-width: 200px; /* Taille légèrement agrandie */
+  max-height: 200px;
+  margin: auto;
+  display: block; /* Centrage */
+}
+
+
+canvas#monthlyChart {
+  max-width: 100%; /* Garde la taille du graphique des mois inchangée */
+  height: 300px; /* Maintient la hauteur pour le graphique des mois */
+}
+
+h5.card-title {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.alert {
+  font-size: 1.1rem;
+}

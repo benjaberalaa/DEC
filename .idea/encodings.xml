@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/crs_all_tndcv" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/crs_att" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/crs_cpd_osm" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/crs_cpd_vdpl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/crs_devppltndppl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/crs_e_tndcve_endcv_ttee_dev" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/crs_inr" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/crs_neg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/crs_ppr" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/crs_sm_tnd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/crs_startup" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/dc_ava" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/dc_mar" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/ds_ie_suivi" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/ds_ietr" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/ds_startup_ie_suivi" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/ds_stratup_ie_tr" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/majc_tr_don_0312" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/majc_tr_rd_v3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_all_cpi" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_all_cti" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_all_v2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_cessliq_v2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_div_v2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_dom_ee" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_domsc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_fi_v2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_fp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_ie" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_ms_v2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_r_cnr" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_rem_ee_v3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_retail" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_sc" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DEC-CORE-dev/target/generated-sources/jaxb/tr_sm" charset="UTF-8" />
+  </component>
+</project>

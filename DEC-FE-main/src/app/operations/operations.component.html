@@ -1,0 +1,247 @@
+<div class="container">
+  <div class="d-flex justify-content-start mb-3" style="margin-top: 50px">
+    <button class="btn btn-secondary" (click)="goBack()">
+      <i class="bi bi-arrow-left"></i>
+    </button>
+  </div>
+
+  <h3 class="text-center mb-4">Opérations pour la période "{{ periodDec }}"</h3>
+
+  <div class="d-flex justify-content-between mb-3 align-items-center">
+    <h5 class="text-muted">État : {{ status | translate:'status' }} </h5>
+    <h5 class="text-muted">Périodicité : {{ periodicity }}</h5>
+
+    <div>
+      <button
+        class="btn btn-danger btn-lg me-2"
+        [disabled]="isPeriodClosed()"
+        (click)="closePeriod()"
+      >
+        Clôturer Période
+      </button>
+
+      <button
+        *ngIf="isPeriodClosed()"
+        class="btn btn-info btn-lg"
+        (click)="regenerateXml()"
+      >
+        Regénérer XML
+      </button>
+    </div>
+
+    <div *ngIf="showValidationErrorsModal" class="modal fade show d-block" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Erreurs de validation</h5>
+            <button type="button" class="btn-close" (click)="closeValidationErrorsModal()"></button>
+          </div>
+          <div class="modal-body">
+            <div class="xml-preview-container">
+              <pre class="xml-content text-danger">{{ validationErrorsPreview }}</pre>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" (click)="closeValidationErrorsModal()">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between mb-3 align-items-center">
+    <div class="d-flex justify-content-end">
+      <div class="me-3">
+        <label
+          for="fileUpload"
+          class="btn btn-primary btn-lg"
+          [class.disabled]="isPeriodClosed()"
+        >
+          Injecter Excel
+        </label>
+        <input
+          id="fileUpload"
+          type="file"
+          class="d-none"
+          (change)="handleFileUpload($event)"
+          [disabled]="isPeriodClosed()"
+        />
+      </div>
+      <button
+        class="btn btn-success btn-lg"
+        [disabled]="isPeriodClosed()"
+        (click)="openAddTransactionModal()"
+      >
+        Ajouter une transaction
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <h3>Transactions</h3>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-bordered">
+        <thead class="sticky-top bg-light">
+        <tr>
+          <th>ID</th>
+          <th style="min-width: 200px;">Erreurs</th>
+          <th>Agence</th>
+          <th>Code Identifiant Donneur d'ordre</th>
+          <th>Dénomination de Donneur d'ordre</th>
+          <th>IBAN de Donneur d'ordre</th>
+          <th>Pays Fonds</th>
+          <th>Type de Bénificiaire</th>
+          <th>Code d'identifiant</th>
+          <th>Numéro Visa</th>
+          <th>Réference Jort</th>
+          <th>Abbréviation</th>
+          <th>Denomination Compl Asso</th>
+          <th>Rib</th>
+          <th>Nature d'opération</th>
+          <th>Montant (Devise)</th>
+          <th>Ccy</th>
+          <th>Montant CV </th>
+          <th>Ccy</th>
+          <th>Date</th>
+          <th>Référence Swift</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="operations.length === 0">
+          <td colspan="19" class="text-center">Pas de transactions</td>
+        </tr>
+
+        <tr *ngFor="let operation of operations; index as i">
+          <td>{{ i + 1 }}</td>
+          <td [ngClass]="{'text-danger': operation.errors && operation.errors.length > 0}" class="d-flex align-items-center justify-content-between">
+                <span *ngIf="operation.errors && operation.errors.length > 0; else noErrors">
+                  <span
+                    [title]="operation.errors.join('\n')"
+                    class="d-inline-block text-truncate me-2"
+                    style="max-width: 150px;"
+                  >
+                    {{ operation.errors.join(', ') }}
+                  </span>
+                  <button class="btn btn-danger btn-sm" (click)="openSingleErrorModal(operation.errors)">
+                    Afficher l'erreur
+                  </button>
+                </span>
+            <ng-template #noErrors >
+              <span class="text-success">Succès</span>
+            </ng-template>
+          </td>
+
+          <td>{{ operation.agence }}</td>
+          <td>{{ operation.refDonneur.codIdentifiantD }}</td>
+          <td>{{ operation.refDonneur.denomD }}</td>
+          <td>{{ operation.refDonneur.ibanDonOrd }}</td>
+          <td>{{ operation.refDonneur.paysFonds }}</td>
+          <td>{{ operation.benifiicaire.typeBenifAsso }}</td>
+          <td>{{ operation.benifiicaire.codIdentifiant }}</td>
+          <td>{{ operation.benifiicaire.numVisa }}</td>
+          <td>{{ operation.benifiicaire.refJort }}</td>
+          <td>{{ operation.benifiicaire.abrev }}</td>
+          <td>{{ operation.benifiicaire.denomComplAsso }}</td>
+          <td>{{ operation.benifiicaire.rib }}</td>
+          <td>{{ operation.operationTransf.natOp }}</td>
+          <td>{{ operation.operationTransf.mntDev.value }} </td>
+          <td> {{ operation.operationTransf.mntDev.ccy }}</td>
+          <td>{{ operation.operationTransf.cvmntDin.value }}</td>
+          <td>{{ operation.operationTransf.cvmntDin.ccy }}</td>
+          <td>{{ operation.operationTransf.datOp }}</td>
+          <td>{{ operation.operationTransf.refMsgSwift }}</td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="showXmlPreviewModal" class="modal fade show d-block" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Aperçu du XML généré</h5>
+          <button type="button" class="btn-close" (click)="closeXmlPreviewModal()"></button>
+        </div>
+        <div class="modal-body">
+          <div class="xml-preview-container">
+            <pre class="xml-content">{{ xmlPreview }}</pre>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" (click)="closeXmlPreviewModal()">Fermer</button>
+          <button class="btn btn-primary" (click)="downloadXml()">Télécharger</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="addTransactionModal" tabindex="-1" *ngIf="showAddTransactionModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ajouter une Transaction</h5>
+          <button type="button" class="btn-close" (click)="closeAddTransactionModal()"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="transactionForm" (ngSubmit)="submitTransaction()">
+            <div class="row">
+              <div class="col-md-6 mb-3" *ngFor="let field of transactionFields">
+                <label [for]="field.id" class="form-label">{{ field.label }}</label>
+                <input
+                  [id]="field.id"
+                  class="form-control"
+                  [formControlName]="field.name"
+                />
+                <div *ngIf="transactionForm.get(field.name)?.invalid && transactionForm.get(field.name)?.touched" class="text-danger">
+                  {{ field }}
+                </div>
+              </div>
+            </div>
+
+            <div formGroupName="mntDev" class="row">
+              <div class="col-md-6 mb-3">
+                <label for="mntDevValue" class="form-label">Montant (Devise)</label>
+                <input id="mntDevValue" class="form-control" formControlName="value" type="number" required />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="mntDevCcy" class="form-label">Devise</label>
+                <input id="mntDevCcy" class="form-control" formControlName="ccy" required />
+              </div>
+            </div>
+
+            <div formGroupName="cvmntDin" class="row">
+              <div class="col-md-6 mb-3">
+                <label for="cvmntDinValue" class="form-label">Cvmnt Din Value</label>
+                <input id="cvmntDinValue" class="form-control" formControlName="value" type="number" />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="cvmntDinCcy" class="form-label">Devise Cvmnt Din</label>
+                <input id="cvmntDinCcy" class="form-control" formControlName="ccy" />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div
+  *ngIf="notification.show"
+  class="alert position-fixed top-0 end-0 m-3"
+  [ngClass]="{
+    'alert-success': notification.type === 'success',
+    'alert-warning': notification.type === 'warning',
+    'alert-danger': notification.type === 'error'
+  }"
+  role="alert"
+  [innerHTML]="notification.message"
+>
+  {{ notification.message }}
+</div>

@@ -1,0 +1,247 @@
+/* Table professionnelle */
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-collapse: collapse;
+}
+
+/* En-têtes de la table */
+.table th {
+  background-color: #f2f2f2;
+  color: black;
+  font-size: 1.1rem;
+  padding: 12px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* Lignes de données */
+.table td {
+  padding: 12px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 1rem;
+}
+
+/* Lignes alternées */
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Survol des lignes */
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Boutons de la table */
+button {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Bouton principal : Modifier */
+.btn-primary {
+  background-color: #003366; /* Bleu foncé */
+  color: white;
+  border: 1px solid #003366;
+}
+
+.btn-primary:hover {
+  background-color: #002244; /* Bleu plus foncé au survol */
+  border-color: #002244;
+}
+
+/* Bouton supprimer */
+.btn-danger {
+  background-color: #dc3545; /* Rouge */
+  color: white;
+  border: 1px solid #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}
+
+/* Bouton détails */
+.btn-info {
+  background-color: #17a2b8; /* Bleu clair */
+  color: white;
+  border: 1px solid #17a2b8;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+  border-color: #138496;
+}
+
+/* Badge des états */
+.badge {
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.badge-success {
+  background-color: #28a745; /* Vert */
+  color: white;
+}
+
+.badge-info {
+  background-color: #17a2b8; /* Bleu */
+  color: white;
+}
+
+.badge-secondary {
+  background-color: #6c757d; /* Gris */
+  color: white;
+}
+/* Style pour le chemin cliquable */
+/* Style pour le chemin cliquable */
+a.text-dark {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #003366; /* Bleu foncé */
+  text-decoration: underline; /* Souligner le texte */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+a.text-dark:hover {
+  color: #00509e; /* Bleu clair au survol */
+}
+button.add-period-btn {
+  font-size: 16px; /* Augmente la taille de la police */
+  padding: 12px 20px; /* Augmente les espacements autour du texte */
+  border-radius: 8px; /* Arrondir légèrement les bords */
+  background-color: #00509e; /* Couleur de fond professionnelle */
+  color: white; /* Texte en blanc */
+  border: none; /* Enlever la bordure */
+  transition: background-color 0.3s ease;
+}
+
+button.add-period-btn:hover {
+  background-color: #003366; /* Couleur plus foncée au survol */
+  cursor: pointer;
+}
+
+/* Style général de la modal */
+.modal-content {
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre discrète */
+  background-color: #ffffff; /* Fond blanc */
+}
+
+/* Header de la modal */
+.modal-header {
+  border-bottom: 1px solid #e5e5e5; /* Ligne de séparation subtile */
+  background-color: #f8f9fa; /* Gris clair pour le fond */
+  padding: 20px;
+}
+
+.modal-title {
+  font-size: 1.5rem; /* Taille de police ajustée */
+  color: #003366; /* Bleu foncé pour un look professionnel */
+  font-weight: 600; /* Mettre en valeur le titre */
+}
+
+/* Bouton de fermeture */
+.btn-close {
+  background-color: transparent;
+  border: none;
+  color: #003366; /* Couleur du bouton de fermeture */
+  font-size: 1.2rem;
+}
+
+/* Corps de la modal */
+.modal-body {
+  padding: 20px;
+}
+
+/* Espacement entre les champs */
+.mb-3 {
+  margin-bottom: 1rem; /* Plus d'espace entre les champs */
+}
+
+/* Labels du formulaire */
+.form-label {
+  font-weight: 500;
+  color: #5f6368; /* Couleur sombre mais discrète */
+  font-size: 1rem;
+}
+
+/* Champs de formulaire */
+.form-control {
+  border-radius: 8px; /* Coins arrondis pour les champs */
+  border: 1px solid #ddd; /* Bordure discrète */
+  padding: 12px 15px; /* Plus d'espace à l'intérieur des champs */
+  font-size: 1rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Ombre subtile à l'intérieur */
+  transition: border 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #00509e; /* Bordure bleue au focus */
+  box-shadow: 0 0 5px rgba(0, 80, 158, 0.4); /* Ombre au focus */
+}
+
+/* Bouton d'ajout */
+button.btn-primary {
+  width: 100%; /* Bouton pleine largeur */
+  padding: 12px; /* Plus grand espace autour du texte */
+  font-size: 1.1rem; /* Taille du texte plus grande */
+  background-color: #00509e; /* Bleu professionnel */
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+button.btn-primary:hover {
+  background-color: #003366; /* Bleu plus foncé au survol */
+}
+
+/* Désactiver le bouton quand le formulaire est invalide */
+button[disabled] {
+  background-color: #c0c0c0; /* Gris quand désactivé */
+  cursor: not-allowed;
+}
+.alert {
+  z-index: 1050;
+  transition: opacity 1s ease-out; /* Une durée d'1 seconde suffit */
+  opacity: 1; /* Par défaut, la notification est complètement visible */
+}
+
+.alert.fade-out {
+  opacity: 0; /* Devient invisible lorsque la classe `fade-out` est appliquée */
+}
+
+/*
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1050;
+  animation: fadeOut 1s ease-in-out forwards; !* Si cette ligne existe, vérifiez sa durée *!
+  display: block; !* Assurez-vous que l'affichage est "block" pendant toute la durée *!
+}
+*/
+
+

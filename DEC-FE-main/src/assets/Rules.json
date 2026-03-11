@@ -1,0 +1,1227 @@
+{
+    "rules": {
+
+        "CRS": {
+            "EnteteDoc": [
+                "CodeIAT",
+                "DateDec",
+                "CodeAnnexe",
+                "PeriodDec"
+            ],
+            "Models": {
+                "CPD-OSM": {
+                    "BodyHeader": {
+                        "Agence": "Nom de l'agence",
+                        "Titulaire": {
+
+                            "TypeTitul": "Type de titulaire (personne physique ou morale)",
+                            "TypeIdentifiant": "Type d'identifiant utilisé (par ex. CIN, passeport)",
+                            "CodeIdentifiant": "Code d'identification",
+                            "Nom": "Nom du titulaire",
+                            "Prenom": "Prénom du titulaire",
+                            "RaisSociale": "Raison sociale du titulaire (si entreprise)"
+                          }
+                    },
+                    "Details": [
+                        {
+                            "Rib": "Relevé d'identité bancaire",
+                            "RefOperation": {
+                                "SuppOp": "Support opérationnel",
+                                "NumSupp": "Numéro de support",
+                                "DateSupp": "Date du support"
+                            },
+                            "DecDouane": {
+                                "NumDecD": "Numéro de déclaration douanière",
+                                "DateDecD": "Date de déclaration douanière"
+                            }
+                        }
+                    ]
+                },
+                "CPD-VDPL": {
+                    "BodyHeader": {
+                        "NbrEcritures": "Nombre total d'écritures"
+                    },
+                    "Details": [
+                        {
+                            "Operateur": {
+                                "TypeOp": "Type d'opérateur",
+                                "TypeIdentifiant": "Type d'identifiant de l'opérateur",
+                                "CodeIdentifiant": "Code identifiant de l'opérateur",
+                                "Nom": "Nom de l'opérateur",
+                                "Prenom": "Prénom de l'opérateur",
+                                "RaisSociale": "Raison sociale de l'opérateur"
+                            },
+                            "RefOperation": {
+                                "NatMtOp": "Nature du mouvement opérationnel",
+                                "MntOpDev": "Montant en devise",
+                                "MntOpDin": "Montant en dinar",
+                                "DateMvt": "Date du mouvement",
+                                "EncoursPlac": "Montant en cours placé",
+                                "NatOp": "Nature de l'opération"
+                            },
+                            "RefSupport": {
+                                "SuppOp": "Support opérationnel",
+                                "NumSupp": "Numéro de support",
+                                "DateSupp": "Date de support"
+                            }
+                        }
+                    ]
+                },
+                "DEVPPLTNDPPL": {
+                    "BodyHeader": {
+                        "AgenceTrsf": "Agence de transfert",
+                        "NatCpteRegl": "Nature du compte de règlement",
+                        "Titulaire": {
+                            "TypeIdentifiant": "Type d'identifiant du titulaire",
+                            "CodeIdentifiant": "Code d'identification",
+                            "Nom": "Nom du titulaire",
+                            "Prenom": "Prénom du titulaire",
+                            "Nationalite": "Nationalité du titulaire"
+                        },
+                        "RefCompte": "Référence du compte",
+                        "NbrEcritures": "Nombre total d'écritures"
+                    },
+                    "Details": [
+                        {
+                            "Rib": "Relevé d'identité bancaire",
+                            "RefOperation": null,
+                            "RefPersPhysique": "Référence de la personne physique",
+                            "DenomBenef": "Dénomination du bénéficiaire",
+                            "Pays": "Pays associé à l'opération",
+                            "RefAutorisationBct": "Référence de l'autorisation BCT"
+                        }
+                    ]
+                },
+                "SM-TND": {
+                    "BodyHeader": {
+                        "AgenceDom": "Agence domiciliée",
+                        "Titulaire": {
+                            "TypeIdentifiant": "Type d'identifiant",
+                            "CodeIdentifiant": "Code d'identification",
+                            "RaisSociale": "Raison sociale",
+                            "Nationalite": "Nationalité du titulaire"
+                        },
+                        "RefCompte": "Référence du compte",
+                        "NbrEcritures": "Nombre total d'écritures"
+                    },
+                    "Details": [
+                        {
+                            "Detail": {
+                                "Rib": "Relevé d'identité bancaire",
+                                "RefOperation": {
+                                    "NatMvtOp": "Nature du mouvement opérationnel",
+                                    "MntOpDev": "Montant de l'opération en devise",
+                                    "MntOpDin": "Montant de l'opération en dinar",
+                                    "DateMvt": "Date du mouvement",
+                                    "CodMvt": "Code du mouvement",
+                                    "NatOp": "Nature de l'opération",
+                                    "ModReg": "Mode de règlement",
+                                    "NumMsgSwiftMvt": "Numéro du message Swift du mouvement"
+                                },
+                                "RefAutorisationBct": {
+                                    "NumAutBCT": "Numéro d'autorisation BCT",
+                                    "DateAutBCT": "Date d'autorisation BCT"
+                                },
+                                "DenomBenef": "Dénomination du bénéficiaire",
+                                "Pays": "Pays de destination"
+                            }
+                        }
+                    ]
+                },
+                "INR": {
+                    "BodyHeader": {
+                        "AgenceDom": "Agence domiciliée",
+                        "Titulaire": {
+                            "TypeIdentifiant": "Type d'identifiant",
+                            "CodeIdentifiant": "Code d'identification",
+                            "Nom": "Nom du titulaire",
+                            "Prenom": "Prénom du titulaire",
+                            "RaisSociale": "Raison sociale",
+                            "Nationalite": "Nationalité du titulaire"
+                        },
+                        "RefCompte": "Référence du compte",
+                        "NbrEcritures": "Nombre total d'écritures"
+                    },
+                    "Details": [
+                        {
+                            "Detail": {
+                                "Rib": "Relevé d'identité bancaire",
+                                "RefOperation": "Référence de l'opération",
+                                "RefAutorisationBct": "Référence de l'autorisation BCT",
+                                "DenomBenef": "Dénomination du bénéficiaire",
+                                "Pays": "Pays concerné"
+                            }
+                        }
+                    ]
+                },
+                "ALL-TNDCV": {
+                    "BodyHeader": {
+                        "AgenceDom": "Agence domiciliée",
+                        "Titulaire": {
+                            "TypeIdentifiant": "Type d'identifiant du titulaire",
+                            "CodeIdentifiant": "Code d'identification",
+                            "Nom": "Nom du titulaire",
+                            "Prenom": "Prénom du titulaire",
+                            "Nationalite": "Nationalité du titulaire"
+                        },
+                        "RefCompte": {
+                            "Rib": "Relevé d'identité bancaire",
+                            "DateOuvCpte": "Date d'ouverture du compte",
+                            "EtatCpte": "État du compte (actif, gelé, clôturé)",
+                            "DateClotureCpte": "Date de clôture du compte",
+                            "DateGelCpte": "Date de gel du compte",
+                            "SoldDebMois": "Solde de début du mois",
+                            "SoldFinMois": "Solde de fin du mois"
+                        },
+                        "NbrEcritures": "Nombre total d'écritures"
+                    },
+                    "Details": [
+                        {
+                            "Detail": {
+                                "Rib": "Relevé d'identité bancaire",
+                                "RefOperation": {
+                                    "NatMvtOp": "Nature du mouvement opérationnel",
+                                    "MntOpDev": "Montant de l'opération en devise",
+                                    "MntOpDin": "Montant de l'opération en dinar",
+                                    "DateMvt": "Date du mouvement",
+                                    "CodMvt": "Code du mouvement",
+                                    "NatOp": "Nature de l'opération",
+                                    "ModReg": "Mode de règlement",
+                                    "NumMsgSwiftMvt": "Numéro du message Swift du mouvement"
+                                },
+                                "RefAutorisationBct": {
+                                    "NumAutBCT": "Numéro d'autorisation BCT",
+                                    "DateAutBCT": "Date d'autorisation BCT"
+                                },
+                                "DenomBenef": "Dénomination du bénéficiaire",
+                                "Pays": "Pays concerné"
+                            }
+                        }
+                    ]
+                },
+                "ATT": {
+                    "BodyHeader": {
+                        "AgenceDom": "Agence domiciliée",
+                        "Titulaire": {
+                            "TypeIdentifiant": "Type d'identifiant",
+                            "CodeIdentifiant": "Code d'identification",
+                            "Nom": "Nom du titulaire",
+                            "Prenom": "Prénom du titulaire",
+                            "Nationalite": "Nationalité du titulaire"
+                        },
+                        "RefCompte": {
+                            "Rib": "Relevé d'identité bancaire",
+                            "DateOuvCpte": "Date d'ouverture du compte",
+                            "EtatCpte": "État du compte (actif, gelé, clôturé)",
+                            "DateClotureCpte": "Date de clôture du compte",
+                            "DateGelCpte": "Date de gel du compte",
+                            "SoldDebMois": "Solde de début du mois",
+                            "SoldFinMois": "Solde de fin du mois"
+                        },
+                        "NbrEcritures": "Nombre total d'écritures"
+                    },
+                    "Details": [
+                        {
+                            "Detail": {
+                                "Rib": "Relevé d'identité bancaire",
+                                "RefOperation": {
+                                    "NatMvtOp": "Nature du mouvement opérationnel",
+                                    "MntOpDev": "Montant de l'opération en devise",
+                                    "MntOpDin": "Montant de l'opération en dinar",
+                                    "DateMvt": "Date du mouvement",
+                                    "CodMvt": "Code du mouvement",
+                                    "NatOp": "Nature de l'opération",
+                                    "ModReg": "Mode de règlement",
+                                    "NumMsgSwiftMvt": "Numéro du message Swift du mouvement"
+                                },
+                                "RefAutorisationBct": {
+                                    "NumAutBCT": "Numéro d'autorisation BCT",
+                                    "DateAutBCT": "Date d'autorisation BCT"
+                                },
+                                "DenomBenef": "Dénomination du bénéficiaire",
+                                "Pays": "Pays de destination"
+                            }
+                        }
+                    ]
+                },
+                "E-TNDCVE-ENDCV-TTE-DEV": {
+                    "description": "Modèle pour E-TNDCVE-ENDCV-TTE-DEV",
+                    "BodyHeader": {
+                        "AgenceDom": "Agence domiciliée",
+                        "NatCpteRegl": "Nature du compte de règlement",
+                        "Titulaire": {
+                            "TypeIdentifiant": "Type d'identifiant",
+                            "CodeIdentifiant": "Code d'identification",
+                            "Nom": "Nom du titulaire",
+                            "Prenom": "Prénom du titulaire",
+                            "Nationalite": "Nationalité du titulaire"
+                        },
+                        "RefCompte": {
+                            "Rib": "Relevé d'identité bancaire",
+                            "DeviseCpte": "Devise du compte",
+                            "DateOuvCpte": "Date d'ouverture du compte",
+                            "EtatCpte": "État du compte (actif, gelé, clôturé)",
+                            "DateClotureCpte": "Date de clôture du compte",
+                            "DateGelCpte": "Date de gel du compte",
+                            "SoldDebMois": "Solde de début du mois",
+                            "SoldFinMois": "Solde de fin du mois"
+                        },
+                        "NbrEcritures": "Nombre total d'écritures"
+                    },
+                    "Details": [
+                        {
+                            "Detail": {
+                                "Rib": "Relevé d'identité bancaire",
+                                "RefOperation": {
+                                    "NatMvtOp": "Nature du mouvement opérationnel",
+                                    "MntOpDev": "Montant de l'opération en devise",
+                                    "MntOpDin": "Montant de l'opération en dinar",
+                                    "DateMvt": "Date du mouvement",
+                                    "CodMvt": "Code du mouvement",
+                                    "NatOp": "Nature de l'opération",
+                                    "ModReg": "Mode de règlement",
+                                    "NumMsgSwiftMvt": "Numéro du message Swift du mouvement"
+                                },
+                                "RefAutorisationBct": {
+                                    "NumAutBCT": "Numéro d'autorisation BCT",
+                                    "DateAutBCT": "Date d'autorisation BCT"
+                                },
+                                "DenomBenef": "Dénomination du bénéficiaire",
+                                "Pays": "Pays concerné"
+                            }
+                        }
+                    ]
+                },
+
+				        "CRS.PPR": {
+                  "description": "Modèle pour CRS.PPR",
+                  "BodyHeader": {
+                    "AgenceDom": "Agence domiciliée",
+                    "Titulaire": {
+                      "TypeIdentifiant": "Type d'identifiant",
+                      "CodeIdentifiant": "Code d'identification",
+                      "Nom": "Nom du titulaire",
+                      "Prenom": "Prénom du titulaire",
+                      "Nationalite": "Nationalité du titulaire"
+                    },
+                    "RefCompte": "Référence du compte",
+                    "NbrEcritures": "Nombre total d'écritures"
+                  },
+                  "Details": [
+                    {
+                      "Detail": {
+                        "Rib": "Relevé d'identité bancaire",
+                        "RefOperation": {
+                          "NatMvtOp": "Nature du mouvement opérationnel",
+                          "MntOpDev": "Montant de l'opération en devise",
+                          "MntOpDin": "Montant de l'opération en dinar",
+                          "DateMvt": "Date du mouvement",
+                          "CodMvt": "Code du mouvement",
+                          "NatOp": "Nature de l'opération",
+                          "ModReg": "Mode de règlement",
+                          "NumMsgSwiftMvt": "Numéro du message Swift du mouvement"
+                        },
+                        "RefFicheInformation": {
+                          "NumFiche": "Numéro de la fiche",
+                          "DateFiche": "Date de la fiche"
+                        },
+                        "RefAutorisationBct": {
+                          "NumAutBCT": "Numéro d'autorisation BCT",
+                          "DateAutBCT": "Date d'autorisation BCT"
+                        },
+                        "DecDouane": {
+                          "NumDecD": "Numéro de déclaration douanière",
+                          "DateDecD": "Date de déclaration douanière"
+                        },
+                        "DenomBenef": "Dénomination du bénéficiaire",
+                        "Pays": "Pays concerné"
+                      }
+                    }
+                  ]
+                },
+				        "CRS-STARTUP": {
+    "description": "Modèle pour CRS-STARTUP",
+    "BodyHeader": {
+        "AgenceDom": "Agence domiciliée",
+        "Titulaire": {
+            "TypeIdentifiant": "Type d'identifiant",
+            "CodeIdentifiant": "Code d'identification",
+            "RaisSociale": "Raison sociale"
+        },
+        "RefCompte": "Référence du compte",
+        "NbrEcritures": "Nombre total d'écritures"
+    },
+    "Details": [
+        {
+            "Detail": {
+                "Rib": "Relevé d'identité bancaire",
+                "RefOperation": {
+                    "NatMvtOp": "Nature du mouvement opérationnel",
+                    "CodMvt": "Code du mouvement",
+                    "DateMvt": "Date du mouvement",
+                    "MntOpDev": "Montant de l'opération en devise",
+                    "MntOpDin": "Montant de l'opération en dinar",
+                    "ModReg": "Mode de règlement",
+                    "NatOp": "Nature de l'opération",
+                    "NumMsgSwiftMvt": "Numéro du message Swift du mouvement"
+                },
+                "DenomBenef": "Dénomination du bénéficiaire",
+                "Pays": "Pays concerné"
+            }
+        }
+    ]
+}
+            }
+
+        },
+		    "TR": {
+			      "EnteteDoc": [
+				"CodeIAT",
+				"DateDec",
+				"CodeAnnexe"
+    ],
+			      "Models": {
+                "DOMSC": {
+                    "description": "Modèle pour TR-DOMSC",
+                    "BodyHeader": {
+                        "PeriodDec": "Période de déclaration",
+                        "NbrEcritures": "Nombre total d'écritures",
+                      "Beneficiaire": {
+                        "TypeIdentifiant": "Type d'identifiant du bénéficiaire",
+                        "CodeIdentifiant": "Code d'identification",
+                        "Nom": "Nom du bénéficiaire",
+                        "Prenom": "Prénom du bénéficiaire",
+                        "Nationalite": "Nationalité du bénéficiaire",
+                        "CategBenif": "Catégorie du bénéficiaire"
+                      },
+                      "DomScolarite": "Domaine de scolarité",
+                      "Bourse": "Montant de la bourse",
+                      "RefClotureDosScol": {
+                        "DatClotDosScolIat": "Date de clôture du dossier"
+
+                      }
+                    },
+                    "Details": [
+                        {
+                            "Detail": {
+                                "PeriodDec": "Période du transfert",
+                                "Agence": "Agence associée",
+                                "Beneficiaire": {
+                                    "TypeIdentifiant": "Type d'identifiant du bénéficiaire",
+                                    "CodeIdentifiant": "Code d'identification",
+                                    "Nom": "Nom du bénéficiaire",
+                                    "Prenom": "Prénom du bénéficiaire",
+                                    "Nationalite": "Nationalité du bénéficiaire",
+                                    "CategBenif": "Catégorie du bénéficiaire"
+                                },
+                                "DomScolarite": "Domaine de scolarité",
+                                "Bourse": "Montant de la bourse",
+                                "RefClotureDosScol": {
+                                    "DatClotDosScolIat": "Date de clôture du dossier"
+
+                    }
+                  }
+                }
+              ]
+                    },
+                "SC": {
+            "description": "Modèle pour TR-SC",
+            "BodyHeader": {
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "DomScolarite": {
+                            "NumDomDosScol": "Numéro du dossier scolaire",
+                            "DateDomDosScol": "Date du dossier scolaire"
+                        },
+                        "OperationTransf": "Opération de transfert",
+                        "RefAutorisationBct": {
+                            "NumAutBCT": "Numéro d'autorisation BCT",
+                            "DatAutBCT": "Date d'autorisation BCT"
+                        },
+                        "RefFichInfo": {
+                            "NumFichInfo": "Numéro de la fiche d'information",
+                            "DatFichInfo": "Date de la fiche d'information"
+                        }
+                    }
+                }
+            ]
+                      },
+                "M&S": {
+            "description": "Modèle pour TR-M&S",
+            "BodyHeader": {
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "Beneficiaire": {
+                            "CodeIdentifiant": "Code d'identification du bénéficiaire",
+                            "Nom": "Nom du bénéficiaire",
+                            "Prenom": "Prénom du bénéficiaire"
+                        },
+                        "Employeur": {
+                            "GroupClass": "Classe de groupe de l'employeur",
+                            "IdenEmploy": "Identifiant de l'employeur",
+                            "DenomEmploy": "Dénomination de l'employeur"
+                        },
+                        "MissionStage": "Informations sur la mission ou le stage",
+                        "OperationTransf": "Opération de transfert",
+                        "RefFichInfo": {
+                            "NumFichInfo": "Numéro de la fiche d'information",
+                            "DatFichInfo": "Date de la fiche d'information"
+                        },
+                        "RefRetrocession": "Référence de la rétrocession",
+                        "DecDouane": {
+                            "CodPaysDest": "Code du pays de destination",
+                            "NatOp": "Nature de l'opération"
+                        }
+                    }
+                }
+            ]
+        },
+                "IE": {
+            "description": "Modèle pour TR-IE",
+            "BodyHeader": {
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "RefInvestisseur": {
+                            "MatricFiscalInvt": "Matricule fiscale de l'investisseur",
+                            "RaisSocialInvt": "Raison sociale de l'investisseur",
+                            "CodActInvt": "Code d'activité de l'investisseur",
+                            "SocExport": "Société exportatrice",
+                            "ChiffAffaire": "Chiffre d'affaires",
+                            "PosInvt": "Position de l'investissement",
+                            "FormInvt": "Forme de l'investissement",
+                            "TxPart": "Taux de participation"
+                        },
+                        "OperationTransf": "Opération de transfert",
+                        "RefFichInfo": {
+                            "NumFichInfo": "Numéro de la fiche d'information",
+                            "DatFichInfo": "Date de la fiche d'information"
+                        },
+                        "CodSwift": "Code SWIFT"
+                    }
+                }
+            ]
+        },
+                "R-CNR": {
+            "description": "Modèle pour TR-R-CNR",
+            "BodyHeader": {
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "RefInvestisseur": {
+                            "MatricFiscalInvt": "Matricule fiscale de l'investisseur",
+                            "RaisSocialInvt": "Raison sociale de l'investisseur"
+                        },
+                        "FormPart": "Forme de participation",
+                        "TxPart": "Taux de participation",
+                        "MntTrsf": "Montant transféré",
+                        "CvMntTnd": "Contre-valeur montant TND",
+                        "RefFichInfo": {
+                            "NumFichInfo": "Numéro de la fiche d'information",
+                            "DatFichInfo": "Date de la fiche d'information"
+                        },
+                        "RefSocieteitNR": {
+                            "IdentifiantSocNR": "Identifiant de la société non résidente",
+                            "RaisSocialSocNr": "Raison sociale de la société non résidente"
+                        },
+                        "CodInvt": "Code d'investissement",
+                        "SuppActiv": "Activité supportée",
+                        "CapSocSocNR": "Capital social de la société non résidente",
+                        "TxPartNonRes": "Taux de participation des non résidents"
+                    }
+                }
+            ]
+        },
+                "DOM-EE": {
+            "description": "Modèle pour TR-DOM-EE",
+            "BodyHeader": {
+                "AnneDec": "Année de la déclaration",
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "AnneDec": "Année de la déclaration",
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "RefDomConvention": {
+                            "NumDomConv": "Numéro de la convention de domiciliation",
+                            "DatDomConv": "Date de la convention de domiciliation"
+                        },
+                        "RefSocEmprunteuse": {
+                            "MatFiscalSocEmp": "Matricule fiscale de la société emprunteuse",
+                            "DenomSocEmp": "Dénomination de la société emprunteuse",
+                            "CodNatSocEmp": "Code national de la société emprunteuse"
+                        },
+                        "CodOrgNot": "Code de l'organisme notifiant",
+                        "DenomOrgPret": "Dénomination de l'organisme prêteur",
+                        "RefEmprunt": "Référence de l'emprunt",
+                        "RefFicheInvest": {
+                            "NumFichInvt": "Numéro de la fiche d'investissement",
+                            "DatFichInvt": "Date de la fiche d'investissement"
+                        },
+                        "RefAutorisationBct": {
+                            "NumAutBCT": "Numéro d'autorisation BCT",
+                            "DatAutBCT": "Date d'autorisation BCT"
+                        }
+                    }
+                }
+            ]
+        },
+                "SM": {
+            "description": "Modèle pour TR-SM",
+            "BodyHeader": {
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "RefPatient": {
+                            "TypeIdentifiant": "Type d'identifiant du patient",
+                            "CodeIdentifiant": "Code d'identification du patient",
+                            "Nom": "Nom du patient",
+                            "Prenom": "Prénom du patient"
+                        },
+                        "NomPrenoMed": "Nom et prénom du médecin",
+                        "CodPaysDest": "Code du pays de destination",
+                        "PrisCharg": "Prise en charge",
+                        "Accomp": "Accompagnement",
+                        "RefAccompagnateur": {
+                            "TypIdentifiantAccomp": "Type d'identifiant de l'accompagnateur",
+                            "CodeIdentifiantAccomp": "Code d'identification de l'accompagnateur",
+                            "NomAccomp": "Nom de l'accompagnateur",
+                            "PrenomAccomp": "Prénom de l'accompagnateur"
+                        },
+                        "OperationTransf": "Opération de transfert",
+                        "RefAutorisationBct": {
+                            "NumAutBCT": "Numéro d'autorisation BCT",
+                            "DatAutBCT": "Date d'autorisation BCT"
+                        }
+                    }
+                }
+            ]
+        },
+                "REM-EE": {
+            "description": "Modèle pour TR-REM-EE",
+            "BodyHeader": {
+                "AnneDec": "Année de la déclaration",
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "AnneDec": "Année de la déclaration",
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "RefDomConvention": {
+                            "NumDomConv": "Numéro de la convention de domiciliation",
+                            "DatDomConv": "Date de la convention de domiciliation"
+                        },
+                        "EmprunteurPreteur": "Informations sur l'emprunteur/prêteur",
+                        "MntTransfDevise": "Montant transféré en devise",
+                        "ConterValMontant": {
+                            "CVMntTndTotTrsf": "Contre-valeur totale transférée en TND",
+                            "CVMntTndPrinTrsf": "Contre-valeur principale transférée en TND",
+                            "InteretsTndTrsf": "Intérêts transférés en TND",
+                            "CVAutresChargesTrsf": "Autres charges transférées en TND",
+                            "TauxInterets": "Taux d'intérêts"
+                        },
+                        "RefFicheInfo": {
+                            "NumFichInfo": "Numéro de la fiche d'information",
+                            "DatFichInfo": "Date de la fiche d'information"
+                        },
+                        "ReliquatMntPrRemb": "Reliquat du montant prêt remboursé"
+                    }
+                }
+            ]
+        },
+                "FP": {
+            "description": "Modèle pour TR-FP",
+            "BodyHeader": {
+                "AnneDec": "Année de la déclaration",
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "AnneDec": "Année de la déclaration",
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "Beneficiaire": {
+                            "TypeIdentifiant": "Type d'identifiant du bénéficiaire",
+                            "CodIdentifiant": "Code d'identification du bénéficiaire",
+                            "Nom": "Nom du bénéficiaire",
+                            "Prenom": "Prénom du bénéficiaire",
+                            "Nationalite": "Nationalité du bénéficiaire"
+                        },
+                        "OperationTransf": "Opération de transfert",
+                        "RefFichInfo": {
+                            "NumFichInfo": "Numéro de la fiche d'information",
+                            "DatFichInfo": "Date de la fiche d'information"
+                        },
+                        "RefAutSortDev": {
+                            "NumAutSortDev": "Numéro d'autorisation de sortie de devise",
+                            "DatAutSortDev": "Date de l'autorisation de sortie de devise"
+                        },
+                        "RefFormation": {
+                            "DureForm": "Durée de la formation",
+                            "DatDebBenifForm": "Date de début de la formation",
+                            "DatFinBenifForm": "Date de fin de la formation",
+                            "CodPaysForm": "Code du pays de formation",
+                            "NatOp": "Nature de l'opération",
+                            "RefAutorisationBct": {
+                                "NumAutBCT": "Numéro d'autorisation BCT",
+                                "DatAutBCT": "Date d'autorisation BCT"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+                "RETALL": {
+            "description": "Modèle pour TR-RETALL",
+            "BodyHeader": {
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "Beneficiaire": {
+                            "TypeIdentifiant": "Type d'identifiant du bénéficiaire",
+                            "CodIdentifiant": "Code d'identification du bénéficiaire",
+                            "Nom": "Nom du bénéficiaire",
+                            "Prenom": "Prénom du bénéficiaire",
+                            "Nationalite": "Nationalité du bénéficiaire"
+                        },
+                        "RefRetrocession": {
+                            "NatOp": "Nature de l'opération",
+                            "CadRetro": "Cadre de la rétrocession",
+                            "DatRetro": "Date de la rétrocession",
+                            "MntRetroDev": "Montant rétrocession en devise",
+                            "DevMntRetro": "Devise du montant rétrocession",
+                            "CVMntRetro": "Contre-valeur du montant rétrocession en TND",
+                            "NumAutBctSD": "Numéro d'autorisation BCT sortie devise",
+                            "DatAutBctSD": "Date d'autorisation BCT sortie devise",
+                            "DatRetVoy": "Date du retour de voyage"
+                        },
+                        "DecDouane": {
+                            "NumDecD": "Numéro de la déclaration douanière",
+                            "DatDecD": "Date de la déclaration douanière",
+                            "DatDelivAllocTouris": "Date de délivrance de l'allocation touristique"
+                        }
+                    }
+                }
+            ]
+        },
+                "ALL-CPI": {
+            "description": "Modèle pour TR-ALL-CPI",
+            "BodyHeader": {
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "Beneficiaire": {
+                            "TypeIdentifiant": "Type d'identifiant du bénéficiaire",
+                            "CodIdentifiant": "Code d'identification du bénéficiaire",
+                            "CategBenif": "Catégorie du bénéficiaire",
+                            "Age": "Âge du bénéficiaire",
+                            "Nom": "Nom du bénéficiaire",
+                            "Prenom": "Prénom du bénéficiaire",
+                            "Nationalite": "Nationalité du bénéficiaire"
+                        },
+                        "OperationTransf": {
+                            "NatOp": "Nature de l'opération",
+                            "EcoSalaire": "Économie sur le salaire",
+                            "MntInitDinCartInter": "Montant initial en dinars de la carte internationale",
+                            "MntDin": "Montant en dinars",
+                            "MntDev": "Montant en devise"
+                        }
+                    }
+                }
+            ]
+        },
+                "ALL": {
+            "description": "Modèle pour TR-ALL",
+            "BodyHeader": {
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "Beneficiaire": {
+                            "CategBenif": "Catégorie du bénéficiaire",
+                            "Age": "Âge du bénéficiaire",
+                            "TypeIdentifiant": "Type d'identifiant du bénéficiaire",
+                            "CodIdentifiant": "Code d'identification du bénéficiaire",
+                            "Nom": "Nom du bénéficiaire",
+                            "Prenom": "Prénom du bénéficiaire",
+                            "Nationalite": "Nationalité du bénéficiaire"
+                        },
+                        "OperationTransf": {
+                            "EcoSalaire": "Économie sur le salaire",
+                            "CodPaysDest": "Code du pays de destination",
+                            "ModDeliv": "Mode de délivrance",
+                            "MntAllocTourDev": "Montant de l'allocation touristique en devise",
+                            "MntAlloc": "Montant de l'allocation",
+                            "DatDelivAllocTour": "Date de délivrance de l'allocation touristique",
+                            "NumAutBctSD": "Numéro d'autorisation BCT pour sortie devise",
+                            "DatAutBctSD": "Date d'autorisation BCT pour sortie devise"
+                        },
+                        "RefAutorisationBct": {
+                            "NumAutBCT": "Numéro d'autorisation BCT",
+                            "DatAutBCT": "Date d'autorisation BCT"
+                        }
+                    }
+                }
+            ]
+        },
+                "ALL-CTI": {
+            "description": "Modèle pour TR-ALL-CTI",
+            "BodyHeader": {
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "Beneficiaire": {
+                            "NatBenif": "Nature du bénéficiaire",
+                            "TypeIdentifiant": "Type d'identifiant du bénéficiaire",
+                            "CodIdentifiant": "Code d'identification du bénéficiaire",
+                            "RaisSocial": "Raison sociale du bénéficiaire",
+                            "Nom": "Nom du bénéficiaire",
+                            "Prenom": "Prénom du bénéficiaire",
+                            "PPObtDiplomBac": "Diplôme obtenu après le bac",
+                            "SocLabStratup": "Société ou laboratoire startup"
+                        },
+                        "RefMntAllocation": {
+                            "MntInsAllocDin": "Montant initial alloué en dinars",
+                            "DatAlimCart": "Date d'alimentation de la carte",
+                            "MntAllocTrsfDin": "Montant transféré de l'allocation en dinars",
+                            "DatTrans": "Date du transfert",
+                            "MntRapaCartDin": "Montant rapatrié sur la carte en dinars"
+                        },
+                        "RefAutorisationBct": {
+                            "NumAutBCT": "Numéro d'autorisation BCT",
+                            "DatAutBCT": "Date d'autorisation BCT"
+                        }
+                    }
+                }
+            ]
+        },
+                "DON": {
+            "description": "Modèle pour TR-DON",
+            "BodyHeader": {
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "RefDonneur": {
+                            "TypeIdentifiantD": "Type d'identifiant du donneur",
+                            "CodIdentifiantD": "Code d'identification du donneur",
+                            "DenomD": "Dénomination du donneur",
+                            "NumCpteD": "Numéro de compte du donneur",
+                            "PaysFonds": "Pays d'origine des fonds"
+                        },
+                        "Beneficiaire": {
+                            "TypeBenif": "Type de bénéficiaire",
+                            "CodIdentifiant": "Code d'identification du bénéficiaire",
+                            "RaisSocial": "Raison sociale du bénéficiaire",
+                            "Nom": "Nom du bénéficiaire",
+                            "Prenom": "Prénom du bénéficiaire"
+                        },
+                        "OperationTransf": {
+                            "NatOp": "Nature de l'opération",
+                            "MntDev": "Montant en devise",
+                            "CVMntDin": "Contre-valeur en dinars",
+                            "DatOp": "Date de l'opération",
+                            "RefMsgSwift": "Référence du message SWIFT"
+                        }
+                    }
+                }
+            ]
+        },
+                "DIV": {
+            "description": "Modèle pour TR-DIV",
+            "BodyHeader": {
+                "AnneDec": "Année de la déclaration",
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "AnneDec": "Année de la déclaration",
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "RefSociete": {
+                            "MatFiscalSoc": "Matricule fiscale de la société",
+                            "RaisSocialSoc": "Raison sociale de la société",
+                            "StatupPlanChange": "Statut du plan de change"
+                        },
+                        "OperationTransf": "Opération de transfert",
+                        "Beneficiaire": {
+                            "NatOp": "Nature de l'opération"
+                        },
+                        "RefFichInfo": {
+                            "NumFichInfo": "Numéro de la fiche d'information",
+                            "DatFichInfo": "Date de la fiche d'information"
+                        },
+                        "CodSwift": "Code SWIFT",
+                        "CodPaysDest": "Code du pays de destination"
+                    }
+                }
+            ]
+        },
+                "CESSLIQ": {
+            "description": "Modèle pour TR-CESSLIQ",
+            "BodyHeader": {
+                "AnneDec": "Année de la déclaration",
+                "PeriodDec": "Période de déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "AnneDec": "Année de la déclaration",
+                        "PeriodDec": "Période du transfert",
+                        "Agence": "Agence associée",
+                        "LibOp": "Libellé de l'opération",
+                        "RefSociete": {
+                            "MatFiscalSoc": "Matricule fiscale de la société",
+                            "RaisSocialSoc": "Raison sociale de la société"
+                        },
+                        "OperationTransf": "Opération de transfert",
+                        "Beneficiaire": {
+                            "NatOp": "Nature de l'opération"
+                        },
+                        "RefFichInfo": {
+                            "NumFichInfo": "Numéro de la fiche d'information",
+                            "DatFichInfo": "Date de la fiche d'information"
+                        },
+                        "CodSwift": "Code SWIFT",
+                        "CodPaysDest": "Code du pays de destination"
+                    }
+                }
+            ]
+        },
+                "RD": {
+            "description": "Modèle pour TR-RD",
+            "BodyHeader": {
+                "JrDec": "Jour de la déclaration",
+                "NbrEcritures": "Nombre total d'écritures"
+            },
+            "Details": [
+                {
+                    "Detail": {
+                        "JrDec": "Jour du transfert",
+                        "Agence": "Agence associée",
+                        "CodTitre": "Code du titre",
+                        "RefIdentification": {
+                            "RefIden": "Référence de l'identification",
+                            "DatRefIden": "Date de l'identification"
+                        },
+                        "CodRD": "Code RD (Remise de Domiciliation)",
+                        "Operateur": {
+                            "TypOp": "Type d'opérateur",
+                            "CodOp": "Code de l'opérateur",
+                            "Nom": "Nom de l'opérateur",
+                            "Prenom": "Prénom de l'opérateur",
+                            "DenomOp": "Dénomination de l'opérateur"
+                        },
+                        "OperationTransf": "Opération de transfert",
+                        "RefAutorisationBct": {
+                            "NumAutBCT": "Numéro d'autorisation BCT",
+                            "DatAutBCT": "Date d'autorisation BCT"
+                        },
+                        "CodSwift": "Code SWIFT"
+                    }
+                }
+            ]
+        },
+                "FI": {
+    "description": "Modèle pour TR-FI",
+    "BodyHeader": {
+        "AnneDec": "Année de la déclaration",
+        "MoisDec": "Mois de la déclaration",
+        "PeriodDec": "Période de déclaration",
+        "NbrEcritures": "Nombre total d'écritures"
+    },
+    "Details": [
+        {
+            "Detail": {
+                "AnneDec": "Année de la déclaration",
+                "MoisDec": "Mois du transfert",
+                "PeriodDec": "Période du transfert",
+                "Agence": "Agence associée",
+                "CodTitre": "Code du titre",
+                "RefFichInfo": {
+                    "RefFichInfo": "Référence de la fiche d'information",
+                    "DatFichInfo": "Date de la fiche d'information"
+                },
+                "DatTrans": "Date du transfert",
+                "Demandeur": {
+                    "TypeIdentifiant": "Type d'identifiant du demandeur",
+                    "CodIdentifiant": "Code d'identification du demandeur",
+                    "Nom": "Nom du demandeur",
+                    "Prenom": "Prénom du demandeur",
+                    "DenomDem": "Dénomination du demandeur"
+                },
+                "OperationTransf": "Opération de transfert"
+            }
+        }
+    ]
+}
+
+						}
+		},
+		    "DC": {
+			      "EnteteDoc": [
+                  "CodeIAT",
+                  "DateDec",
+                  "CodeAnnexe"
+              ],
+			      "Models": {
+				        "AVA": {
+                    "BodyHeader": {
+						"PeriodDec": "Période de déclaration",
+						"Agence": "Agence associée",
+						"NumDosAVA": "Numéro de dossier AVA",
+						"Titulaire": "Titulaire du dossier",
+						"NumActv": "Numéro de l'activité",
+						"TypAlloc": "Type d'allocation",
+						"IdMarche": "Identifiant du marché",
+						"DatDom": "Date de domiciliation",
+						"StatDoss": "Statut du dossier",
+						"DatSusp": "Date de suspension",
+						"DebPeriodFon": "Début de la période de fonctionnement",
+						"FinPeriodFon": "Fin de la période de fonctionnement",
+						"SousTypAVA": "Sous-type AVA",
+						"ChiffrAffHrsTx": "Chiffre d'affaires hors taxes",
+						"AnneCA": "Année du chiffre d'affaires",
+						"NumaAutBCT": "Numéro d'autorisation BCT",
+						"DatAutBCT": "Date d'autorisation BCT",
+						"NbrEcritures": "Nombre total d'écritures"
+								},
+					"Details": [
+                {
+                    "Detail": {
+                        "PeriodDec": "Période de déclaration spécifique",
+                        "Agence": "Agence associée",
+                        "NumDosAVA": "Numéro de dossier AVA détaillé",
+                        "Titulaire": "Titulaire du dossier détaillé",
+                        "NumActv": "Numéro de l'activité détaillée",
+                        "TypAlloc": "Type d'allocation détaillé",
+                        "IdMarche": "Identifiant du marché spécifique",
+                        "DatDom": "Date de domiciliation spécifique",
+                        "StatDoss": "Statut du dossier spécifique",
+                        "DatSusp": "Date de suspension spécifique",
+                        "DebPeriodFon": "Début de la période spécifique",
+                        "FinPeriodFon": "Fin de la période spécifique",
+                        "SousTypAVA": "Sous-type AVA spécifique",
+                        "ChiffrAffHrsTx": "Chiffre d'affaires hors taxes spécifique",
+                        "AnneCA": "Année CA spécifique",
+                        "NumaAutBCT": "Numéro d'autorisation BCT spécifique",
+                        "DatAutBCT": "Date d'autorisation BCT spécifique",
+                        "NbrEcritures": "Nombre d'écritures spécifique"
+                    }
+                }
+            ]
+						},
+				        "MAR": {
+    "description": "Modèle pour DC-MAR",
+    "BodyHeader": {
+        "AnneDec": "Année de la déclaration",
+        "PeriodDec": "Période de déclaration",
+        "Agence": "Agence associée",
+        "IdMarche": "Identifiant du marché",
+        "DenomMaîtreOuv": "Dénomination du maître d'ouvrage",
+        "CodPays": "Code du pays"
+    },
+    "Details": [
+        {
+            "Detail": {
+                "AnneDec": "Année de la déclaration spécifique",
+                "PeriodDec": "Période du transfert spécifique",
+                "Agence": "Agence associée",
+                "IdMarche": "Identifiant du marché spécifique",
+                "DenomMaîtreOuv": "Dénomination du maître d'ouvrage spécifique",
+                "CodPays": "Code pays spécifique",
+                "MaîtreOeuvreResident": {
+                    "MatFiscalMOR": "Matricule fiscal du maître d'œuvre résident",
+                    "DenomMOR": "Dénomination du maître d'œuvre résident"
+                },
+                "Groupement": {
+                    "ResPlanChang": "Responsabilité du plan de change",
+                    "MatFiscalEntrRCF": "Matricule fiscal de l'entreprise d'entrée dans le RCF",
+                    "DenomEntrRCF": "Dénomination de l'entreprise d'entrée dans le RCF"
+                },
+                "EntrepriseChefDeFile": {
+                    "ResPlanChang": "Responsabilité du plan de change",
+                    "MatFiscalEntrRCF": "Matricule fiscal de l'entreprise d'entrée dans le RCF",
+                    "DenomEntrRCF": "Dénomination de l'entreprise d'entrée dans le RCF"
+                },
+                "EntrepCoTitulaire": {
+                    "MntGlobal": "Montant global",
+                    "MntLocale": "Montant local",
+                    "MntConvertible": "Montant convertible",
+                    "AvanceMarchPourMntMarche": "Avance sur marché pour montant marché",
+                    "DateConcContratMarche": "Date du contrat de marché",
+                    "DureeMarcheMois": "Durée du marché en mois"
+                },
+                "NbrEcritures": "Nombre total d'écritures"
+            }
+        }
+    ]
+					}
+
+    }
+},
+		    "DS": {
+			      "EnteteDoc": [
+				          "CodeIAT",
+				          "DateDec",
+				          "CodeAnnexe",
+				          "PeriodDec",
+				          "Agence"
+						],
+			      "Models": {
+				      "IETR": {
+
+					"BodyHeader": {
+						"MatFiscal": "Matricule fiscal",
+						"RaisSoc": "Raison sociale",
+						"FormInvt": "Forme de l'investissement"
+            },
+					"Details": [
+                {
+                    "Detail": {
+                        "MatFiscal": "Matricule fiscal de l'entité",
+                        "RaisSoc": "Raison sociale de l'entité",
+                        "FormInvt": "Forme de l'investissement",
+                        "Documents": {
+                            "DocumentInv": {
+                                "CodDoc": "Code du document",
+                                "NomOrigPiece": "Nom original de la pièce",
+                                "AttacheFile": "Fichier attaché"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+				      "IESUIVI": {
+    "description": "Modèle pour DS-IESUIVI",
+    "BodyHeader": {
+        "MatFiscal": "Matricule fiscal",
+        "RaisSoc": "Raison sociale"
+    },
+    "Details": [
+        {
+            "Detail": {
+                "MatFiscal": "Matricule fiscal de l'entité",
+                "RaisSoc": "Raison sociale de l'entité",
+                "Documents": {
+                    "DocumentInv": {
+                        "CodDoc": "Code du document",
+                        "NomOrigPiece": "Nom original de la pièce",
+                        "AttacheFile": "Fichier attaché"
+                    }
+                }
+            }
+        }
+    ]
+},
+				      "Startup-IE-TR": {
+    "description": "Modèle pour DS-Startup-IE-TR",
+    "BodyHeader": {
+        "MatFiscal": "Matricule fiscal",
+        "RaisSoc": "Raison sociale"
+    },
+    "Details": [
+        {
+            "Detail": {
+                "MatFiscal": "Matricule fiscal de l'entité",
+                "RaisSoc": "Raison sociale de l'entité",
+                "Documents": {
+                    "DocumentInv": {
+                        "CodDoc": "Code du document",
+                        "NomOrigPiece": "Nom original de la pièce",
+                        "AttacheFile": "Fichier attaché"
+                    }
+                }
+            }
+        }
+    ]
+},
+				      "Startup-IE-SUIVI": {
+    "description": "Modèle pour DS-Startup-IE-SUIVI",
+    "BodyHeader": {
+        "MatFiscal": "Matricule fiscal",
+        "RaisSoc": "Raison sociale"
+    },
+    "Details": [
+        {
+            "Detail": {
+                "MatFiscal": "Matricule fiscal de l'entité",
+                "RaisSoc": "Raison sociale de l'entité",
+                "Documents": {
+                    "DocumentInv": {
+                        "CodDoc": "Code du document",
+                        "NomOrigPiece": "Nom original de la pièce",
+                        "AttacheFile": "Fichier attaché"
+                    }
+                }
+            }
+        }
+    ]
+}
+
+						}
+					}
+			}
+}
