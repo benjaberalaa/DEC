@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:simpleType name="T_Date">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\d{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Document">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="EnteteDoc">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CodeIAT" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation source="Name" xml:lang="Fr">Code IAT</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="\d{2}"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DateDec" type="T_Date" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation source="Name" xml:lang="Fr">Date de déclaration</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="CodeAnnexe" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation source="Name" xml:lang="Fr">Code Annexe</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="[A-Z]{2}-[0-9]{3}"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PeriodDec" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation source="Name" xml:lang="Fr">Période de declaration à la BCT</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="(0[1-9]|1[0-2])[0-9]{4}"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Dossiers">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Dossier">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Entete">
+											<xs:complexType>
+												<xs:sequence>
+												<xs:element name="NbrEcritures" minOccurs="1">
+												<xs:annotation>
+												<xs:documentation source="Name" xml:lang="Fr"> Nombre de ligne de l'enregistrement détail</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:pattern value="\d{6}"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Details" maxOccurs="1" minOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+												<xs:element name="Detail"
+												maxOccurs="unbounded" minOccurs="1">
+												
+												<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Agence" minOccurs="1">
+														<xs:annotation>
+															<xs:documentation source="Name" xml:lang="Fr">Agence</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="\d{3}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												<xs:element name="MatFiscal" minOccurs="1">
+												<xs:annotation>
+												<xs:documentation source="Name" xml:lang="Fr">Matricule fiscal de la Startup</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:length value="8"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="RaisSoc" minOccurs="1">
+												<xs:annotation>
+												<xs:documentation source="Name" xml:lang="Fr">Raison sociale de la Startup</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="80"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+
+												<xs:element name="Documents" maxOccurs="1">
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="DocumentInv"
+												maxOccurs="unbounded">
+												<xs:complexType>
+												<xs:sequence>
+												<xs:element name="CodDoc" minOccurs="1">
+												<xs:annotation>
+												<xs:documentation source="Name" xml:lang="Fr">Code du Document</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:length value="18"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="NomOrigPiece" minOccurs="1">
+												<xs:annotation>
+												<xs:documentation source="Name" xml:lang="Fr">Nom d'origine de la pièce</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+												<xs:restriction base="xs:string">
+												<xs:maxLength value="20"/>
+												</xs:restriction>
+												</xs:simpleType>
+												</xs:element>
+												<xs:element name="AttachefFile" minOccurs="1">
+														<xs:annotation>
+															<xs:documentation source="Name" xml:lang="Fr">Fichier a base64 </xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:base64Binary">
+															</xs:restriction>
+														</xs:simpleType>
+												</xs:element>	
+												</xs:sequence>
+												</xs:complexType>
+												</xs:element>
+												</xs:sequence>
+												</xs:complexType>
+												</xs:element>
+												</xs:sequence>
+												</xs:complexType>
+												</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

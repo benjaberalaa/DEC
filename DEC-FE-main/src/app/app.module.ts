@@ -18,6 +18,7 @@ import {MatInput, MatInputModule} from '@angular/material/input';
 import {MatButton, MatButtonModule, MatIconButton} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import { DynamicTableComponent } from './dynamic-table/dynamic-table.component';
+import { GenericOperationsComponent } from './operations/generic-operations/generic-operations.component';
 import { OperationsComponent } from './operations/operations.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TranslatePipe } from './pipes/translate.pipe';
@@ -29,6 +30,7 @@ import { TranslatePipe } from './pipes/translate.pipe';
     SidebarComponent,
     TableParametrageComponent,
     DynamicTableComponent,
+    GenericOperationsComponent,
     OperationsComponent,
     DashboardComponent,
     TranslatePipe

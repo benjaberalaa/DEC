@@ -1,7 +1,4 @@
-.container-fluid {
-  display: flex;
-  flex-direction: row;
-}
+
 
 app-sidebar {
   width: 250px;

@@ -1,109 +1,101 @@
-/* Sidebar réduite par défaut */
-.sidebar-hover {
-  width: 90px; /* Largeur réduite */
-  height: 100%;
-  overflow: hidden;
-  transition: width 0.3s ease-in-out; /* Transition fluide */
+.modern-navbar {
+  background: linear-gradient(90deg, hsl(215, 60%, 15%), hsl(215, 70%, 25%));
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 1040;
 }
 
-/* Sidebar complètement ouverte */
-.sidebar-hover.sidebar-collapsed {
-  width: 15%; /* Largeur complète */
+.modern-sidebar {
+  background-color: #1e293b;
+  width: 260px;
+  height: 100vh;
+  padding-top: 60px; /* Space for navbar */
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+  flex-shrink: 0;
 }
 
-/* Masquer le texte et le titre lorsque réduite */
-.sidebar-hover .offcanvas-title,
-.sidebar-hover .offcanvas-body span {
-  display: none; /* Texte masqué */
-
-}
-
-.sidebar-hover.sidebar-collapsed .offcanvas-title,
-.sidebar-hover.sidebar-collapsed .offcanvas-body span {
-  display: inline; /* Texte visible */
-
-}
-
-/* Espacement des icônes */
-.btn-hover .bi {
-  font-size: 1.2rem;
-  margin-right: 1rem;
-}
-
- /* Alignement des icônes dans les boutons et espacement ajusté */
-.btn-hover {
-  display: flex;
-  align-items: Initial;
-  justify-content: flex-start; /* Aligne les icônes et le texte à gauche */
-  gap: 0.5rem; /* Espacement entre l'icône et le texte */
-
-  border-radius: 0.5rem; /* Ajoute un effet arrondi aux boutons */
-
-}
-
-  /* Ajustement spécifique pour les icônes */
-
-  .btn-hover .bi {
-    font-size: 1.8rem; /* Taille des icônes */
-    margin: 0; /* Réinitialise les marges des icônes */
-
-  }
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 250px; /* Largeur de la sidebar */
-  height: 100vh; /* Prend toute la hauteur de l'écran */
-  background-color: #f8f9fa; /* Couleur de fond */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optionnel : ombre */
-  z-index: 1000; /* S'assurer qu'elle est au-dessus des autres éléments */
-  padding: 15px; /* Optionnel : marge intérieure */
-}
-
-/* Ajuste le contenu principal pour laisser de la place à la sidebar */
-.content {
-  margin-left: 250px; /* Égale à la largeur de la sidebar */
-  padding: 20px;
-}
-.sidebar-custom {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 250px; /* Largeur de la sidebar */
-  height: 100vh; /* Hauteur complète */
-  background-color: #343a40; /* Couleur de fond */
-  z-index: 1000;
-  overflow-y: auto; /* Ajoute un défilement si nécessaire */
-  transition: all 0.3s ease; /* Transition douce pour le survol */
-}
-
-.sidebar-collapsed {
-  width: 80px; /* Réduit la largeur lorsqu'elle est repliée */
-}
-
-.sidebar-header {
-  padding: 10px;
-  color: #fff;
+.modern-sidebar.sidebar-collapsed {
+  width: 80px;
 }
 
 .sidebar-body {
-  padding: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
-.content {
-  margin-left: 250px; /* Décale le contenu pour laisser de la place à la sidebar */
-  transition: margin-left 0.3s ease; /* Transition douce si la largeur change */
+.btn-sidebar {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s;
+  white-space: nowrap;
 }
 
-.sidebar-collapsed + .content {
-  margin-left: 80px; /* Ajuste le décalage lorsque la sidebar est repliée */
-}
-.navbar {
-  padding-left: 250px; /* Correspond à la largeur de la sidebar */
+.btn-sidebar i {
+  font-size: 1.25rem;
+  margin: 0;
+  transition: color 0.2s;
 }
 
-.sidebar-collapsed + .navbar {
-  padding-left: 80px; /* Ajuste lorsque la sidebar est repliée */
+.btn-sidebar:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.btn-sidebar-subitem {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.btn-sidebar-subitem:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.parametrage-overlay {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: #f8fafc;
+  overflow-y: auto;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom scrollbar for sidebar */
+.modern-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.modern-sidebar::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+}
+.modern-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+.modern-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.3);
 }
 

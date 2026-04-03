@@ -1,58 +1,62 @@
-<nav class="navbar bg-body-tertiary fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Reporting</a> <strong>Date du jour : {{ currentDate | date: 'dd/MM/yyyy HH:mm:ss' }}</strong>
-    <div
-      class="sidebar-custom bg-secondary text-white"
-      id="customSidebar"
-      [class.sidebar-collapsed]="isCollapsed"
-      (mouseover)="handleMouseOver()"
-      (mouseout)="handleMouseOut()"
-    >
-      <div class="sidebar-header">
-        <h5 *ngIf="!isCollapsed" align="center">Reporting</h5>
-      </div>
-      <div class="sidebar-body p-3">
-        <ul class="list-unstyled">
-          <li>
-            <button
-              class="btn btn-light w-100 text-start mb-3 btn-hover"
-              (click)="onParametrageClick()"
-            >
-              <i class="bi bi-gear-fill"></i>
-              <span *ngIf="!isCollapsed">Paramétrage</span>
-            </button>
-          </li>
-          <li *ngFor="let type of types" class="mb-2">
-            <button
-              class="btn btn-light w-100 text-start btn-hover"
-              (click)="toggleCollapse(type); showTable = false"
-            >
-              <i class="bi bi-folder-fill"></i>
-              <span *ngIf="!isCollapsed">{{ type }}</span>
-            </button>
-            <ul
-              *ngIf="!collapsedTypes[type] && !isCollapsed"
-              class="list-unstyled ms-3 mt-2"
-            >
-              <li *ngFor="let model of models[type]" class="mb-1">
-                <button
-                  class="btn btn-secondary btn-sm w-100 btn-hover"
-                  (click)="selectModel(type, model); showTable = false"
-                >
-                  <i class="bi bi-file-earmark-fill"></i>
-                  <span>{{ model }}</span>
-                </button>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+<nav class="navbar modern-navbar fixed-top">
+  <div class="container-fluid px-4 py-1">
+    <a class="navbar-brand fw-bold text-white fs-4 d-flex align-items-center gap-2" href="#">
+      <i class="bi bi-hexagon-fill text-primary" style="filter: brightness(1.5);"></i> Reporting
+    </a> 
+    <div class="text-white-50 fs-6">
+      <i class="bi bi-clock-history me-1"></i> {{ currentDate | date: 'dd/MM/yyyy HH:mm:ss' }}
     </div>
   </div>
 </nav>
 
-<!-- Contenu Principal -->
-<div class="content container mt-5">
-  <app-table-parametrage *ngIf="showParameter"></app-table-parametrage>
-  <div *ngIf="!showTable"></div>
+<div class="modern-sidebar" [class.sidebar-collapsed]="isCollapsed" (mouseover)="handleMouseOver()" (mouseout)="handleMouseOut()">
+  <div class="sidebar-body px-2 py-4">
+    <div class="mb-4 px-2" *ngIf="!isCollapsed">
+      <small class="text-white-50 text-uppercase fw-bold" style="letter-spacing: 1px; font-size: 11px;">Menu Principal</small>
+    </div>
+    <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+      <li>
+        <button class="btn btn-sidebar w-100 text-start" [class.justify-content-center]="isCollapsed" (click)="onParametrageClick()">
+          <i class="bi bi-gear-fill"></i>
+          <span *ngIf="!isCollapsed">Paramétrage</span>
+        </button>
+      </li>
+      
+      <li *ngIf="!isCollapsed"><hr class="border-secondary my-2 opacity-25"></li>
+      
+      <li *ngFor="let type of types" class="mb-1">
+        <button class="btn btn-sidebar w-100 text-start" [class.justify-content-center]="isCollapsed" (click)="toggleCollapse(type); showTable = false">
+          <i class="bi bi-folder2-open" [ngClass]="{'text-primary': !collapsedTypes[type]}"></i>
+          <span *ngIf="!isCollapsed" class="d-flex justify-content-between align-items-center w-100">
+            {{ type }}
+            <i class="bi ms-auto fs-6" [ngClass]="collapsedTypes[type] ? 'bi-chevron-down' : 'bi-chevron-up'"></i>
+          </span>
+        </button>
+        
+        <div class="collapse-wrapper" *ngIf="!collapsedTypes[type] && !isCollapsed">
+          <ul class="list-unstyled ps-4 pe-2 py-2 mb-0 d-flex flex-column gap-1">
+            <li *ngFor="let model of models[type]">
+              <button class="btn btn-sidebar-subitem w-100 text-start" (click)="selectModel(type, model); showTable = false">
+                <i class="bi bi-file-earmark-text text-white-50 me-2"></i>
+                <span class="text-truncate">{{ model }}</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Inline Main View for app-table-parametrage -->
+<div *ngIf="showParameter" class="parametrage-overlay">
+  <div class="container py-4">
+     <div class="p-3 bg-white rounded-4 shadow-lg border">
+         <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+            <h4 class="m-0 fw-bold text-dark"><i class="bi bi-ui-checks-grid me-2 text-primary"></i> Paramètres Généraux</h4>
+            <button class="btn btn-light rounded-circle" (click)="showParameter = false"><i class="bi bi-x-lg"></i></button>
+         </div>
+         <app-table-parametrage></app-table-parametrage>
+     </div>
+  </div>
 </div>

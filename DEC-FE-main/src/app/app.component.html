@@ -1,10 +1,7 @@
-<div class="container-fluid vh-100 d-flex">
-  <!-- Sidebar -->
-  <app-sidebar (modelSelected)="onModelSelected($event)" ></app-sidebar>
-
-  <!-- Main Content -->
-  <div class="content flex-grow-1 p-4">
-    <!-- Contenu dynamique via le routage -->
+<div class="d-flex w-100 vh-100 overflow-hidden" style="background-color: #f8fafc;">
+  <app-sidebar (modelSelected)="onModelSelected($event)"></app-sidebar>
+  
+  <main class="flex-grow-1 position-relative overflow-auto d-flex flex-column" style="width: 0; padding-top: 60px;">
     <router-outlet></router-outlet>
-  </div>
+  </main>
 </div>

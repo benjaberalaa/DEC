@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { OperationsComponent } from './operations/operations.component';
+import { GenericOperationsComponent } from './operations/generic-operations/generic-operations.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {AddPeriodComponent} from './add-period/add-period.component';
 import {TableParametrageComponent} from './table-parametrage/table-parametrage.component';
@@ -9,7 +9,7 @@ import {TableParametrageComponent} from './table-parametrage/table-parametrage.c
 const routes: Routes = [
   { path: '', component: DashboardComponent }, // Route par défaut (dashboard)
   { path: 'add-period', component: AddPeriodComponent }, // Route pour AddPeriod
-  { path: 'operations', component: OperationsComponent }, // Route pour Operations
+  { path: 'operations', component: GenericOperationsComponent }, // Route pour Operations (Dynamique)
   { path: 'parametrage', component: TableParametrageComponent },
   { path: 'periods/:type', component: AddPeriodComponent },// Route pour Operations
 

@@ -259,6 +259,16 @@ export class AddPeriodComponent implements  OnInit,AfterViewInit {
     this.periodService.getPeriodsByType(formattedType).subscribe({
       next: (data) => {
         this.periods = this.sortPeriodsByPeriodDec(data);
+        
+        // Dynamically fix the startYear validation
+        if (this.filteredPeriods.length > 0) {
+          this.form.get('startYear')?.clearValidators();
+          this.form.get('startYear')?.disable(); // Disabled so it's excluded from submission just in case, but clearValidators allows validity
+        } else {
+          this.form.get('startYear')?.setValidators([Validators.required, Validators.pattern(/^\d{4}$/)]);
+          this.form.get('startYear')?.enable();
+        }
+        this.form.get('startYear')?.updateValueAndValidity();
       },
       error: (err) => {
         this.periods = [];
@@ -281,7 +291,7 @@ export class AddPeriodComponent implements  OnInit,AfterViewInit {
   // Méthode de soumission du formulaire
   onSubmit(): void {
     this.submitted = true;
-    const formData = this.form.value;
+    const formData = this.form.getRawValue();
     console.log('Données envoyées :', formData);
     this.checkOpenPeriods(formData.typePeriode);
 

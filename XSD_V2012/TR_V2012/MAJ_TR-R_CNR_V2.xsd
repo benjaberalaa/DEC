@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:simpleType name="T_Date">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(0[1-9]|[1-2][0-9]|3[0-1])/(0[1-9]|1[0-2])/\d{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Devise">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{3,3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="T_Mnt_Devise">
+        <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="17"/>
+            <xs:fractionDigits value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="T_Montant">
+        <xs:simpleContent>
+            <xs:extension base="T_Mnt_Devise">
+                <xs:attribute name="Ccy" type="Devise" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="Document">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="EnteteDoc">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="CodeIAT" minOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation source="Name" xml:lang="Fr">Code IAT</xs:documentation>
+                                </xs:annotation>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="\d{2}"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="DateDec" type="T_Date" minOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation source="Name" xml:lang="Fr">Date de déclaration</xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="CodeAnnexe" minOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation source="Name" xml:lang="Fr">Code Annexe</xs:documentation>
+                                </xs:annotation>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="[A-Z]{2}-[0-9]{3}"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Transferts">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Transfert" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Entete">
+                                            <xs:complexType>
+                                                <xs:sequence>
+												  <xs:element name="PeriodDec" minOccurs="1">
+													<xs:annotation>
+														<xs:documentation source="Name" xml:lang="Fr">Mois de la déclaration de ce reporting</xs:documentation>
+													</xs:annotation>   
+												    <xs:simpleType>
+												  	<xs:restriction base="xs:string">
+												  		<xs:pattern value="(0[1-9]|1[0-2])[0-9]{4}"/>
+												  	</xs:restriction>	
+												    </xs:simpleType>
+                                                  </xs:element>
+                                                  <xs:element name="NbrEcritures" minOccurs="1">
+													<xs:annotation>
+														<xs:documentation source="Name" xml:lang="Fr"> Nombre de ligne de l'enregistrement détail</xs:documentation>
+													</xs:annotation>
+													<xs:simpleType>
+													  <xs:restriction base="xs:string">
+														<xs:pattern value="\d{6}"/>
+													  </xs:restriction>
+													</xs:simpleType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Details">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Detail" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															 <xs:element name="PeriodDec" minOccurs="1">
+																<xs:annotation>
+																	<xs:documentation source="Name" xml:lang="Fr">Mois de la déclaration de ce reporting</xs:documentation>
+																</xs:annotation>
+															 	<xs:simpleType>
+																<xs:restriction base="xs:string">
+																	<xs:pattern value="(0[1-9]|1[0-2])[0-9]{4}"/>
+																</xs:restriction>
+															 	</xs:simpleType>
+															  </xs:element>		 
+															  <xs:element name="Agence" minOccurs="1">
+																<xs:annotation>
+																	<xs:documentation source="Name" xml:lang="Fr">Agence ayant réalisé le transfert</xs:documentation>
+																</xs:annotation>
+																<xs:simpleType>
+																  <xs:restriction base="xs:string">
+																	<xs:pattern value="\d{3}"/>
+																  </xs:restriction>
+																</xs:simpleType>
+															  </xs:element>
+															  <xs:element name="RefInvestisseur" minOccurs="1">
+																<xs:complexType>
+																	<xs:sequence>
+																	  <xs:element name="TypeIdentifiant" minOccurs="1">
+																		  <xs:annotation>
+																		  <xs:documentation source="Name" xml:lang="Fr">Type identifiant de l'investisseur</xs:documentation>
+																		  </xs:annotation>
+																		  <xs:simpleType>
+																			  <xs:restriction base="xs:string">
+																				  <xs:enumeration value="C">
+																					  <xs:annotation>
+																						<xs:documentation>C = CIN </xs:documentation>
+																					  </xs:annotation>
+																				  </xs:enumeration>
+																				  <xs:enumeration value="S">
+																					  <xs:annotation>
+																						<xs:documentation>S = carte de séjour</xs:documentation>
+																					  </xs:annotation>
+																				  </xs:enumeration>
+																				  <xs:enumeration value="D">
+																					  <xs:annotation>
+																						<xs:documentation>D = Matricule fiscale </xs:documentation>
+																					  </xs:annotation>
+																				  </xs:enumeration>
+																			  </xs:restriction>
+																		  </xs:simpleType>
+																	  </xs:element>
+																	  <xs:element name="CodeIdentifiant" minOccurs="1">
+																		  <xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Identifiant de l'investisseur</xs:documentation>
+																		  </xs:annotation>
+																		  <xs:simpleType>
+																			  <xs:restriction base="xs:string">
+																				<xs:maxLength value="15"/>
+																			  </xs:restriction>
+																		  </xs:simpleType>
+																	  </xs:element>
+																	  <xs:element name="Nom" minOccurs="0">
+																		  <xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Nom de l'investisseur </xs:documentation>
+																		  </xs:annotation>
+																		  <xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:maxLength value="30"/>
+																			</xs:restriction>
+																		  </xs:simpleType>
+																	  </xs:element>
+																	  <xs:element name="Prenom" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Prenom de l'investisseur</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																			<xs:maxLength value="30"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	  </xs:element>
+																	  <xs:element name="RaisSocialInvt" minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Raison sociale de l'investisseur</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																			<xs:maxLength value="80"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	  </xs:element>
+																	  </xs:sequence>
+																     </xs:complexType>
+															       </xs:element>	
+																	  <xs:element name="FormPart" minOccurs="1">
+																		<xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Forme de participation</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:integer">		
+																				 <xs:pattern value="[1-3]"/>		
+																			<xs:enumeration value="1">
+																				<xs:annotation>
+																					<xs:documentation>1 =  Participation lors de la création de la société NR </xs:documentation>
+																				</xs:annotation>
+																		    </xs:enumeration>
+																			<xs:enumeration value="2">
+																				<xs:annotation>
+																					<xs:documentation>2 = Participation lors de l'augmentation de son capital</xs:documentation>
+																				</xs:annotation>
+																			</xs:enumeration>
+																			<xs:enumeration value="3">
+																				<xs:annotation>
+																					<xs:documentation>3 = Acquisition d'actions ou de parts sociales</xs:documentation>
+																				</xs:annotation>
+																			</xs:enumeration>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	  </xs:element>
+																	  <xs:element name="TxPart" minOccurs="1">
+																		<xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Taux de participation de l'investisseur</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:decimal">
+																				<xs:totalDigits value="4"/>
+																				<xs:fractionDigits value="2"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	  </xs:element>
+																	   <xs:element name="MntTrsf" type = 'T_Montant' minOccurs="1">
+																		  <xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Montant de transfert</xs:documentation>
+																		  </xs:annotation>									
+																	  </xs:element>
+																	  <xs:element name="CvMntTnd" type = 'T_Montant' minOccurs="1">
+																		  <xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Contre valeur en dinars du Montant du transfert </xs:documentation>
+																		  </xs:annotation>									
+																	  </xs:element>																																												
+																	  <xs:element name="RefFichInfo">
+																		<xs:complexType>
+																			<xs:sequence>																  
+																				<xs:element name="NumFichInfo" minOccurs="1">
+																					<xs:annotation>
+																						<xs:documentation source="Name" xml:lang="Fr">Numéro de la fiche d'information </xs:documentation>
+																					</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string"> 																					  
+																								<xs:pattern value="\d{8}"/>	
+																							</xs:restriction>											
+																						</xs:simpleType>
+																				</xs:element>
+																				<xs:element name="DatFichInfo" minOccurs="1">
+																					<xs:annotation>
+																						<xs:documentation source="Name" xml:lang="Fr">Date de la fiche d'information </xs:documentation>
+																					</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="T_Date" > 																					  
+																							</xs:restriction>
+																						</xs:simpleType>
+																				</xs:element> 																																	
+																			</xs:sequence>														
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element name="RefSocietetNR">
+																		<xs:complexType>
+																			<xs:sequence>																  
+																				<xs:element name="IdentifiantSocNR" minOccurs="1">
+																					<xs:annotation>
+																						<xs:documentation source="Name" xml:lang="Fr">Identifiant de la société NR</xs:documentation>
+																					</xs:annotation>								
+																					<xs:simpleType> 
+																						<xs:restriction base="xs:string"> 																					  
+																							<xs:length value="8"/>																				  
+																						</xs:restriction>
+																					</xs:simpleType> 
+																				</xs:element>
+																				<xs:element name="RaisSocialSocNr" minOccurs="1">
+																					<xs:annotation>
+																						<xs:documentation source="Name" xml:lang="Fr">Raison sociale de la société NR</xs:documentation>
+																					</xs:annotation>
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:maxLength value="80"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																				</xs:element>
+																			</xs:sequence>														
+																		</xs:complexType>
+																	</xs:element>	
+																    <xs:element name="CodInvt" minOccurs="1">
+																		<xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Code activité de l'investisseur</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string"> 																					  
+																				<xs:length value="5"/>																				  
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element> 
+																	<xs:element name="SuppActiv" minOccurs="1">
+																		<xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Support de l'activité</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:integer">	
+																				 <xs:pattern value="[1-7]"/>
+																				<xs:enumeration value="1">                                                                 																				  <xs:annotation>
+																					  <xs:documentation>1=Attestation de dépôt de déclaration</xs:documentation>
+																				  </xs:annotation>
+																			    </xs:enumeration>
+																			    <xs:enumeration value="2">
+																				  <xs:annotation>
+																					  <xs:documentation>2=Cahier des charges</xs:documentation>
+																				  </xs:annotation>																				  
+																			    </xs:enumeration>
+																				<xs:enumeration value="3">
+																				  <xs:annotation>
+																					  <xs:documentation>3=Agrément</xs:documentation>
+																				  </xs:annotation>																				  
+																			    </xs:enumeration>
+																				<xs:enumeration value="4">
+																				  <xs:annotation>
+																					  <xs:documentation>4=Convention</xs:documentation>
+																				  </xs:annotation>
+																			    </xs:enumeration>
+																				<xs:enumeration value="5">
+																				  <xs:annotation>
+																					  <xs:documentation>5=Carte de commercant</xs:documentation>
+																				  </xs:annotation>
+																			    </xs:enumeration>
+																				<xs:enumeration value="6">
+																				  <xs:annotation>
+																					  <xs:documentation>6=Autorisation Banque Centrale de Tunisie</xs:documentation>
+																				  </xs:annotation>
+																			    </xs:enumeration>
+																				<xs:enumeration value="7">
+																				  <xs:annotation>
+																					  <xs:documentation>7=Toute autres autorisation délivrée par les autorités compétentes</xs:documentation>
+																				  </xs:annotation>
+																			    </xs:enumeration>																				
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element> 
+																	<xs:element name="CapSocSocNR" minOccurs="1">
+																		<xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Capital social de la société NR</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																			    <xs:pattern value="[0-9]+"/>
+																				<xs:maxLength value="18"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element> 
+																	<xs:element name="TxPartNonRes" minOccurs="1">
+																		<xs:annotation>
+																			<xs:documentation source="Name" xml:lang="Fr">Taux de la participation Non-résidente</xs:documentation>
+																		</xs:annotation>
+																		<xs:simpleType>
+																			<xs:restriction base="xs:decimal">
+																				<xs:totalDigits value="4"/>
+																				<xs:fractionDigits value="2"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element> 																												
+														</xs:sequence>
+													</xs:complexType>
+												  </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

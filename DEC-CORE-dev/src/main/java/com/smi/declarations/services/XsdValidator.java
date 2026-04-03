@@ -140,10 +140,7 @@ public class XsdValidator {
             marshaller.marshal(object, writer);
             String xmlContent = writer.toString();
 
-            String modifiedXmlContent = xmlContent.replaceFirst(
-                    "(<Document)([^>]*?)\\s+xsi:noNamespaceSchemaLocation=\"[^\"]+\"([^>]*?)\\s+xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"",
-                    "$1$2 xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"MAJC_TR-DON_0312_1812.xsd\"$3"
-            );
+            String modifiedXmlContent = xmlContent;
 
             if (!eventHandler.getErrors().isEmpty()) {
                 validationErrors.addAll(eventHandler.getErrors());
@@ -175,16 +172,16 @@ public class XsdValidator {
      * @param errors A list to populate with any validation errors found.
      * @throws RuntimeException if an unexpected error occurs during validation.
      */
-    public void validate(Document document, String xsdPath, List<ValidationError> errors) {
+    public void validate(Object document, String xsdPath, List<ValidationError> errors) {
         try {
             if (document == null) {
-                throw new IllegalArgumentException("L'objet Document à valider ne peut pas être null.");
+                throw new IllegalArgumentException("L'objet à valider ne peut pas être null.");
             }
             if (xsdPath == null || xsdPath.isEmpty()) {
                 throw new IllegalArgumentException("Le chemin du schéma XSD ne peut pas être null ou vide.");
             }
 
-            JAXBContext jaxbContext = JAXBContext.newInstance(Document.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(document.getClass());
             Marshaller marshaller = jaxbContext.createMarshaller();
 
             SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);

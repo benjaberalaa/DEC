@@ -87,7 +87,7 @@ public class TrDonController {
     }
 
     @GetMapping(value = "/{id}/xml", produces = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<?> getPeriodeXml(@PathVariable Long id) {
+    public ResponseEntity<?> getPeriodeXml(@PathVariable("id") Long id) {
         File tempXsdFile = null; // Declare tempXsdFile here for finally block
         try {
             Periode periode = periodeRepository.findById(id).orElseThrow(() ->

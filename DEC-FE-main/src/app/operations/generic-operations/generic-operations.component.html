@@ -1,0 +1,162 @@
+<div class="modern-container">
+  
+  <div class="page-header">
+    <div class="header-top">
+      <button class="back-btn" (click)="goBack()" title="Retour">
+        <i class="bi bi-arrow-left fs-4"></i>
+      </button>
+      <div>
+        <h3 class="header-title">{{ config?.label }}</h3>
+        <div class="mt-2">
+          <span class="period-badge">Période: {{ periodDec }}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="header-actions">
+      <div class="status-badge" [ngClass]="status?.toLowerCase() || 'ouvert'">
+        <i class="bi" [ngClass]="status === 'CLOTUREE' ? 'bi-lock-fill text-danger' : 'bi-unlock-fill text-success'"></i>
+        Etat : {{ status }}
+      </div>
+      
+      <div class="action-group">
+        <div>
+           <label for="fileUpload" class="btn-modern btn-outline-modern" [class.opacity-50]="status === 'CLOTUREE'" [style.cursor]="status === 'CLOTUREE' ? 'not-allowed' : 'pointer'" >
+             <i class="bi bi-file-earmark-excel"></i> Importer Excel
+           </label>
+           <input id="fileUpload" type="file" class="d-none" (change)="handleFileUpload($event)" [disabled]="status === 'CLOTUREE'" />
+        </div>
+        
+        <button class="btn-modern btn-primary-modern" [disabled]="status === 'CLOTUREE'" (click)="openAddTransactionModal()">
+          <i class="bi bi-plus-lg"></i> Nouveau
+        </button>
+        
+        <button class="btn-modern" [ngClass]="status === 'CLOTUREE' ? 'btn-outline-info' : 'btn-danger-modern'" (click)="status === 'CLOTUREE' ? revoirXml() : closePeriod()">
+          <i class="bi" [ngClass]="status === 'CLOTUREE' ? 'bi-file-code' : 'bi-check2-circle'"></i> 
+          {{ status === 'CLOTUREE' ? 'Revoir XML' : 'Clôturer' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-responsive">
+      <table class="modern-table">
+        <thead>
+          <tr>
+            <th style="width: 60px">N°</th>
+            <th style="width: 150px">Validation XSD</th>
+            <th *ngFor="let col of config?.tableColumns">{{ col.label }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="operations.length === 0">
+            <td [attr.colspan]="(config?.tableColumns?.length || 0) + 2" class="text-center py-5 text-muted">
+              <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+              Aucune transaction trouvée
+            </td>
+          </tr>
+          <tr *ngFor="let op of operations; index as i">
+            <td class="text-muted fw-bold">#{{ i + 1 }}</td>
+            <td>
+              <ng-container *ngIf="op.errors && op.errors.length > 0; else valid">
+                <button class="error-pill" (click)="viewErrors(op)">
+                  <i class="bi bi-exclamation-circle-fill"></i> {{ op.errors.length }} erreur(s)
+                </button>
+              </ng-container>
+              <ng-template #valid>
+                <div class="success-pill">
+                  <i class="bi bi-check-circle-fill"></i> Valide
+                </div>
+              </ng-template>
+            </td>
+            <td *ngFor="let col of config?.tableColumns">
+              {{ getProperty(op, col.path || col.key) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add Transaction Modal -->
+  <div class="modal" id="addTransactionModal" *ngIf="showAddTransactionModal" (click)="$event.target === $event.currentTarget && closeAddTransactionModal()">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fs-4">Ajouter {{ config?.label }}</h5>
+          <button type="button" class="btn-close" (click)="closeAddTransactionModal()" style="filter: grayscale(1);"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="transactionForm" (ngSubmit)="submitTransaction()">
+            <div class="row g-4">
+              <div class="col-md-6" *ngFor="let field of config?.fields">
+                <label [for]="field.id" class="form-label">{{ field.label }} *</label>
+                <input *ngIf="field.type !== 'select'" [type]="field.type" [id]="field.id" class="form-control" [formControlName]="field.id" placeholder="Saisir {{ field.label.toLowerCase() }}..." />
+                <select *ngIf="field.type === 'select'" [id]="field.id" class="form-select" [formControlName]="field.id">
+                  <option value="" disabled selected>-- Choisir --</option>
+                  <option *ngFor="let opt of field.options" [value]="opt.value">{{ opt.label }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer mt-4 pb-0 px-0">
+              <button type="button" class="btn-modern btn-outline-modern" (click)="closeAddTransactionModal()">Annuler</button>
+              <button type="submit" class="btn-modern btn-primary-modern" [disabled]="transactionForm.invalid">Enregistrer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Details Modal -->
+  <div class="modal" id="errorDetailsModal" *ngIf="showErrorsModal" (click)="$event.target === $event.currentTarget && closeErrorsModal()">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #fef2f2; border-bottom-color: #fecaca;">
+          <h5 class="modal-title text-danger d-flex align-items-center gap-2">
+            <i class="bi bi-shield-x"></i> Erreurs XSD 
+          </h5>
+          <button type="button" class="btn-close" (click)="closeErrorsModal()"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted mb-3 fs-6">Les erreurs suivantes ont été détectées pour cette ligne :</p>
+          <ul class="error-list">
+            <li class="error-item shadow-sm" *ngFor="let err of selectedOp?.errors">
+               {{ err }}
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer" style="background: white">
+          <button type="button" class="btn-modern btn-outline-modern w-100 border-danger text-danger" (click)="closeErrorsModal()">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- XML Preview Modal -->
+  <div class="modal" *ngIf="showXmlPreviewModal">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-filetype-xml"></i> Aperçu de la Déclaration XML</h5>
+          <button type="button" class="btn-close" (click)="showXmlPreviewModal = false"></button>
+        </div>
+        <div class="modal-body bg-light">
+          <pre class="xml-preview shadow-inner">{{ xmlPreview }}</pre>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-modern btn-outline-modern" (click)="showXmlPreviewModal = false">Fermer</button>
+          <button class="btn-modern btn-primary-modern" (click)="downloadXml()">
+            <i class="bi bi-download"></i> Télécharger
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="notification.show" class="toast-notification" [ngClass]="'toast-' + notification.type">
+  <i class="bi fs-5" [ngClass]="notification.type === 'success' ? 'bi-check-circle-fill' : 'bi-exclamation-octagon-fill'"></i>
+  <span>{{ notification.message }}</span>
+</div>
