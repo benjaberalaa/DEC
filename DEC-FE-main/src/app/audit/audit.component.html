@@ -26,12 +26,12 @@
         <tbody>
           <tr *ngFor="let log of logs">
             <td class="ps-4">
-              <div class="fw-bold">{{ log.timestamp | date:'dd/MM/yyyy' }}</div>
-              <div class="small text-muted">{{ log.timestamp | date:'HH:mm:ss' }}</div>
+              <div class="fw-bold">{{ log.createdAt| date:'dd/MM/yyyy' }}</div>
+              <div class="small text-muted">{{ log.createdAt | date:'HH:mm:ss' }}</div>
             </td>
             <td>
               <span class="badge bg-light text-dark border px-3 py-2 rounded-pill shadow-xs">
-                <i class="bi bi-person-fill text-primary me-1"></i> {{ log.user }}
+                <i class="bi bi-person-fill text-primary me-1"></i> {{ log.username }}
               </span>
             </td>
             <td>

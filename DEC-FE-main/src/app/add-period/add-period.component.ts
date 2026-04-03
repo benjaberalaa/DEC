@@ -18,7 +18,7 @@ enum PeriodType {
   CRS_SM_TND = ' CRS_SM_TND',
   CRS_INR = 'CRS_INR',
   CRS_ALL_TNDCV= 'CRS_ALL_TNDCV',
-  CRS_ATT= 'CRS_ALL_TNDCV',
+  CRS_ATT= 'CRS_ATT',
   CRS_E_TNDCVE_ENDCV_TTE_DEV= 'CRS_E_TNDCVE_ENDCV_TTE_DEV',
   CRS_PPR= 'CRS_PPR',
   CRS_Startup='CRS_Startup',
@@ -293,54 +293,50 @@ export class AddPeriodComponent implements  OnInit,AfterViewInit {
     this.submitted = true;
     const formData = this.form.getRawValue();
     console.log('Données envoyées :', formData);
-    this.checkOpenPeriods(formData.typePeriode);
 
-    if (this.hasOpenPeriod) {
-      this.showNotification(
-        `Une période ${formData.typePeriode} est déjà ouverte!`,
-        'error'
-      );
-      this.submitted = false;
-      return;
-    }
-    const fd = this.form.value;
-
-    this.periodService.createPeriod(formData).subscribe({
-      next: (response) => {
-        console.log('Réponse backend :', response);
-
-        // 1. Réinitialiser le formulaire
-        this.form.reset();
-        this.submitted = false; // Mettre à false pour permettre de nouvelles soumissions
-
-        // 2. Fermer la modal
-        this.addPeriodModalInstance?.hide();
-        // Supprimer manuellement le backdrop si nécessaire
-        const backdrop = document.querySelector('.modal-backdrop');
-        if (backdrop) {
-          backdrop.remove();
+    // Initial check
+    this.periodService.getPeriods().subscribe({
+      next: (periods) => {
+        const openPeriodForType = periods.find(p => p.typePeriode === formData.typePeriode && p.status === 'EN_COURS');
+        if (openPeriodForType) {
+          this.showNotification(`Une période ${formData.typePeriode} est déjà ouverte!`, 'error');
+          this.submitted = false;
+          return;
         }
 
+        // Proceed with creation
+        this.periodService.createPeriod(formData).subscribe({
+          next: (response) => {
+            console.log('Réponse backend :', response);
+            this.form.reset();
+            this.submitted = false; 
 
-        // 3. Actualiser les données
-        this.checkOpenPeriods(); // Vérifie l'état des périodes
-        if (this.selectedType) {
-          this.loadPeriodsByType(this.selectedType);
-        } else {
-          this.loadPeriods();
-        }
+            // Modal cleanup
+            this.addPeriodModalInstance?.hide();
+            const backdrop = document.querySelector('.modal-backdrop');
+            if (backdrop) backdrop.remove();
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
 
+            // Refresh data
+            if (this.selectedType) {
+              this.loadPeriodsByType(this.selectedType);
+            } else {
+              this.loadPeriods();
+            }
+            this.checkOpenPeriods(formData.typePeriode);
 
-        // 4. Notification
-        this.showNotification('Période créée avec succès !', 'success');
-      },
-      error: (error) => {
-        console.error("Erreur lors de l'ajout :", error);
-        this.showNotification('Erreur lors de l\'ajout de la période.', 'error');
-        this.submitted = false;
+            this.showNotification('Période créée avec succès !', 'success');
+          },
+          error: (error) => {
+            console.error("Erreur lors de l'ajout :", error);
+            this.showNotification('Erreur lors de l\'ajout de la période.', 'error');
+            this.submitted = false;
+          }
+        });
       }
     });
-
   }
 
 

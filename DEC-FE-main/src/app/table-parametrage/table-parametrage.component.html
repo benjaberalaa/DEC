@@ -1,3 +1,4 @@
+<!--
 <app-dynamic-table></app-dynamic-table>
 
 <div class="d-flex justify-content-end align-items-start min-vh-100 bg-light" style="margin-top: 20px">
@@ -10,25 +11,25 @@
         <h5>Générer JSON à partir d'un fichier Excel et JSON</h5>
       </div>
       <div class="card-body">
-        <!-- Importer fichier Excel -->
+        &lt;!&ndash; Importer fichier Excel &ndash;&gt;
         <div class="mb-3">
           <label class="form-label">Importer un fichier Excel :</label>
           <input type="file" class="form-control" (change)="onExcelFileChange($event)" />
         </div>
 
-        <!-- Importer fichier JSON -->
+        &lt;!&ndash; Importer fichier JSON &ndash;&gt;
         <div class="mb-3">
           <label class="form-label">Importer un fichier JSON :</label>
           <input type="file" class="form-control" (change)="onJsonFileChange($event)" />
         </div>
 
-        <!-- Boutons pour générer et télécharger JSON -->
+        &lt;!&ndash; Boutons pour générer et télécharger JSON &ndash;&gt;
         <div class="d-flex justify-content-end">
           <button class="btn btn-success me-2" (click)="generateJson()">Générer JSON</button>
           <button class="btn btn-outline-success" *ngIf="generatedData" (click)="downloadGeneratedJson()">Télécharger le JSON</button>
         </div>
 
-        <!-- Aperçu des données générées -->
+        &lt;!&ndash; Aperçu des données générées &ndash;&gt;
         <div *ngIf="generatedData" class="mt-4">
           <div class="d-flex justify-content-between align-items-center">
             <h5>Aperçu du JSON généré :</h5>
@@ -39,13 +40,13 @@
       </div>
     </div>
 
-    <!-- Section pour API 2 : JSON → XML -->
+    &lt;!&ndash; Section pour API 2 : JSON → XML &ndash;&gt;
     <div class="card border-0">
       <div class="card-header bg-secondary text-white rounded-top">
         <h5>Convertir JSON en XML</h5>
       </div>
       <div class="card-body">
-        <!-- Importer fichier JSON -->
+        &lt;!&ndash; Importer fichier JSON &ndash;&gt;
         <div class="mb-3">
           <label class="form-label">Importer un fichier JSON :</label>
           <input type="file" class="form-control" (change)="onJsonFileForXmlChange($event)" />
@@ -55,13 +56,13 @@
           <input type="file" class="form-control" (change)="onXsdFileForXmlChange($event)" />
         </div>
 
-        <!-- Boutons pour convertir et télécharger XML -->
+        &lt;!&ndash; Boutons pour convertir et télécharger XML &ndash;&gt;
         <div class="d-flex justify-content-end">
           <button class="btn btn-success me-2" (click)="convertToXml()">Convertir en XML</button>
           <button class="btn btn-outline-success" *ngIf="convertedDataToXml" (click)="downloadConvertedXml()">Télécharger le XML</button>
         </div>
 
-        <!-- Aperçu du fichier XML -->
+        &lt;!&ndash; Aperçu du fichier XML &ndash;&gt;
         <div *ngIf="convertedDataToXml" class="mt-4">
           <div class="d-flex justify-content-between align-items-center">
             <h5>Aperçu du XML converti :</h5>
@@ -72,8 +73,8 @@
       </div>
     </div>
   </div>
-    <!-- Section pour API 3 : Excel → XML -->
-<!--
+    &lt;!&ndash; Section pour API 3 : Excel → XML &ndash;&gt;
+&lt;!&ndash;
   <div class="card border-0">
     <div class="card-header bg-secondary text-white rounded-top">
       <h5>Convertir Excel en XML</h5>
@@ -94,15 +95,15 @@
 
 
 </div>
--->
+&ndash;&gt;
   </div>
-<!-- Section pour API 3 : Excel → XML -->
+&lt;!&ndash; Section pour API 3 : Excel → XML &ndash;&gt;
 <div class="card border-0">
   <div class="card-header bg-secondary text-white rounded-top">
     <h5>Convertir Excel en XML</h5>
   </div>
   <div class="card-body">
-    <!-- Importer fichier Excel -->
+    &lt;!&ndash; Importer fichier Excel &ndash;&gt;
     <div class="mb-3">
       <label class="form-label">Injecter un fichier Excel :</label>
       <input type="file" class="form-control" (change)="onExcelFileForXmlChange($event)" />
@@ -112,13 +113,13 @@
       <label class="form-label">Importer un fichier XSD :</label>
       <input type="file" class="form-control" (change)="onXsdFileForExcelXmlChange($event)" />
     </div>
-    <!-- Boutons pour convertir et télécharger XML -->
+    &lt;!&ndash; Boutons pour convertir et télécharger XML &ndash;&gt;
     <div class="d-flex justify-content-end">
       <button class="btn btn-success me-2" (click)="convertExcelToXml()">Convertir en XML</button>
       <button class="btn btn-outline-success" *ngIf="convertedFileToExcelXml" (click)="downloadConvertedExcelXml()">Télécharger le XML</button>
     </div>
 
-    <!-- Aperçu du fichier XML -->
+    &lt;!&ndash; Aperçu du fichier XML &ndash;&gt;
     <div *ngIf="convertedDataToExcelXml" class="mt-4">
       <div class="d-flex justify-content-between align-items-center">
         <h5>Aperçu du XML converti :</h5>
@@ -135,7 +136,7 @@
     <pre *ngIf="isXmlPreviewVisible" class="p-3 bg-light border rounded">{{ convertedDataToExcelXml }}</pre>
   </div>
 
-  <!-- Erreurs -->
+  &lt;!&ndash; Erreurs &ndash;&gt;
   <div *ngIf="errorMessages.length > 0" >
     <h6>Erreurs détectées :</h6>
     <ul>
@@ -150,3 +151,4 @@
 
 </div>
 
+-->

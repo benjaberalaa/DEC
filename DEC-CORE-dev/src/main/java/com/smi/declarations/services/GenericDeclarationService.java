@@ -342,39 +342,70 @@ public class GenericDeclarationService {
         com.fasterxml.jackson.databind.JsonNode existingNode = objectMapper.readTree(existingJson);
         com.fasterxml.jackson.databind.JsonNode newNode = objectMapper.readTree(newJson);
 
+        if (!(existingNode instanceof com.fasterxml.jackson.databind.node.ObjectNode)) {
+            return existingJson;
+        }
+        com.fasterxml.jackson.databind.node.ObjectNode existingObj = (com.fasterxml.jackson.databind.node.ObjectNode) existingNode;
+
         String[] containers = {"transferts", "extraits", "decomptes", "dossiers", "Transferts", "Extraits", "Decomptes", "Dossiers"};
         
+        // 1. Try to find a matching container in both nodes
         for (String c : containers) {
-            if (newNode.has(c) && existingNode.has(c)) {
+            if (newNode.has(c)) {
                 com.fasterxml.jackson.databind.JsonNode newArrayContainer = newNode.get(c);
-                com.fasterxml.jackson.databind.node.ObjectNode existingArrayContainer = (com.fasterxml.jackson.databind.node.ObjectNode) existingNode.get(c);
+                com.fasterxml.jackson.databind.node.ObjectNode existingArrayContainer;
+                
+                if (existingObj.has(c) && existingObj.get(c).isObject()) {
+                    existingArrayContainer = (com.fasterxml.jackson.databind.node.ObjectNode) existingObj.get(c);
+                } else {
+                    existingArrayContainer = objectMapper.createObjectNode();
+                    existingObj.set(c, existingArrayContainer);
+                }
                 
                 java.util.Iterator<String> fieldNames = newArrayContainer.fieldNames();
-                if(fieldNames.hasNext()) {
+                if (fieldNames.hasNext()) {
                     String arrayKey = fieldNames.next();
                     com.fasterxml.jackson.databind.JsonNode newItems = newArrayContainer.get(arrayKey);
                     
                     com.fasterxml.jackson.databind.node.ArrayNode existingArray;
-                    if(existingArrayContainer.has(arrayKey) && existingArrayContainer.get(arrayKey).isArray()) {
+                    if (existingArrayContainer.has(arrayKey) && existingArrayContainer.get(arrayKey).isArray()) {
                         existingArray = (com.fasterxml.jackson.databind.node.ArrayNode) existingArrayContainer.get(arrayKey);
                     } else {
                         existingArray = objectMapper.createArrayNode();
                         existingArrayContainer.set(arrayKey, existingArray);
                     }
                     
-                    if(newItems.isArray()) {
-                        for(com.fasterxml.jackson.databind.JsonNode item : newItems) {
+                    if (newItems.isArray()) {
+                        for (com.fasterxml.jackson.databind.JsonNode item : newItems) {
                             existingArray.add(item);
                         }
                     } else {
                         existingArray.add(newItems);
                     }
                 }
-                return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingNode);
+                return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingObj);
+            }
+        }
+
+        // 2. If newNode doesn't have a container, it might be a raw transaction (manual add)
+        // Find the first container in existingObj and add the newNode to it
+        for (String c : containers) {
+            if (existingObj.has(c) && existingObj.get(c).isObject()) {
+                com.fasterxml.jackson.databind.node.ObjectNode existingArrayContainer = (com.fasterxml.jackson.databind.node.ObjectNode) existingObj.get(c);
+                java.util.Iterator<String> fieldNames = existingArrayContainer.fieldNames();
+                if (fieldNames.hasNext()) {
+                    String arrayKey = fieldNames.next();
+                    com.fasterxml.jackson.databind.JsonNode existingArrayNode = existingArrayContainer.get(arrayKey);
+                    if (existingArrayNode != null && existingArrayNode.isArray()) {
+                         com.fasterxml.jackson.databind.node.ArrayNode existingArray = (com.fasterxml.jackson.databind.node.ArrayNode) existingArrayNode;
+                         existingArray.add(newNode);
+                         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingObj);
+                    }
+                }
             }
         }
         
-        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingNode);
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingObj);
     }
 
     public void isolateTransaction(Object document, int entryIndex, int detailIndex) throws Exception {

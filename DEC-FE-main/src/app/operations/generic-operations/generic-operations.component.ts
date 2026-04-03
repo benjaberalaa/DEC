@@ -181,9 +181,18 @@ export class GenericOperationsComponent implements OnInit {
       this.declarationService.importData(this.periodId, file).subscribe({
         next: () => {
           this.showNotification('Importation réussie', 'success');
+          // Clear the file input so the same file can be uploaded again
+          if (event.target) {
+            event.target.value = '';
+          }
           this.loadPeriodData();
         },
-        error: () => this.showNotification('Erreur d’importation', 'error')
+        error: (err) => {
+          this.showNotification('Erreur d’importation: ' + (err.error || err.message), 'error');
+          if (event.target) {
+            event.target.value = '';
+          }
+        }
       });
     }
   }
@@ -195,9 +204,10 @@ export class GenericOperationsComponent implements OnInit {
         next: () => {
           this.showNotification('Transaction ajoutée', 'success');
           this.closeAddTransactionModal();
-          this.loadPeriodData();
+          // Ensure we wait a bit or ensure the backend has finished persisting
+          setTimeout(() => this.loadPeriodData(), 500); 
         },
-        error: () => this.showNotification('Erreur d’ajout', 'error')
+        error: (err) => this.showNotification('Erreur d’ajout: ' + (err.error || err.message), 'error')
       });
     }
   }
