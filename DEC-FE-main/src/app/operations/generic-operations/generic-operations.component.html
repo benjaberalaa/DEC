@@ -33,7 +33,7 @@
         
         <button class="btn-modern" [ngClass]="status === 'CLOTUREE' ? 'btn-outline-info' : 'btn-danger-modern'" (click)="status === 'CLOTUREE' ? revoirXml() : closePeriod()">
           <i class="bi" [ngClass]="status === 'CLOTUREE' ? 'bi-file-code' : 'bi-check2-circle'"></i> 
-          {{ status === 'CLOTUREE' ? 'Revoir XML' : 'Clôturer' }}
+          {{ status === 'CLOTUREE' ? 'Régénérer / Voir XML' : 'Clôturer' }}
         </button>
       </div>
     </div>

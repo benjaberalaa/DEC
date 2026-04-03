@@ -1,7 +1,9 @@
-<div class="d-flex w-100 vh-100 overflow-hidden" style="background-color: #f8fafc;">
-  <app-sidebar (modelSelected)="onModelSelected($event)"></app-sidebar>
+<div class="d-flex w-100 vh-100 overflow-hidden" [style.background-color]="isLoginPage ? 'transparent' : '#f8fafc'">
+  <app-sidebar *ngIf="!isLoginPage" (modelSelected)="onModelSelected($event)"></app-sidebar>
   
-  <main class="flex-grow-1 position-relative overflow-auto d-flex flex-column" style="width: 0; padding-top: 60px;">
+  <main class="flex-grow-1 position-relative overflow-auto d-flex flex-column" 
+        [style.width]="'0'" 
+        [style.padding-top]="isLoginPage ? '0' : '60px'">
     <router-outlet></router-outlet>
   </main>
 </div>

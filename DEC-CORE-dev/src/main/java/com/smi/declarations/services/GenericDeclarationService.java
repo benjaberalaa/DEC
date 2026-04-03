@@ -461,6 +461,20 @@ public class GenericDeclarationService {
         }
     }
 
+    public java.io.InputStream getXsdInputStream(Periode.TypePeriod type) throws java.io.IOException {
+        String fileName = type.name().toUpperCase() + ".xsd";
+        java.nio.file.Path uploadedPath = java.nio.file.Paths.get("uploaded_xsd", fileName);
+        
+        if (java.nio.file.Files.exists(uploadedPath)) {
+            System.out.println("Using uploaded XSD: " + uploadedPath.toAbsolutePath());
+            return java.nio.file.Files.newInputStream(uploadedPath);
+        }
+        
+        String xsdPath = getXsdPath(type);
+        System.out.println("Using classpath XSD: " + xsdPath);
+        return getClass().getClassLoader().getResourceAsStream(xsdPath);
+    }
+
     public String getXsdPath(Periode.TypePeriod type) {
         switch (type) {
             case CRS_CPD_OSM: return "xsd/XSD_V2012/CRS_V2012/MAJ_CRS-CPD-OSM_0912.xsd";

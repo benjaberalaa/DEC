@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AddPeriodComponent } from './add-period/add-period.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TableParametrageComponent } from './table-parametrage/table-parametrage.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatTableModule} from '@angular/material/table';
@@ -22,6 +22,12 @@ import { GenericOperationsComponent } from './operations/generic-operations/gene
 import { OperationsComponent } from './operations/operations.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TranslatePipe } from './pipes/translate.pipe';
+import { LoginComponent } from './login/login.component';
+import { AuthInterceptor } from './service/auth.interceptor';
+import { AuditComponent } from './audit/audit.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { SettingsComponent } from './settings/settings.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,39 +39,31 @@ import { TranslatePipe } from './pipes/translate.pipe';
     GenericOperationsComponent,
     OperationsComponent,
     DashboardComponent,
-    TranslatePipe
+    TranslatePipe,
+    LoginComponent,
+    AuditComponent,
+    UserManagementComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
     BrowserAnimationsModule,
-    MatIcon,
-    MatFormField,
-    MatRadioGroup,
-    MatRadioButton,
-    MatInput,
-    MatIconButton,
-    MatButton,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MatTableModule,
-    MatButtonModule,
-    MatInputModule,
     MatIconModule,
-    MatSelectModule,
     MatFormFieldModule,
     MatRadioModule,
-
-
-
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

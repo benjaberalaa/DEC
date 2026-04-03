@@ -1,0 +1,50 @@
+<div class="container-fluid py-4 px-4 overflow-auto">
+  <div class="card border-0 shadow-sm rounded-4 p-5 max-w-800 mx-auto">
+    <div class="text-center mb-5">
+      <div class="icon-circle bg-primary-subtle text-primary mb-3">
+        <i class="bi bi-file-earmark-code fs-1"></i>
+      </div>
+      <h2 class="fw-bold text-dark">Paramétrage des schémas XSD</h2>
+      <p class="text-muted">Mettez à jour les règles de validation pour vos 35 types de déclarations</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-10">
+        <div class="alert alert-warning-modern mb-5">
+          <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+          <div>
+            <strong>Attention :</strong> L'envoi d'un nouveau fichier XSD écrasera les règles de validation existantes pour le type sélectionné. Les changements sont effectifs immédiatement pour toutes les nouvelles clôtures.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label small fw-bold text-muted text-uppercase">1. Sélectionner le type de déclaration</label>
+          <select [(ngModel)]="selectedType" class="form-select border-2 py-3 px-4 rounded-4 shadow-xs">
+            <option *ngFor="let type of declarationTypes" [value]="type">{{ type.replace('_', ' ') }}</option>
+          </select>
+        </div>
+
+        <div class="mb-5">
+          <label class="form-label small fw-bold text-muted text-uppercase">2. Choisir le nouveau fichier XSD</label>
+          <div class="file-drop-area" [ngClass]="{'has-file': selectedFile}">
+            <i class="bi bi-cloud-upload display-4 text-muted mb-3 d-block"></i>
+            <span class="d-block fw-bold mb-1">{{ selectedFile ? selectedFile.name : 'Glissez votre fichier ici ou cliquez' }}</span>
+            <span class="small text-muted">{{ selectedFile ? (selectedFile.size / 1024 | number:'1.0-2') + ' KB' : 'Fichier .xsd uniquement' }}</span>
+            <input type="file" (change)="onFileSelected($event)" accept=".xsd" class="file-input">
+          </div>
+        </div>
+
+        <div *ngIf="message" class="alert mb-4 py-3 rounded-4 animate__animated animate__fadeIn" 
+             [ngClass]="isError ? 'alert-danger-modern' : 'alert-success-modern'">
+          <i class="bi" [ngClass]="isError ? 'bi-exclamation-octagon' : 'bi-check-circle-fill'"></i> {{ message }}
+        </div>
+
+        <button (click)="onUpload()" class="btn-upload w-100 py-3" [disabled]="!selectedFile || loading">
+           <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+           <i *ngIf="!loading" class="bi bi-check2-all me-2"></i>
+           Appliquer la nouvelle configuration
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

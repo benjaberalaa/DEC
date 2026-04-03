@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import rulesJsonData from '../../assets/Rules.json';
 import {Router} from '@angular/router';
+import { AuthService } from '../service/auth.service';
 
 interface RuleModel {
   BodyHeader: any;
@@ -39,7 +40,7 @@ export class SidebarComponent implements OnInit,OnDestroy{
   models: { [key: string]: string[] } = {};
   collapsedTypes: { [key: string]: boolean } = {};
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public authService: AuthService) {
     this.initializeData();
   }
     ngOnInit() {
@@ -96,6 +97,23 @@ export class SidebarComponent implements OnInit,OnDestroy{
   }
   onParametrageClick(): void {
     this.router.navigate(['/parametrage']); // Naviguez vers la route "parametrage"
+  }
+
+  onHistoryClick(): void {
+    this.router.navigate(['/history']);
+  }
+
+  onUsersClick(): void {
+    this.router.navigate(['/users']);
+  }
+
+  onSettingsClick(): void {
+    this.router.navigate(['/settings']);
+  }
+
+  onLogout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
 

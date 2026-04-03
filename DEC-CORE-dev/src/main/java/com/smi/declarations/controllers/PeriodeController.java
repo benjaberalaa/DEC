@@ -37,6 +37,28 @@ public class PeriodeController {
     @Autowired
     private XsdValidator xsdValidator;
 
+    @Autowired
+    private com.smi.declarations.repositories.AuditLogRepository auditLogRepository;
+
+    private void logAction(String action, String targetType, Long targetId, String details) {
+        try {
+            com.smi.declarations.entities.AuditLog log = new com.smi.declarations.entities.AuditLog();
+            log.setCreatedAt(java.time.LocalDateTime.now());
+            
+            org.springframework.security.core.Authentication auth = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+            String userStr = (auth != null && auth.isAuthenticated()) ? auth.getName() : "System";
+            
+            log.setUsername(userStr);
+            log.setAction(action);
+            log.setTargetType(targetType);
+            log.setTargetId(targetId);
+            log.setDetails(details);
+            auditLogRepository.save(log);
+        } catch (Exception e) {
+            System.err.println("Audit logging failed: " + e.getMessage());
+        }
+    }
+
     @PostMapping("/create")
     public ResponseEntity<?> createPeriode(@RequestBody Periode periode) {
         try {
@@ -69,6 +91,9 @@ public class PeriodeController {
 
             periode.setStatus(Status.EN_COURS);
             Periode createdPeriode = periodeRepository.save(periode);
+
+            logAction("CREATE_PERIOD", createdPeriode.getTypePeriode().name(), createdPeriode.getId(), 
+                     "Période créée pour " + createdPeriode.getPeriodDec());
 
             return ResponseEntity.ok(Map.of(
                     "message", "Période créée avec succès !",
@@ -122,6 +147,10 @@ public class PeriodeController {
         String jsonData = genericDeclarationService.readExcelToJsonDynamic(periode.getTypePeriode(), excelFile, periode.getPeriodDec());
         periode.setDetails(periode.getDetails() == null ? jsonData : genericDeclarationService.mergeJsonDynamic(periode.getDetails(), jsonData));
         periodeRepository.save(periode);
+        
+        logAction("IMPORT_DATA", periode.getTypePeriode().name(), periode.getId(), 
+                 "Importation de données Excel : " + excelFile.getOriginalFilename());
+
         return ResponseEntity.ok("Données ajoutées !");
     }
 
@@ -129,21 +158,18 @@ public class PeriodeController {
     public ResponseEntity<?> closePeriodeAndGenerateXml(@PathVariable("id") Long id) {
         File tempXsdFile = null;
         try {
-            // 1. Récupérer la période en premier
             Periode periode = periodeRepository.findById(id).orElseThrow(() ->
                     new RuntimeException("Période non trouvée.")
             );
 
-            if (periode.getStatus() == Periode.Status.CLOTUREE) {
-                return ResponseEntity.badRequest().body("La période est déjà clôturée.");
-            }
+            // Re-generation is allowed even if closed, but we only save changes if it's the first closure
+            boolean wasAlreadyClosed = (periode.getStatus() == Periode.Status.CLOTUREE);
 
-            // 2. Obtenir le bon XSD
-            String xsdPath = genericDeclarationService.getXsdPath(periode.getTypePeriode());
-            InputStream xsdStream = getClass().getClassLoader().getResourceAsStream(xsdPath);
+            // 2. Obtenir le bon XSD (Dynamique ou Classpath)
+            InputStream xsdStream = genericDeclarationService.getXsdInputStream(periode.getTypePeriode());
             if (xsdStream == null) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                        .body("Fichier XSD introuvable : " + xsdPath);
+                        .body("Fichier XSD introuvable pour le type : " + periode.getTypePeriode());
             }
 
             // 3. Copier le XSD dans un fichier temporaire
@@ -159,16 +185,19 @@ public class PeriodeController {
 
             // 5. Valider et générer le XML
             List<XsdValidator.ValidationError> errors = new ArrayList<>();
-            String xml = xsdValidator.validateAndConvert(document, tempXsdFile.getAbsolutePath(), errors);
+            String xml = XsdValidator.validateAndConvert(document, tempXsdFile.getAbsolutePath(), errors);
 
             if (!errors.isEmpty()) {
                 return ResponseEntity.badRequest().body(errors);
             }
 
             // 6. Clôturer la période si elle ne l'est pas
-            if (periode.getStatus() != Periode.Status.CLOTUREE) {
+            if (!wasAlreadyClosed) {
                 periode.setStatus(Periode.Status.CLOTUREE);
                 periodeRepository.save(periode);
+                logAction("CLOSE_PERIOD", periode.getTypePeriode().name(), periode.getId(), "Période clôturée et XML généré");
+            } else {
+                logAction("REGENERATE_XML", periode.getTypePeriode().name(), periode.getId(), "XML régénéré pour consultation");
             }
 
             // 7. Retourner le XML
@@ -189,7 +218,11 @@ public class PeriodeController {
 
     @GetMapping("/{id}/xml")
     public ResponseEntity<?> getXml(@PathVariable("id") Long id) {
-        return closePeriodeAndGenerateXml(id); // Re-utilise la logique de génération qui supporte désormais l'état CLOTUREE
+        Periode periode = periodeRepository.findById(id).orElse(null);
+        if (periode != null) {
+            logAction("VIEW_XML", periode.getTypePeriode().name(), id, "Consultation du XML de la période " + periode.getPeriodDec());
+        }
+        return closePeriodeAndGenerateXml(id); 
     }
 
     public static String mergeJson(String existingJson, String newJson) throws Exception {
@@ -209,6 +242,8 @@ public class PeriodeController {
             response.put("message", "Période non trouvée.");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
+        Periode p = periodeRepository.findById(id).orElse(null);
+        logAction("DELETE_PERIOD", p != null ? p.getTypePeriode().name() : "UNKNOWN", id, "Période supprimée");
         periodeRepository.deleteById(id);
         response.put("message", "Période supprimée avec succès.");
         return ResponseEntity.ok(response);
@@ -235,6 +270,9 @@ public class PeriodeController {
 
             periode.setDetails(updatedDetails);
             Periode updatedPeriod = periodeRepository.save(periode);
+            
+            logAction("ADD_MANUAL_DATA", periode.getTypePeriode().name(), id, "Ajout d'une transaction manuelle");
+            
             return ResponseEntity.ok(updatedPeriod);
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", e.getMessage()));
@@ -288,11 +326,10 @@ public class PeriodeController {
             }
 
             // 1. Charger le XSD dynamiquement
-            String xsdPath = genericDeclarationService.getXsdPath(periode.getTypePeriode());
-            InputStream xsdStream = getClass().getClassLoader().getResourceAsStream(xsdPath);
+            InputStream xsdStream = genericDeclarationService.getXsdInputStream(periode.getTypePeriode());
             if (xsdStream == null) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                        .body("Fichier XSD introuvable : " + xsdPath);
+                        .body("Fichier XSD introuvable pour le type : " + periode.getTypePeriode());
             }
 
             // 2. Créer un fichier temporaire pour le XSD

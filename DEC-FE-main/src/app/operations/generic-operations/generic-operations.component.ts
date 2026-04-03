@@ -213,14 +213,23 @@ export class GenericOperationsComponent implements OnInit {
             this.loadPeriodData();
           }
         },
-        error: (err) => this.showNotification('Erreur lors de la clôture', 'error')
+        error: (err) => {
+          const body = err?.error;
+          if (Array.isArray(body)) {
+            this.selectedOp = { 
+              errors: body.map((e: any) => `${e.fieldPath}: ${e.message} (valeur: ${e.invalidValue})`)
+            };
+            this.showErrorsModal = true;
+          } else {
+            this.showNotification('Erreur lors de la clôture', 'error');
+          }
+        }
       });
     }
   }
 
   revoirXml(): void {
     if (this.periodId && this.status === 'CLOTUREE') {
-      // Create a specific getXml endpoint in periodService or reuse closePeriod
       this.declarationService.getXml(this.periodId).subscribe({
         next: (res) => {
           if (res.startsWith('<?xml')) {
@@ -228,7 +237,17 @@ export class GenericOperationsComponent implements OnInit {
             this.showXmlPreviewModal = true;
           }
         },
-        error: (err) => this.showNotification('Erreur lors de la récupération du XML', 'error')
+        error: (err) => {
+          const body = err?.error;
+          if (Array.isArray(body)) {
+            this.selectedOp = { 
+              errors: body.map((e: any) => `${e.fieldPath}: ${e.message} (valeur: ${e.invalidValue})`)
+            };
+            this.showErrorsModal = true;
+          } else {
+            this.showNotification('Erreur lors de la récupération du XML', 'error');
+          }
+        }
       });
     }
   }

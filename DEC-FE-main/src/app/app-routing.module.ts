@@ -3,17 +3,64 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { GenericOperationsComponent } from './operations/generic-operations/generic-operations.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {AddPeriodComponent} from './add-period/add-period.component';
-import {TableParametrageComponent} from './table-parametrage/table-parametrage.component';
+import { AddPeriodComponent } from './add-period/add-period.component';
+import { TableParametrageComponent } from './table-parametrage/table-parametrage.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
+import { AuditComponent } from './audit/audit.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent }, // Route par défaut (dashboard)
-  { path: 'add-period', component: AddPeriodComponent }, // Route pour AddPeriod
-  { path: 'operations', component: GenericOperationsComponent }, // Route pour Operations (Dynamique)
-  { path: 'parametrage', component: TableParametrageComponent },
-  { path: 'periods/:type', component: AddPeriodComponent },// Route pour Operations
-
-  { path: '**', redirectTo: '' }, // Redirection pour les routes inconnues
+  { path: 'login', component: LoginComponent },
+  { 
+    path: '', 
+    component: DashboardComponent, 
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: 'add-period', 
+    component: AddPeriodComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMIN', 'ROLE_USER'] }
+  },
+  { 
+    path: 'operations', 
+    component: GenericOperationsComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMIN', 'ROLE_USER'] }
+  },
+  { 
+    path: 'parametrage', 
+    component: TableParametrageComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMIN'] }
+  },
+  { 
+    path: 'periods/:type', 
+    component: AddPeriodComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMIN', 'ROLE_USER'] }
+  },
+  { 
+    path: 'history', 
+    component: AuditComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMIN', 'ROLE_AUDIT'] }
+  },
+  { 
+    path: 'users', 
+    component: UserManagementComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMIN'] }
+  },
+  { 
+    path: 'settings', 
+    component: SettingsComponent, 
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_ADMIN'] }
+  },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

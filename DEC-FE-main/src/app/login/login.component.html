@@ -1,0 +1,51 @@
+<div class="login-wrapper">
+  <div class="glass-card">
+    <div class="card-header-modern">
+      <div class="logo-container">
+        <i class="bi bi-shield-lock-fill fs-1 text-primary"></i>
+      </div>
+      <h2 class="fw-bold text-dark mt-3">Connexion</h2>
+      <p class="text-muted">Accès au portail des déclarations</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-4">
+      <div class="mb-4">
+        <label class="form-label text-uppercase fw-bold small text-muted">Nom d'utilisateur</label>
+        <div class="input-group-modern">
+          <i class="bi bi-person text-primary"></i>
+          <input type="text" formControlName="username" class="form-control-modern" placeholder="Entrez votre identifiant"
+                 [ngClass]="{ 'is-invalid': submitted && f['username'].errors }">
+        </div>
+        <div *ngIf="submitted && f['username'].errors" class="error-text">
+          <span *ngIf="f['username'].errors['required']">L'identifiant est requis</span>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label text-uppercase fw-bold small text-muted">Mot de passe</label>
+        <div class="input-group-modern">
+          <i class="bi bi-key text-primary"></i>
+          <input type="password" formControlName="password" class="form-control-modern" placeholder="••••••••"
+                 [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+        </div>
+        <div *ngIf="submitted && f['password'].errors" class="error-text">
+          <span *ngIf="f['password'].errors['required']">Le mot de passe est requis</span>
+        </div>
+      </div>
+
+      <div *ngIf="error" class="alert alert-danger-modern mb-4">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ error }}
+      </div>
+
+      <button [disabled]="loading" class="btn-login w-100">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
+        <i *ngIf="!loading" class="bi bi-box-arrow-in-right me-2"></i>
+        Se connecter
+      </button>
+
+      <div class="mt-4 text-center">
+        <small class="text-muted">Système de Déclaration de Change © 2026</small>
+      </div>
+    </form>
+  </div>
+</div>
