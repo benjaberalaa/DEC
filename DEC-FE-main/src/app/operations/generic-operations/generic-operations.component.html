@@ -1,5 +1,5 @@
 <div class="modern-container">
-  
+
   <div class="page-header">
     <div class="header-top">
       <button class="back-btn" (click)="goBack()" title="Retour">
@@ -12,13 +12,13 @@
         </div>
       </div>
     </div>
-    
+
     <div class="header-actions">
       <div class="status-badge" [ngClass]="status?.toLowerCase() || 'ouvert'">
         <i class="bi" [ngClass]="status === 'CLOTUREE' ? 'bi-lock-fill text-danger' : 'bi-unlock-fill text-success'"></i>
         Etat : {{ status }}
       </div>
-      
+
       <div class="action-group">
         <div>
            <label for="fileUpload" class="btn-modern btn-outline-modern" [class.opacity-50]="status === 'CLOTUREE'" [style.cursor]="status === 'CLOTUREE' ? 'not-allowed' : 'pointer'" >
@@ -26,13 +26,13 @@
            </label>
            <input id="fileUpload" type="file" class="d-none" (change)="handleFileUpload($event)" [disabled]="status === 'CLOTUREE'" />
         </div>
-        
+
         <button class="btn-modern btn-primary-modern" [disabled]="status === 'CLOTUREE'" (click)="openAddTransactionModal()">
           <i class="bi bi-plus-lg"></i> Nouveau
         </button>
-        
+
         <button class="btn-modern" [ngClass]="status === 'CLOTUREE' ? 'btn-outline-info' : 'btn-danger-modern'" (click)="status === 'CLOTUREE' ? revoirXml() : closePeriod()">
-          <i class="bi" [ngClass]="status === 'CLOTUREE' ? 'bi-file-code' : 'bi-check2-circle'"></i> 
+          <i class="bi" [ngClass]="status === 'CLOTUREE' ? 'bi-file-code' : 'bi-check2-circle'"></i>
           {{ status === 'CLOTUREE' ? 'Régénérer / Voir XML' : 'Clôturer' }}
         </button>
       </div>
@@ -47,11 +47,13 @@
             <th style="width: 60px">N°</th>
             <th style="width: 150px">Validation XSD</th>
             <th *ngFor="let col of config?.tableColumns">{{ col.label }}</th>
+            <th style="width: 80px">Action</th>
           </tr>
         </thead>
+
         <tbody>
           <tr *ngIf="operations.length === 0">
-            <td [attr.colspan]="(config?.tableColumns?.length || 0) + 2" class="text-center py-5 text-muted">
+            <td [attr.colspan]="(config?.tableColumns?.length || 0) + 3" class="text-center py-5 text-muted">
               <i class="bi bi-inbox fs-1 d-block mb-2"></i>
               Aucune transaction trouvée
             </td>
@@ -70,8 +72,36 @@
                 </div>
               </ng-template>
             </td>
-            <td *ngFor="let col of config?.tableColumns">
+            <td *ngFor="let col of config?.tableColumns"
+                [attr.contenteditable]="status !== 'CLOTUREE'"
+                [class.cell-error]="hasError(op, col.path || col.key)"
+                (blur)="onCellEdit(op, col.path || col.key, $event)"
+                class="editable-cell">
               {{ getProperty(op, col.path || col.key) }}
+            </td>
+            <td>
+              <div class="d-flex gap-1 justify-content-center">
+                <button class="btn btn-sm btn-outline-success border-0 p-1"
+                        *ngIf="op._isDirty && status !== 'CLOTUREE'"
+                        (click)="saveOperation(op, i)"
+                        title="Enregistrer">
+                  <i class="bi bi-save2-fill" style="font-size: 1.1rem;"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-primary border-0 p-1"
+                        *ngIf="status !== 'CLOTUREE'"
+                        (click)="revalidateOperation(op)"
+                        title="Actualiser (Re-valider)">
+                  <i class="bi bi-arrow-repeat" style="font-size: 1.1rem;"></i>
+                </button>
+                <button class="btn btn-sm border-0 p-1"
+                        *ngIf="status !== 'CLOTUREE'"
+                        (click)="viewErrors(op)"
+                        [class.btn-outline-danger]="op.errors?.length > 0"
+                        [class.btn-outline-info]="!op.errors || op.errors.length === 0"
+                        title="Voir détails">
+                  <i class="bi" [ngClass]="op.errors?.length > 0 ? 'bi-exclamation-triangle-fill' : 'bi-info-circle'" style="font-size: 1.1rem;"></i>
+                </button>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -111,19 +141,26 @@
 
   <!-- Error Details Modal -->
   <div class="modal" id="errorDetailsModal" *ngIf="showErrorsModal" (click)="$event.target === $event.currentTarget && closeErrorsModal()">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header" style="background-color: #fef2f2; border-bottom-color: #fecaca;">
           <h5 class="modal-title text-danger d-flex align-items-center gap-2">
-            <i class="bi bi-shield-x"></i> Erreurs XSD 
+            <i class="bi bi-shield-x"></i> Erreurs XSD
           </h5>
           <button type="button" class="btn-close" (click)="closeErrorsModal()"></button>
         </div>
         <div class="modal-body">
           <p class="text-muted mb-3 fs-6">Les erreurs suivantes ont été détectées pour cette ligne :</p>
           <ul class="error-list">
-            <li class="error-item shadow-sm" *ngFor="let err of selectedOp?.errors">
-               {{ err }}
+            <li class="error-item shadow-sm d-flex flex-column gap-2" *ngFor="let err of selectedOp?.errors">
+               <div class="d-flex align-items-center gap-2">
+                 <i class="bi bi-x-circle-fill text-danger"></i>
+                 <span>{{ err.message || err }}</span>
+               </div>
+               <div class="advice-box mt-2" *ngIf="err.advice">
+                 <i class="bi bi-lightbulb text-warning me-2"></i>
+                 <strong>Conseil :</strong> {{ err.advice }}
+               </div>
             </li>
           </ul>
         </div>

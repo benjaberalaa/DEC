@@ -145,7 +145,7 @@ public class PeriodeController {
         }
 
         String jsonData = genericDeclarationService.readExcelToJsonDynamic(periode.getTypePeriode(), excelFile, periode.getPeriodDec());
-        periode.setDetails(periode.getDetails() == null ? jsonData : genericDeclarationService.mergeJsonDynamic(periode.getDetails(), jsonData));
+        periode.setDetails(genericDeclarationService.mergeJsonDynamic(periode.getDetails(), jsonData, periode.getTypePeriode(), periode.getPeriodDec()));
         periodeRepository.save(periode);
         
         logAction("IMPORT_DATA", periode.getTypePeriode().name(), periode.getId(), 
@@ -181,7 +181,11 @@ public class PeriodeController {
 
             // 4. Convertir les détails en Document dynamiquement
             Class<?> clazz = genericDeclarationService.getDocumentClass(periode.getTypePeriode());
-            Object document = new ObjectMapper().readValue(periode.getDetails(), clazz);
+            com.fasterxml.jackson.databind.ObjectMapper lenientMapper = com.fasterxml.jackson.databind.json.JsonMapper.builder()
+                    .disable(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                    .enable(com.fasterxml.jackson.databind.MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
+                    .build();
+            Object document = lenientMapper.readValue(periode.getDetails(), clazz);
 
             // 5. Valider et générer le XML
             List<XsdValidator.ValidationError> errors = new ArrayList<>();
@@ -225,9 +229,6 @@ public class PeriodeController {
         return closePeriodeAndGenerateXml(id); 
     }
 
-    public static String mergeJson(String existingJson, String newJson) throws Exception {
-        return new GenericDeclarationService().mergeJsonDynamic(existingJson, newJson);
-    }
 
     @GetMapping
     public ResponseEntity<List<Periode>> getAllPeriodes() {
@@ -263,10 +264,12 @@ public class PeriodeController {
             Periode periode = periodeRepository.findById(id)
                     .orElseThrow(() -> new EntityNotFoundException("Période introuvable avec l'ID : " + id));
 
-            String existingDetails = periode.getDetails();
-            String updatedDetails = (existingDetails == null || existingDetails.isEmpty())
-                    ? transfert.toString()
-                    : genericDeclarationService.mergeJsonDynamic(existingDetails, transfert.toString());
+            String updatedDetails = genericDeclarationService.mergeJsonDynamic(
+                periode.getDetails(), 
+                transfert.toString(), 
+                periode.getTypePeriode(), 
+                periode.getPeriodDec()
+            );
 
             periode.setDetails(updatedDetails);
             Periode updatedPeriod = periodeRepository.save(periode);
@@ -340,7 +343,10 @@ public class PeriodeController {
             tempXsdFile.deleteOnExit();
 
             // 3. Désérialiser le Document complet stocké dans periode.getDetails()
-            ObjectMapper mapper = new ObjectMapper();
+            com.fasterxml.jackson.databind.ObjectMapper mapper = com.fasterxml.jackson.databind.json.JsonMapper.builder()
+                    .disable(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                    .enable(com.fasterxml.jackson.databind.MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
+                    .build();
             Class<?> clazz = genericDeclarationService.getDocumentClass(periode.getTypePeriode());
             Object document = mapper.readValue(periode.getDetails(), clazz);
 
@@ -364,16 +370,21 @@ public class PeriodeController {
                         "message", "La transaction est valide selon le XSD"
                 ));
             } else {
-                List<String> errorMessages = errors.stream()
-                        .map(error -> String.format("%s: %s (valeur actuelle: %s)",
-                                error.getFieldPath(),
-                                error.getMessage(),
-                                error.getInvalidValue()))
+                List<Map<String, Object>> errorDetails = errors.stream()
+                        .map(error -> {
+                            Map<String, Object> errMap = new HashMap<>();
+                            errMap.put("message", error.getMessage());
+                            errMap.put("fieldName", error.getFieldName());
+                            errMap.put("fieldPath", error.getFieldPath());
+                            errMap.put("invalidValue", error.getInvalidValue());
+                            errMap.put("advice", error.getAdvice());
+                            return errMap;
+                        })
                         .collect(Collectors.toList());
 
                 return ResponseEntity.ok(Map.of(
                         "isValid", false,
-                        "errors", errorMessages
+                        "errors", errorDetails
                 ));
             }
         } catch (Exception e) {
@@ -382,6 +393,32 @@ public class PeriodeController {
                             "message", "Erreur lors de la validation : " + e.getMessage(),
                             "status", "error"
                     ));
+        }
+    }
+
+    @PostMapping("/update-operation/{id}")
+    public ResponseEntity<?> updateOperation(@PathVariable("id") Long id, @RequestBody Map<String, Object> updateRequest) {
+        try {
+            Periode periode = periodeRepository.findById(id).orElseThrow(() -> new RuntimeException("Période introuvable"));
+            
+            int entryIndex = ((Number) updateRequest.get("_entryIndex")).intValue();
+            int detailIndex = ((Number) updateRequest.get("_detailIndex")).intValue();
+            Object newData = updateRequest.get("newData");
+            
+            String updatedJson = genericDeclarationService.updateJsonDynamic(
+                periode.getDetails(), 
+                new ObjectMapper().writeValueAsString(newData), 
+                entryIndex, 
+                detailIndex
+            );
+            
+            periode.setDetails(updatedJson);
+            periodeRepository.save(periode);
+            
+            return ResponseEntity.ok(Map.of("message", "Opération mise à jour avec succès", "status", "success"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "Erreur lors de la mise à jour : " + e.getMessage(), "status", "error"));
         }
     }
 }

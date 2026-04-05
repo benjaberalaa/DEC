@@ -67,6 +67,15 @@ export class GenericDeclarationService {
   }
 
   /**
+   * Update a specific transaction in a period
+   */
+  updateOperation(periodId: number, updateRequest: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/periodes/update-operation/${periodId}`, updateRequest).pipe(
+      catchError(err => this.handleError(err, 'Erreur lors de la mise à jour de la transaction'))
+    );
+  }
+
+  /**
    * Validate a single operation against XSD
    */
   validateOperation(periodId: number, operation: any): Observable<any> {

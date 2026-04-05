@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-import com.smi.declarations.controllers.PeriodeController;
 import com.smi.declarations.entities.Periode;
+import com.smi.declarations.services.GenericDeclarationService;
 import com.smi.declarations.repositories.PeriodeRepository;
 
 
@@ -29,7 +29,7 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -44,7 +44,9 @@ public class TrDonService {
     @Autowired
     private PeriodeRepository periodeRepository;
 
-    private static final DateTimeFormatter XSD_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyyMMdd");
+    @Autowired
+    private GenericDeclarationService genericDeclarationService;
+
 
 
     public Document readExcelFile(MultipartFile excelFile) throws IOException {
@@ -272,7 +274,7 @@ public class TrDonService {
         String existingDetails = periode.getDetails();
         String updatedDetails = (existingDetails == null || existingDetails.isEmpty())
                 ? transfert.toString()
-                : PeriodeController.mergeJson(existingDetails, transfert.toString());
+                : genericDeclarationService.mergeJsonDynamic(existingDetails, transfert.toString(), periode.getTypePeriode(), periode.getPeriodDec());
 
         periode.setDetails(updatedDetails);
         return periodeRepository.save(periode);

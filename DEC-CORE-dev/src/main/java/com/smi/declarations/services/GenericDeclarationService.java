@@ -12,6 +12,7 @@ public class GenericDeclarationService {
     private org.springframework.context.ApplicationContext context;
 
     private com.fasterxml.jackson.databind.JsonNode mappingNode;
+    private final com.fasterxml.jackson.databind.ObjectMapper objectMapper = new com.fasterxml.jackson.databind.ObjectMapper();
 
     @PostConstruct
     public void init() {
@@ -119,6 +120,8 @@ public class GenericDeclarationService {
                 }
             }
         }
+
+
 
         com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
         return mapper.writeValueAsString(document);
@@ -268,7 +271,29 @@ public class GenericDeclarationService {
 
     private void setSimpleProperty(Object target, String prop, Object value) throws Exception {
         java.lang.reflect.Method setter = findSetter(target.getClass(), prop);
-        if (setter != null) setter.invoke(target, value);
+        if (setter != null) {
+            Class<?> paramType = setter.getParameterTypes()[0];
+            Object finalValue = value;
+            if (value != null && value instanceof String && paramType != String.class) {
+                if (prop.equalsIgnoreCase("periodDec") && paramType == java.math.BigInteger.class) {
+                    String strVal = (String) value;
+                    if (strVal.length() >= 2) {
+                        try {
+                            int month = Integer.parseInt(strVal.substring(0, 2));
+                            int quarter = (month - 1) / 3 + 1;
+                            finalValue = new java.math.BigInteger(String.valueOf(quarter));
+                        } catch (Exception e) {
+                            finalValue = convertValue(strVal, paramType);
+                        }
+                    } else {
+                        finalValue = convertValue(strVal, paramType);
+                    }
+                } else {
+                    finalValue = convertValue((String) value, paramType);
+                }
+            }
+            setter.invoke(target, finalValue);
+        }
     }
 
     private Object convertValue(String value, Class<?> type) {
@@ -337,118 +362,307 @@ public class GenericDeclarationService {
         }
     }
 
-    public String mergeJsonDynamic(String existingJson, String newJson) throws Exception {
-        com.fasterxml.jackson.databind.ObjectMapper objectMapper = new com.fasterxml.jackson.databind.ObjectMapper();
+    public String mergeJsonDynamic(String existingJson, String newJson, Periode.TypePeriod type, String periodDec) throws Exception {
+        if (existingJson == null || existingJson.trim().isEmpty() || existingJson.equals("{}")) {
+            existingJson = initializeSkeletonJson(type, periodDec);
+        }
+        
         com.fasterxml.jackson.databind.JsonNode existingNode = objectMapper.readTree(existingJson);
         com.fasterxml.jackson.databind.JsonNode newNode = objectMapper.readTree(newJson);
+
+        // Unwrap "details" if present from frontend payload
+        if (newNode.has("details")) {
+            newNode = newNode.get("details");
+        }
 
         if (!(existingNode instanceof com.fasterxml.jackson.databind.node.ObjectNode)) {
             return existingJson;
         }
         com.fasterxml.jackson.databind.node.ObjectNode existingObj = (com.fasterxml.jackson.databind.node.ObjectNode) existingNode;
 
-        String[] containers = {"transferts", "extraits", "decomptes", "dossiers", "Transferts", "Extraits", "Decomptes", "Dossiers"};
+        // --- Step 1: find any container key (case-insensitive) in both newNode and existingObj ---
+        // Walk through newNode fields looking for a known container pattern
+        String newContainerKey = findContainerKeyCI(newNode);
         
-        // 1. Try to find a matching container in both nodes
-        for (String c : containers) {
-            if (newNode.has(c)) {
-                com.fasterxml.jackson.databind.JsonNode newArrayContainer = newNode.get(c);
-                com.fasterxml.jackson.databind.node.ObjectNode existingArrayContainer;
-                
-                if (existingObj.has(c) && existingObj.get(c).isObject()) {
-                    existingArrayContainer = (com.fasterxml.jackson.databind.node.ObjectNode) existingObj.get(c);
+        if (newContainerKey != null) {
+            com.fasterxml.jackson.databind.JsonNode newArrayContainer = newNode.get(newContainerKey);
+            // Find matching key in existingObj (case-insensitive)
+            String existingContainerKey = findMatchingKeyCI(existingObj, newContainerKey);
+            
+            com.fasterxml.jackson.databind.node.ObjectNode existingArrayContainer;
+            if (existingContainerKey != null && existingObj.get(existingContainerKey).isObject()) {
+                existingArrayContainer = (com.fasterxml.jackson.databind.node.ObjectNode) existingObj.get(existingContainerKey);
+            } else {
+                existingArrayContainer = objectMapper.createObjectNode();
+                existingObj.set(newContainerKey, existingArrayContainer);
+            }
+
+            java.util.Iterator<String> fieldNames = newArrayContainer.fieldNames();
+            if (fieldNames.hasNext()) {
+                String arrayKey = fieldNames.next();
+                com.fasterxml.jackson.databind.JsonNode newItems = newArrayContainer.get(arrayKey);
+                String existingArrayKey = findMatchingKeyCI(existingArrayContainer, arrayKey);
+
+                com.fasterxml.jackson.databind.node.ArrayNode existingArray;
+                if (existingArrayKey != null && existingArrayContainer.get(existingArrayKey).isArray()) {
+                    existingArray = (com.fasterxml.jackson.databind.node.ArrayNode) existingArrayContainer.get(existingArrayKey);
                 } else {
-                    existingArrayContainer = objectMapper.createObjectNode();
-                    existingObj.set(c, existingArrayContainer);
+                    existingArray = objectMapper.createArrayNode();
+                    existingArrayContainer.set(arrayKey, existingArray);
                 }
-                
-                java.util.Iterator<String> fieldNames = newArrayContainer.fieldNames();
-                if (fieldNames.hasNext()) {
-                    String arrayKey = fieldNames.next();
-                    com.fasterxml.jackson.databind.JsonNode newItems = newArrayContainer.get(arrayKey);
-                    
-                    com.fasterxml.jackson.databind.node.ArrayNode existingArray;
-                    if (existingArrayContainer.has(arrayKey) && existingArrayContainer.get(arrayKey).isArray()) {
-                        existingArray = (com.fasterxml.jackson.databind.node.ArrayNode) existingArrayContainer.get(arrayKey);
-                    } else {
-                        existingArray = objectMapper.createArrayNode();
-                        existingArrayContainer.set(arrayKey, existingArray);
+
+                if (newItems.isArray()) {
+                    for (com.fasterxml.jackson.databind.JsonNode item : newItems) {
+                        existingArray.add(normalizeJsonKeys(item));
                     }
-                    
-                    if (newItems.isArray()) {
-                        for (com.fasterxml.jackson.databind.JsonNode item : newItems) {
-                            existingArray.add(item);
-                        }
-                    } else {
-                        existingArray.add(newItems);
+                } else {
+                    existingArray.add(normalizeJsonKeys(newItems));
+                }
+            }
+            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingObj);
+        }
+
+        // --- Step 2: newNode has no recognized container - it IS the item itself ---
+        // Find any array nested 2 levels deep in existingObj and append newNode to it
+        for (java.util.Iterator<java.util.Map.Entry<String, com.fasterxml.jackson.databind.JsonNode>> it = existingObj.fields(); it.hasNext(); ) {
+            java.util.Map.Entry<String, com.fasterxml.jackson.databind.JsonNode> entry = it.next();
+            if (entry.getValue().isObject()) {
+                com.fasterxml.jackson.databind.node.ObjectNode container = (com.fasterxml.jackson.databind.node.ObjectNode) entry.getValue();
+                for (java.util.Iterator<java.util.Map.Entry<String, com.fasterxml.jackson.databind.JsonNode>> it2 = container.fields(); it2.hasNext(); ) {
+                    java.util.Map.Entry<String, com.fasterxml.jackson.databind.JsonNode> subEntry = it2.next();
+                    if (subEntry.getValue().isArray()) {
+                        com.fasterxml.jackson.databind.node.ArrayNode existingArray = (com.fasterxml.jackson.databind.node.ArrayNode) subEntry.getValue();
+                        existingArray.add(normalizeJsonKeys(newNode));
+                        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingObj);
                     }
                 }
-                return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingObj);
             }
         }
 
-        // 2. If newNode doesn't have a container, it might be a raw transaction (manual add)
-        // Find the first container in existingObj and add the newNode to it
-        for (String c : containers) {
-            if (existingObj.has(c) && existingObj.get(c).isObject()) {
-                com.fasterxml.jackson.databind.node.ObjectNode existingArrayContainer = (com.fasterxml.jackson.databind.node.ObjectNode) existingObj.get(c);
-                java.util.Iterator<String> fieldNames = existingArrayContainer.fieldNames();
-                if (fieldNames.hasNext()) {
-                    String arrayKey = fieldNames.next();
-                    com.fasterxml.jackson.databind.JsonNode existingArrayNode = existingArrayContainer.get(arrayKey);
-                    if (existingArrayNode != null && existingArrayNode.isArray()) {
-                         com.fasterxml.jackson.databind.node.ArrayNode existingArray = (com.fasterxml.jackson.databind.node.ArrayNode) existingArrayNode;
-                         existingArray.add(newNode);
-                         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingObj);
-                    }
-                }
-            }
-        }
-        
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(existingObj);
     }
 
-    public void isolateTransaction(Object document, int entryIndex, int detailIndex) throws Exception {
-        String[] containers = {"transferts", "extraits", "decomptes", "dossiers", "Transferts", "Extraits", "Decomptes", "Dossiers"};
-        for (String c : containers) {
-            java.lang.reflect.Method getter = findGetter(document.getClass(), c);
-            if (getter == null) continue;
-            Object container = getter.invoke(document);
-            if (container == null) continue;
+    /** Finds a container field (transferts/extraits/etc) in a node, case-insensitively */
+    private String findContainerKeyCI(com.fasterxml.jackson.databind.JsonNode node) {
+        String[] known = {"transferts", "extraits", "decomptes", "dossiers"};
+        java.util.Iterator<String> fieldNames = node.fieldNames();
+        while (fieldNames.hasNext()) {
+            String key = fieldNames.next();
+            for (String k : known) {
+                if (k.equalsIgnoreCase(key)) return key;
+            }
+        }
+        return null;
+    }
 
-            for (java.lang.reflect.Method m : container.getClass().getMethods()) {
-                if (m.getName().startsWith("get") && java.util.List.class.isAssignableFrom(m.getReturnType())) {
-                    java.util.List<Object> list = (java.util.List<Object>) m.invoke(container);
-                    if (list != null && entryIndex >= 0 && entryIndex < list.size()) {
-                        Object targetEntry = list.get(entryIndex);
-                        list.clear();
-                        list.add(targetEntry);
+    /** Finds a key in an ObjectNode matching target (case-insensitively) */
+    private String findMatchingKeyCI(com.fasterxml.jackson.databind.node.ObjectNode node, String target) {
+        java.util.Iterator<String> fieldNames = node.fieldNames();
+        while (fieldNames.hasNext()) {
+            String key = fieldNames.next();
+            if (key.equalsIgnoreCase(target)) return key;
+        }
+        return null;
+    }
 
-                        if (detailIndex >= 0) {
-                            java.lang.reflect.Method detailsGetter = findGetter(targetEntry.getClass(), "Details");
-                            if (detailsGetter == null) detailsGetter = findGetter(targetEntry.getClass(), "details");
-                            if (detailsGetter != null) {
-                                Object detailsObj = detailsGetter.invoke(targetEntry);
-                                if (detailsObj != null) {
-                                    for (java.lang.reflect.Method detailListGetter : detailsObj.getClass().getMethods()) {
-                                        if (detailListGetter.getName().startsWith("get") && java.util.List.class.isAssignableFrom(detailListGetter.getReturnType())) {
-                                            java.util.List<Object> detailList = (java.util.List<Object>) detailListGetter.invoke(detailsObj);
-                                            if (detailList != null && detailIndex < detailList.size()) {
-                                                Object targetDetail = detailList.get(detailIndex);
-                                                detailList.clear();
-                                                detailList.add(targetDetail);
-                                            }
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        return;
+    /**
+     * Recursively normalizes all JSON object keys to camelCase (lowercase first letter).
+     * This ensures JAXB/Jackson can correctly map PascalCase keys from the frontend payload.
+     */
+    public com.fasterxml.jackson.databind.JsonNode normalizeJsonKeys(com.fasterxml.jackson.databind.JsonNode node) {
+        if (node.isObject()) {
+            com.fasterxml.jackson.databind.node.ObjectNode result = objectMapper.createObjectNode();
+            java.util.Iterator<java.util.Map.Entry<String, com.fasterxml.jackson.databind.JsonNode>> fields = node.fields();
+            while (fields.hasNext()) {
+                java.util.Map.Entry<String, com.fasterxml.jackson.databind.JsonNode> entry = fields.next();
+                String key = entry.getKey();
+                // Convert first character to lowercase (camelCase)
+                String camelKey = key.isEmpty() ? key : Character.toLowerCase(key.charAt(0)) + key.substring(1);
+                result.set(camelKey, normalizeJsonKeys(entry.getValue()));
+            }
+            return result;
+        } else if (node.isArray()) {
+            com.fasterxml.jackson.databind.node.ArrayNode result = objectMapper.createArrayNode();
+            for (com.fasterxml.jackson.databind.JsonNode item : node) {
+                result.add(normalizeJsonKeys(item));
+            }
+            return result;
+        }
+        return node; // primitive value, return as-is
+    }
+
+    public String initializeSkeletonJson(Periode.TypePeriod type, String periodDec) throws Exception {
+        com.fasterxml.jackson.databind.JsonNode typeMapping = mappingNode.get(type.name());
+        if (typeMapping == null) return "{}";
+        
+        String codeAnnexe = typeMapping.has("codeAnnexe") ? typeMapping.get("codeAnnexe").asText() : "";
+        Class<?> docClass = getDocumentClass(type);
+        Object document = docClass.getDeclaredConstructor().newInstance();
+        
+        // Build EnteteDoc
+        java.lang.reflect.Method enteteSetter = findMethod(docClass, "setEnteteDoc");
+        if (enteteSetter != null) {
+            Class<?> enteteClass = enteteSetter.getParameterTypes()[0];
+            Object entete = enteteClass.getDeclaredConstructor().newInstance();
+            setSimpleProperty(entete, "codeAnnexe", codeAnnexe);
+            setSimpleProperty(entete, "dateDec", new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date()));
+            setSimpleProperty(entete, "codeIAT", "01");
+            if (periodDec != null) {
+                setSimpleProperty(entete, "periodDec", periodDec);
+                if (periodDec.length() >= 4) {
+                    setSimpleProperty(entete, "anneDec", periodDec.substring(2));
+                }
+            }
+            enteteSetter.invoke(document, entete);
+        }
+        
+        // Ensure the container object exists but with an EMPTY list (no dummy items)
+        com.fasterxml.jackson.databind.JsonNode paths = typeMapping.get("paths");
+        if (paths != null && paths.isArray() && paths.size() > 0) {
+            String[] firstPathParts = paths.get(0).asText().split("_");
+            if (firstPathParts.length >= 2) {
+                // Initialize the container structure so the list field exists (returns an empty list)
+                java.lang.reflect.Method containerGetter = findGetter(document.getClass(), firstPathParts[0]);
+                if (containerGetter != null) {
+                    Object container = containerGetter.invoke(document);
+                    if (container == null) {
+                        // Create container via factory
+                        Object factory2 = getObjectFactory(type);
+                        container = createItem(factory2, containerGetter);
+                        java.lang.reflect.Method containerSetter = findSetter(document.getClass(), firstPathParts[0]);
+                        if (containerSetter != null) containerSetter.invoke(document, container);
                     }
+                    // The list inside the container is now initialized and empty (JAXB initializes lists lazily but non-null)
+                    // Calling the getter on the container triggers JAXB to initialize the list
+                    java.lang.reflect.Method listGetter = findGetter(container.getClass(), firstPathParts[1]);
+                    if (listGetter != null) listGetter.invoke(container); // triggers initialization
                 }
             }
         }
+        
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(document);
+    }
+
+    public String updateJsonDynamic(String json, String updatedData, int entryIndex, int detailIndex) throws Exception {
+        com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+        com.fasterxml.jackson.databind.JsonNode root = mapper.readTree(json);
+        com.fasterxml.jackson.databind.JsonNode newData = mapper.readTree(updatedData);
+
+        // Unwrap "details" if present
+        if (newData.has("details")) {
+            newData = newData.get("details");
+        }
+
+        // Case-insensitive container search
+        String[] knownContainers = {"transferts", "extraits", "decomptes", "dossiers"};
+        java.util.Iterator<String> rootFields = root.fieldNames();
+        String foundContainer = null;
+        while (rootFields.hasNext()) {
+            String f = rootFields.next();
+            for (String known : knownContainers) {
+                if (known.equalsIgnoreCase(f)) { foundContainer = f; break; }
+            }
+            if (foundContainer != null) break;
+        }
+
+        if (foundContainer != null && root.get(foundContainer).isObject()) {
+            com.fasterxml.jackson.databind.JsonNode containerNode = root.get(foundContainer);
+            java.util.Iterator<String> fieldNames = containerNode.fieldNames();
+            if (fieldNames.hasNext()) {
+                String arrayKey = fieldNames.next();
+                com.fasterxml.jackson.databind.JsonNode arrayNode = containerNode.get(arrayKey);
+
+                if (arrayNode != null && arrayNode.isArray() && entryIndex >= 0 && entryIndex < arrayNode.size()) {
+                    com.fasterxml.jackson.databind.node.ArrayNode list = (com.fasterxml.jackson.databind.node.ArrayNode) arrayNode;
+                    com.fasterxml.jackson.databind.node.ObjectNode entry = (com.fasterxml.jackson.databind.node.ObjectNode) list.get(entryIndex);
+
+                    // Normalize keys to camelCase before saving
+                    com.fasterxml.jackson.databind.JsonNode normalizedData = normalizeJsonKeys(newData);
+                    if (detailIndex == -1) {
+                        list.set(entryIndex, normalizedData);
+                    } else {
+                        // Find details key case-insensitively
+                        java.util.Iterator<String> entryFields = entry.fieldNames();
+                        String detailsKey = null;
+                        while (entryFields.hasNext()) {
+                            String ef = entryFields.next();
+                            if (ef.equalsIgnoreCase("details")) { detailsKey = ef; break; }
+                        }
+                        if (detailsKey != null) {
+                            com.fasterxml.jackson.databind.JsonNode detailsObj = entry.get(detailsKey);
+                            java.util.Iterator<String> dFieldNames = detailsObj.fieldNames();
+                            if (dFieldNames.hasNext()) {
+                                String dArrayKey = dFieldNames.next();
+                                com.fasterxml.jackson.databind.node.ArrayNode dList = (com.fasterxml.jackson.databind.node.ArrayNode) detailsObj.get(dArrayKey);
+                                if (detailIndex < dList.size()) {
+                                    dList.set(detailIndex, normalizedData);
+                                }
+                            }
+                        }
+                    }
+                    return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(root);
+                }
+            }
+        }
+        return json;
+    }
+
+    public void isolateTransaction(Object document, int entryIndex, int detailIndex) throws Exception {
+        // Map container names to their singular item getter name
+        String[][] containerMappings = {
+            {"transferts", "transfert"},
+            {"extraits", "extrait"},
+            {"decomptes", "decompte"},
+            {"dossiers", "dossier"}
+        };
+        for (String[] mapping : containerMappings) {
+            String containerName = mapping[0];
+            String itemName     = mapping[1];
+
+            java.lang.reflect.Method containerGetter = findGetter(document.getClass(), containerName);
+            if (containerGetter == null) continue;
+            Object container = containerGetter.invoke(document);
+            if (container == null) continue;
+
+            // Use the KNOWN singular getter — no ambiguous scan of all methods
+            java.lang.reflect.Method listGetter = findGetter(container.getClass(), itemName);
+            if (listGetter == null) continue;
+
+            @SuppressWarnings("unchecked")
+            java.util.List<Object> list = (java.util.List<Object>) listGetter.invoke(container);
+            if (list == null || entryIndex < 0 || entryIndex >= list.size()) continue;
+
+            Object targetEntry = new java.util.ArrayList<>(list).get(entryIndex);
+            list.clear();
+            list.add(targetEntry);
+
+            if (detailIndex >= 0) {
+                // Try both cases: "details" / "Details"
+                java.lang.reflect.Method detailsGetter = findGetter(targetEntry.getClass(), "details");
+                if (detailsGetter == null) detailsGetter = findGetter(targetEntry.getClass(), "Details");
+                if (detailsGetter != null) {
+                    Object detailsObj = detailsGetter.invoke(targetEntry);
+                    if (detailsObj != null) {
+                        // Find the list getter inside details — it's always the singular of the container
+                        // e.g. "detail" inside Details
+                        java.lang.reflect.Method detailListGetter = findGetter(detailsObj.getClass(), "detail");
+                        if (detailListGetter == null) detailListGetter = findGetter(detailsObj.getClass(), "Detail");
+                        if (detailListGetter != null) {
+                            @SuppressWarnings("unchecked")
+                            java.util.List<Object> detailList = (java.util.List<Object>) detailListGetter.invoke(detailsObj);
+                            if (detailList != null && detailIndex < detailList.size()) {
+                                Object targetDetail = new java.util.ArrayList<>(detailList).get(detailIndex);
+                                detailList.clear();
+                                detailList.add(targetDetail);
+                            }
+                        }
+                    }
+                }
+            }
+            return; // Done — isolation successful
+        }
+        // If no known container found, log and proceed with full-document validation
+        System.err.println("[isolateTransaction] WARNING: could not find container in document class: " + document.getClass().getSimpleName());
     }
 
     public Class<?> getDocumentClass(Periode.TypePeriod type) {

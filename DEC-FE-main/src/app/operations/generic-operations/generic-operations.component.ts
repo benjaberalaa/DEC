@@ -157,22 +157,41 @@ export class GenericOperationsComponent implements OnInit {
     this.operations.forEach(op => {
       this.declarationService.validateOperation(this.periodId!, op).subscribe({
         next: (res) => {
-          op.errors = res.isValid ? [] : (Array.isArray(res.errors) ? res.errors : [JSON.stringify(res)]);
+          this.setOpErrors(op, res);
         },
-        error: (err) => {
-          const body = err?.error;
-          if (body?.errors && Array.isArray(body.errors)) {
-            op.errors = body.errors;
-          } else if (body?.message) {
-            op.errors = [body.message];
-          } else if (typeof body === 'string') {
-            op.errors = [body];
-          } else {
-            op.errors = ['HTTP ' + (err?.status || '?') + ': ' + JSON.stringify(body)];
-          }
-        }
+        error: (err) => this.handleOpError(op, err)
       });
     });
+  }
+
+  private setOpErrors(op: any, res: any): void {
+    if (res.isValid) {
+      op.errors = [];
+    } else {
+      const rawErrors = Array.isArray(res.errors) ? res.errors : [{ message: JSON.stringify(res) }];
+      // Use a Map to keep unique errors by message
+      const uniqueMap = new Map();
+      rawErrors.forEach((e: any) => {
+        const msg = typeof e === 'string' ? e : e.message;
+        if (!uniqueMap.has(msg)) {
+          uniqueMap.set(msg, e);
+        }
+      });
+      op.errors = Array.from(uniqueMap.values());
+    }
+  }
+
+  private handleOpError(op: any, err: any): void {
+    const body = err?.error;
+    if (body?.errors && Array.isArray(body.errors)) {
+      op.errors = body.errors;
+    } else if (body?.message) {
+      op.errors = [{ message: body.message }];
+    } else if (typeof body === 'string') {
+      op.errors = [{ message: body }];
+    } else {
+      op.errors = [{ message: 'HTTP ' + (err?.status || '?') + ': ' + JSON.stringify(body || err.message) }];
+    }
   }
 
   handleFileUpload(event: any): void {
@@ -283,31 +302,42 @@ export class GenericOperationsComponent implements OnInit {
   closeAddTransactionModal(): void { this.showAddTransactionModal = false; this.transactionForm.reset(); }
 
   viewErrors(op: any): void {
-    this.selectedOp = { ...op, errors: ['Chargement...'] };
+    this.selectedOp = { ...op, errors: [{ message: 'Chargement...' }] };
     this.showErrorsModal = true;
     
     if (!this.periodId) return;
 
     this.declarationService.validateOperation(this.periodId, op).subscribe({
       next: (res) => {
+        this.setOpErrors(this.selectedOp, res);
+        // Also update the row in the table
+        this.setOpErrors(op, res);
+      },
+      error: (err: any) => {
+        this.handleOpError(this.selectedOp, err);
+        this.handleOpError(op, err);
+      }
+    });
+  }
+
+  revalidateOperation(op: any): void {
+    if (!this.periodId) return;
+    // If there are unsaved changes, save first then the reload will re-validate
+    if (op._isDirty) {
+      const idx = this.operations.indexOf(op);
+      this.saveOperation(op, idx);
+      return;
+    }
+    this.declarationService.validateOperation(this.periodId, op).subscribe({
+      next: (res) => {
+        this.setOpErrors(op, res);
         if (res.isValid) {
-          this.selectedOp.errors = ['✅ La transaction est valide selon le XSD.'];
+          this.showNotification('Validation réussie ✓', 'success');
         } else {
-          this.selectedOp.errors = Array.isArray(res.errors) ? res.errors : [JSON.stringify(res)];
+          this.showNotification('La transaction contient encore ' + (op.errors?.length || 0) + ' erreur(s)', 'warning');
         }
       },
-      error: (err) => {
-        const body = err?.error;
-        if (body?.errors && Array.isArray(body.errors)) {
-          this.selectedOp.errors = body.errors;
-        } else if (body?.message) {
-          this.selectedOp.errors = [body.message];
-        } else if (typeof body === 'string') {
-          this.selectedOp.errors = [body];
-        } else {
-          this.selectedOp.errors = ['HTTP ' + (err?.status || '?') + ': ' + JSON.stringify(body || err.message)];
-        }
-      }
+      error: (err) => this.handleOpError(op, err)
     });
   }
 
@@ -321,12 +351,95 @@ export class GenericOperationsComponent implements OnInit {
   getProperty(obj: any, path: string | undefined): any {
     if (!path || !obj) return '';
     
-    return path.split('.').reduce((o, i) => {
-      if (!o) return '';
+    const parts = path.split('.');
+    let current = obj;
+    for (const part of parts) {
+      if (!current) return '';
       // Try exact match first, then case-insensitive
-      if (o.hasOwnProperty(i)) return o[i];
-      const key = Object.keys(o).find(k => k.toLowerCase() === i.toLowerCase());
-      return key ? o[key] : '';
-    }, obj);
+      if (current.hasOwnProperty(part)) {
+        current = current[part];
+      } else {
+        const key = Object.keys(current).find(k => k.toLowerCase() === part.toLowerCase());
+        current = key ? current[key] : '';
+      }
+    }
+    return current;
+  }
+
+  setNestedProperty(obj: any, path: string, value: any): void {
+    const parts = path.split('.');
+    let current = obj;
+    for (let i = 0; i < parts.length - 1; i++) {
+        const part = parts[i];
+        let nextKey = Object.keys(current).find(k => k.toLowerCase() === part.toLowerCase());
+        if (!nextKey) {
+            nextKey = part;
+            current[nextKey] = {};
+        }
+        current = current[nextKey];
+    }
+    const lastPart = parts[parts.length - 1];
+    let lastKey = Object.keys(current).find(k => k.toLowerCase() === lastPart.toLowerCase());
+    if (!lastKey) lastKey = lastPart;
+    current[lastKey] = value;
+  }
+
+  onCellEdit(op: any, path: string, event: any): void {
+    const newValue = event.target.innerText.trim();
+    const oldValue = this.getProperty(op, path);
+    
+    if (newValue !== String(oldValue)) {
+      this.setNestedProperty(op, path, newValue);
+      op._isDirty = true;
+    }
+  }
+
+  hasError(op: any, path: string): boolean {
+    if (!op.errors || op.errors.length === 0) return false;
+    
+    const pathParts = path.split('.');
+    const lastPart = pathParts[pathParts.length - 1].toLowerCase();
+    
+    return op.errors.some((err: any) => {
+        if (!err) return false;
+        const errMsg = typeof err === 'string' ? err : (err.message || '');
+        const fieldName = err.fieldName ? err.fieldName.toLowerCase() : null;
+        
+        // Match by fieldName from XSD if available, else fallback to path matching
+        if (fieldName) {
+            return fieldName === lastPart || fieldName === path.toLowerCase();
+        }
+        
+        const lowerErr = errMsg.toLowerCase();
+        return lowerErr.includes(lastPart) || lowerErr.includes(path.toLowerCase());
+    });
+  }
+
+  saveOperation(op: any, index: number): void {
+    if (!this.periodId) return;
+
+    // Remove all internal tracker properties (starting with _) before sending to backend
+    const cleanOp: any = {};
+    Object.keys(op).forEach(key => {
+      if (!key.startsWith('_') && key !== 'errors') {
+        cleanOp[key] = op[key];
+      }
+    });
+    
+    const updateRequest = {
+      _entryIndex: op._entryIndex,
+      _detailIndex: op._detailIndex,
+      newData: cleanOp
+    };
+
+    this.declarationService.updateOperation(this.periodId, updateRequest).subscribe({
+      next: () => {
+        this.showNotification('Modifications enregistrées, re-validation en cours...', 'success');
+        op._isDirty = false;
+        // Reload everything from DB to ensure display and validation are in sync
+        this.loadPeriodData();
+      },
+      error: (err: any) => this.showNotification('Erreur d\'enregistrement : ' + (err.error?.message || err.message), 'error')
+    });
   }
 }

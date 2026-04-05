@@ -6,6 +6,36 @@
     </button>
   </div>
 
+  <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4 p-3">
+    <div class="row g-3">
+
+      <div class="col-md-4">
+        <label class="small text-muted mb-1">Utilisateur</label>
+        <div class="input-group input-group-sm">
+          <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+          <input type="text" class="form-control border-start-0" [(ngModel)]="filterUser" (keyup.enter)="onFilter()" placeholder="Rechercher par utilisateur...">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label class="small text-muted mb-1">Action</label>
+        <div class="input-group input-group-sm">
+          <span class="input-group-text bg-white border-end-0"><i class="bi bi-funnel"></i></span>
+          <input type="text" class="form-control border-start-0" [(ngModel)]="filterAction" (keyup.enter)="onFilter()" placeholder="Filtrer par action (ex: CREATE_PERIOD)...">
+        </div>
+      </div>
+      <div class="col-md-2 d-flex align-items-end">
+        <button class="btn btn-primary btn-sm w-100" (click)="onFilter()">
+          Filtrer
+        </button>
+      </div>
+      <div class="col-md-2 d-flex align-items-end">
+        <select class="form-select form-select-sm" [(ngModel)]="size" (change)="onSizeChange()">
+          <option *ngFor="let s of pageSizeOptions" [value]="s">{{ s }} par page</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
   <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
     <div *ngIf="loading" class="text-center py-5">
       <div class="spinner-border text-primary" role="status"></div>
@@ -54,6 +84,24 @@
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Pagination Footer -->
+    <div class="card-footer bg-white py-3 border-0 d-flex justify-content-between align-items-center" *ngIf="totalPages > 1">
+      <div class="small text-muted">
+        Affichage de <b>{{ logs.length }}</b> sur <b>{{ totalElements }}</b> logs
+      </div>
+      <nav>
+        <ul class="pagination pagination-sm mb-0">
+          <li class="page-item" [class.disabled]="page === 0">
+            <button class="page-link" (click)="onPageChange(page - 1)"><i class="bi bi-chevron-left"></i></button>
+          </li>
+          <li class="page-item active"><span class="page-link">{{ page + 1 }} / {{ totalPages }}</span></li>
+          <li class="page-item" [class.disabled]="page >= totalPages - 1">
+            <button class="page-link" (click)="onPageChange(page + 1)"><i class="bi bi-chevron-right"></i></button>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>

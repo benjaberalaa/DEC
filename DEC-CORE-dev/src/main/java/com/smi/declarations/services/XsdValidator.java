@@ -13,9 +13,7 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.io.File;
 import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.List;
-import com.smi.generated.majc_tr_don_0312.Document;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.SAXParseException;
 
@@ -32,6 +30,8 @@ public class XsdValidator {
         private int column;
         private String fieldPath;
         private String invalidValue;
+        private String fieldName;
+        private String advice;
 
         public ValidationError(String message, int line, int column) {
             this.message = message;
@@ -39,12 +39,14 @@ public class XsdValidator {
             this.column = column;
         }
 
-        public ValidationError(String message, int line, int column, String fieldPath, String invalidValue) {
+        public ValidationError(String message, int line, int column, String fieldPath, String invalidValue, String fieldName, String advice) {
             this.message = message;
             this.line = line;
             this.column = column;
             this.fieldPath = fieldPath;
             this.invalidValue = invalidValue;
+            this.fieldName = fieldName;
+            this.advice = advice;
         }
 
         public ValidationError() {
@@ -52,33 +54,115 @@ public class XsdValidator {
     }
 
     public static class CustomValidationEventHandler implements ValidationEventHandler {
-        private final List<ValidationError> errors = new ArrayList<>();
+        private final java.util.Map<String, ValidationError> errorMap = new java.util.LinkedHashMap<>();
+
+        private String getFriendlyMessage(String technicalMessage) {
+            if (technicalMessage == null) return "Erreur inconnue";
+            
+            if (technicalMessage.contains("cvc-complex-type.2.4.a") || technicalMessage.contains("is expected")) {
+                String found = technicalMessage.contains("starting with element '") ? 
+                               technicalMessage.split("element '")[1].split("'")[0] : "?";
+                String expected = technicalMessage.contains("One of '{") ? 
+                                  technicalMessage.split("One of '\\{")[1].split("\\}'")[0] : "?";
+                return "L'élément '" + found + "' est mal placé ou manquant. L'élément '" + expected + "' est attendu à cette position.";
+            }
+            
+            if (technicalMessage.contains("cvc-pattern-valid")) {
+                String val = technicalMessage.contains("Value '") ? 
+                             technicalMessage.split("Value '")[1].split("'")[0] : "la valeur";
+                return "Le format de la valeur '" + val + "' est incorrect.";
+            }
+
+            if (technicalMessage.contains("cvc-type.3.1.3")) {
+                String val = technicalMessage.contains("value '") ? 
+                             technicalMessage.split("value '")[1].split("'")[0] : "la valeur";
+                String elem = technicalMessage.contains("element '") ? 
+                              technicalMessage.split("element '")[1].split("'")[0] : "";
+                
+                if (!elem.isEmpty()) {
+                    return "La valeur '" + val + "' du champ '" + elem + "' n'est pas valide.";
+                }
+                return "La valeur '" + val + "' n'est pas valide.";
+            }
+
+            return technicalMessage.replaceAll("cvc-[^:]+: ", "");
+        }
+
+        private String extractAdvice(String technicalMessage) {
+            if (technicalMessage == null) return null;
+            if (technicalMessage.contains("respect to pattern '")) {
+                return "Format attendu : " + technicalMessage.split("pattern '")[1].split("'")[0];
+            }
+            if (technicalMessage.contains("One of '{")) {
+                return "Éléments possibles : " + technicalMessage.split("One of '\\{")[1].split("\\}'")[0];
+            }
+            return null;
+        }
+
+        private String extractFieldName(String technicalMessage) {
+            if (technicalMessage == null) return null;
+            if (technicalMessage.contains("element '")) {
+                return technicalMessage.split("element '")[1].split("'")[0];
+            }
+            return null;
+        }
+
+        private String extractValue(String technicalMessage, String originalValue) {
+            if (originalValue != null && !originalValue.equals("null")) return originalValue;
+            if (technicalMessage == null) return null;
+            if (technicalMessage.contains("Value '")) {
+                return technicalMessage.split("Value '")[1].split("'")[0];
+            }
+            if (technicalMessage.contains("value '")) {
+                return technicalMessage.split("value '")[1].split("'")[0];
+            }
+            return originalValue;
+        }
 
         @Override
         public boolean handleEvent(ValidationEvent event) {
             ValidationEventLocator locator = event.getLocator();
-            String fieldPath = null;
-            String invalidValue = null;
-
-            if (locator.getObject() != null) {
-                fieldPath = locator.getObject().toString();
+            String msg = event.getMessage();
+            String fieldName = extractFieldName(msg);
+            
+            String key = (fieldName != null) ? fieldName : (locator.getLineNumber() + ":" + locator.getColumnNumber());
+            
+            String friendlyMsg = getFriendlyMessage(msg);
+            String advice = extractAdvice(msg);
+            
+            if (errorMap.containsKey(key)) {
+                ValidationError existing = errorMap.get(key);
+                // Only append if the message is different and not a subset
+                if (!existing.getMessage().contains(friendlyMsg) && !friendlyMsg.contains(existing.getMessage())) {
+                    existing.setMessage(existing.getMessage() + " / " + friendlyMsg);
+                }
+                if (advice != null) {
+                    if (existing.getAdvice() == null) {
+                        existing.setAdvice(advice);
+                    } else if (!existing.getAdvice().contains(advice)) {
+                        existing.setAdvice(existing.getAdvice() + " / " + advice);
+                    }
+                }
+            } else {
+                String fieldPath = (locator.getObject() != null) ? locator.getObject().toString() : null;
+                String invVal = (locator.getNode() != null && locator.getNode().getNodeValue() != null) ? 
+                               locator.getNode().getNodeValue() : null;
+                
+                errorMap.put(key, new ValidationError(
+                        friendlyMsg,
+                        locator.getLineNumber(),
+                        locator.getColumnNumber(),
+                        fieldPath,
+                        extractValue(msg, invVal),
+                        fieldName,
+                        advice
+                ));
             }
-            if (locator.getNode() != null && locator.getNode().getNodeValue() != null) {
-                invalidValue = locator.getNode().getNodeValue();
-            }
-
-            errors.add(new ValidationError(
-                    event.getMessage(),
-                    locator.getLineNumber(),
-                    locator.getColumnNumber(),
-                    fieldPath,
-                    invalidValue
-            ));
             return true;
         }
 
         public List<ValidationError> getErrors() {
-            return errors;
+            return new java.util.ArrayList<>(errorMap.values());
         }
     }
 

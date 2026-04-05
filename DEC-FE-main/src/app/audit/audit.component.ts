@@ -11,6 +11,15 @@ export class AuditComponent implements OnInit {
   logs: any[] = [];
   loading = false;
 
+  page = 0;
+  size = 10;
+  totalElements = 0;
+  totalPages = 0;
+
+  filterUser = '';
+  filterAction = '';
+  pageSizeOptions = [10, 20, 50];
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -19,9 +28,19 @@ export class AuditComponent implements OnInit {
 
   loadHistory(): void {
     this.loading = true;
-    this.http.get<any[]>(`${environment.apiUrl}/audit/history`).subscribe({
-      next: (data) => {
-        this.logs = data;
+    const params: any = {
+      page: this.page,
+      size: this.size
+    };
+    if (this.filterUser) params.username = this.filterUser;
+    if (this.filterAction) params.action = this.filterAction;
+
+
+    this.http.get<any>(`${environment.apiUrl}/audit/history`, { params }).subscribe({
+      next: (res) => {
+        this.logs = res.content || [];
+        this.totalElements = res.totalElements || 0;
+        this.totalPages = res.totalPages || 0;
         this.loading = false;
       },
       error: (err) => {
@@ -29,6 +48,23 @@ export class AuditComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  onFilter(): void {
+    this.page = 0;
+    this.loadHistory();
+  }
+
+  onPageChange(newPage: number): void {
+    if (newPage >= 0 && newPage < this.totalPages) {
+      this.page = newPage;
+      this.loadHistory();
+    }
+  }
+
+  onSizeChange(): void {
+    this.page = 0;
+    this.loadHistory();
   }
 
   getActionLabel(action: string): string {

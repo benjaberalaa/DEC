@@ -1,4 +1,4 @@
-export const GENERATED_CONFIGS: any = {
+﻿export const GENERATED_CONFIGS: any = {
   'CRS_CPD_OSM': {
     type: 'CRS_CPD_OSM',
     label: 'Déclaration CRS_CPD_OSM',
@@ -72,33 +72,23 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.RefCompte.DateGelCpte"
       },
       {
-            "key": "Extraits_Extrait_Entete_RefCompte_NumAutBCT",
-            "label": "NumAutBCT",
-            "path": "_entete.RefCompte.NumAutBCT"
-      },
-      {
-            "key": "Extraits_Extrait_Entete_RefCompte_DateAutBCT",
-            "label": "DateAutBCT",
-            "path": "_entete.RefCompte.DateAutBCT"
-      },
-      {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldDebMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldDebMois.Ccy"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldfinMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldfinMois.Ccy"
       },
       {
@@ -118,22 +108,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "path": "RefOperation.MntOpDev.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDev.Ccy"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "path": "RefOperation.MntOpDin.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDin.Ccy"
       },
       {
@@ -253,48 +243,36 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "label": "DateclotureCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "label": "DateGelCpte",
-            "type": "text"
-      },
-      {
-            "id": "Extraits_Extrait_Entete_RefCompte_NumAutBCT",
-            "name": "Extraits_Extrait_Entete_RefCompte_NumAutBCT",
-            "label": "NumAutBCT",
-            "type": "text"
-      },
-      {
-            "id": "Extraits_Extrait_Entete_RefCompte_DateAutBCT",
-            "name": "Extraits_Extrait_Entete_RefCompte_DateAutBCT",
-            "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -318,25 +296,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -379,7 +357,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_RefSupport_DateSupp",
             "name": "Extraits_Extrait_Details_Detail_RefSupport_DateSupp",
             "label": "DateSupp",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_DecDouane_NumDecD",
@@ -391,7 +369,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_DecDouane_DateDecD",
             "name": "Extraits_Extrait_Details_Detail_DecDouane_DateDecD",
             "label": "DateDecD",
-            "type": "text"
+            "type": "date"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -402,7 +380,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -472,22 +450,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "path": "RefOperation.MntOpDev.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDev.Ccy"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "path": "RefOperation.MntOpDin.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDin.Ccy"
       },
       {
@@ -579,25 +557,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -634,7 +612,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_RefSupport_DateSupp",
             "name": "Extraits_Extrait_Details_Detail_RefSupport_DateSupp",
             "label": "DateSupp",
-            "type": "text"
+            "type": "date"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -645,7 +623,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -735,22 +713,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldDebMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldDebMois.Ccy"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldfinMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldfinMois.Ccy"
       },
       {
@@ -770,22 +748,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "path": "RefOperation.MntOpDev.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDev.Ccy"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "path": "RefOperation.MntOpDin.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDin.Ccy"
       },
       {
@@ -930,36 +908,36 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "label": "DateclotureCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "label": "DateGelCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -983,25 +961,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -1086,7 +1064,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "name": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -1097,7 +1075,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -1177,22 +1155,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldDebMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldDebMois.Ccy"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldfinMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldfinMois.Ccy"
       },
       {
@@ -1212,22 +1190,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "path": "RefOperation.MntOpDev.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDev.Ccy"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "path": "RefOperation.MntOpDin.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDin.Ccy"
       },
       {
@@ -1329,7 +1307,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateAutBCT",
             "name": "Extraits_Extrait_Entete_RefCompte_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_EtatCpte",
@@ -1341,30 +1319,30 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "label": "DateclotureCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -1388,25 +1366,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -1449,7 +1427,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "name": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_DenomBenif",
@@ -1472,7 +1450,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -1552,22 +1530,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldDebMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldDebMois.Ccy"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldfinMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldfinMois.Ccy"
       },
       {
@@ -1587,22 +1565,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "path": "RefOperation.MntOpDev.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDev.Ccy"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "path": "RefOperation.MntOpDin.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDin.Ccy"
       },
       {
@@ -1710,36 +1688,36 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "label": "DateclotureCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "label": "DateGelCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -1763,25 +1741,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -1824,7 +1802,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "name": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_DenomBenif",
@@ -1847,7 +1825,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -1882,7 +1860,7 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Entete_Titulaire_CodeIdentifiant",
-            "label": "CodIdentifiant",
+            "label": "CodeIdentifiant",
             "path": "_entete.Titulaire.CodeIdentifiant"
       },
       {
@@ -1927,23 +1905,28 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldDebMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldDebMois.Ccy"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldfinMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldfinMois.Ccy"
+      },
+      {
+            "key": "Extraits_Extrait_Entete_NbrEcritures",
+            "label": "NbrEcritures",
+            "path": "_entete.NbrEcritures"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_Rib",
@@ -1957,22 +1940,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "path": "RefOperation.MntOpDev.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDev.Ccy"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "path": "RefOperation.MntOpDin.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDin.Ccy"
       },
       {
@@ -2042,7 +2025,7 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Entete_Titulaire_CodeIdentifiant",
             "name": "Extraits_Extrait_Entete_Titulaire_CodeIdentifiant",
-            "label": "CodIdentifiant",
+            "label": "CodeIdentifiant",
             "type": "text"
       },
       {
@@ -2085,36 +2068,42 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "label": "DateclotureCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "label": "DateGelCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
+            "type": "text"
+      },
+      {
+            "id": "Extraits_Extrait_Entete_NbrEcritures",
+            "name": "Extraits_Extrait_Entete_NbrEcritures",
+            "label": "NbrEcritures",
             "type": "text"
       },
       {
@@ -2132,25 +2121,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -2199,7 +2188,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "name": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_DenomBenif",
@@ -2222,7 +2211,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -2262,7 +2251,7 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Entete_Titulaire_CodeIdentifiant",
-            "label": "CodIdentifiant",
+            "label": "CodeIdentifiant",
             "path": "_entete.Titulaire.CodeIdentifiant"
       },
       {
@@ -2306,24 +2295,34 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.RefCompte.DateclotureCpte"
       },
       {
+            "key": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
+            "label": "DateGelCpte",
+            "path": "_entete.RefCompte.DateGelCpte"
+      },
+      {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldDebMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldDebMois.Ccy"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldfinMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldfinMois.Ccy"
+      },
+      {
+            "key": "Extraits_Extrait_Entete_NbrEcritures",
+            "label": "NbrEcritures",
+            "path": "_entete.NbrEcritures"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_Rib",
@@ -2336,29 +2335,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "RefOperation.NatMvtOp"
       },
       {
-            "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
-            "path": "RefOperation.MntOpDev.Value"
-      },
-      {
-            "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
-            "path": "RefOperation.MntOpDev.Ccy"
-      },
-      {
-            "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
-            "path": "RefOperation.MntOpDin.Value"
-      },
-      {
-            "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
-            "path": "RefOperation.MntOpDin.Ccy"
-      },
-      {
-            "key": "DateRetVoy_22",
-            "label": "DateRetVoy",
-            "path": "DateRetVoy_22"
+            "key": "Extraits_Extrait_Details_Detail_RefOperation_CodMvt",
+            "label": "CodMvt",
+            "path": "RefOperation.CodMvt"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_DateMvt",
@@ -2366,14 +2345,29 @@ export const GENERATED_CONFIGS: any = {
             "path": "RefOperation.DateMvt"
       },
       {
-            "key": "Extraits_Extrait_Details_Detail_RefOperation_CodMvt",
-            "label": "CodMvt",
-            "path": "RefOperation.CodMvt"
-      },
-      {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_NatOp",
             "label": "NatOp",
             "path": "RefOperation.NatOp"
+      },
+      {
+            "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
+            "label": "Value",
+            "path": "RefOperation.MntOpDev.Value"
+      },
+      {
+            "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
+            "label": "Ccy",
+            "path": "RefOperation.MntOpDev.Ccy"
+      },
+      {
+            "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
+            "label": "Value",
+            "path": "RefOperation.MntOpDin.Value"
+      },
+      {
+            "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
+            "label": "Ccy",
+            "path": "RefOperation.MntOpDin.Ccy"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_ModReg",
@@ -2428,7 +2422,7 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Entete_Titulaire_CodeIdentifiant",
             "name": "Extraits_Extrait_Entete_Titulaire_CodeIdentifiant",
-            "label": "CodIdentifiant",
+            "label": "CodeIdentifiant",
             "type": "text"
       },
       {
@@ -2477,30 +2471,42 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "label": "DateclotureCpte",
-            "type": "text"
+            "type": "date"
+      },
+      {
+            "id": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
+            "name": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
+            "label": "DateGelCpte",
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois)",
+            "label": "Ccy",
+            "type": "text"
+      },
+      {
+            "id": "Extraits_Extrait_Entete_NbrEcritures",
+            "name": "Extraits_Extrait_Entete_NbrEcritures",
+            "label": "NbrEcritures",
             "type": "text"
       },
       {
@@ -2516,33 +2522,9 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
-            "type": "number"
-      },
-      {
-            "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
-            "type": "text"
-      },
-      {
-            "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
-            "type": "number"
-      },
-      {
-            "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
-            "type": "text"
-      },
-      {
-            "id": "DateRetVoy_22",
-            "name": "DateRetVoy_22",
-            "label": "DateRetVoy",
+            "id": "Extraits_Extrait_Details_Detail_RefOperation_CodMvt",
+            "name": "Extraits_Extrait_Details_Detail_RefOperation_CodMvt",
+            "label": "CodMvt",
             "type": "text"
       },
       {
@@ -2552,15 +2534,33 @@ export const GENERATED_CONFIGS: any = {
             "type": "date"
       },
       {
-            "id": "Extraits_Extrait_Details_Detail_RefOperation_CodMvt",
-            "name": "Extraits_Extrait_Details_Detail_RefOperation_CodMvt",
-            "label": "CodMvt",
-            "type": "text"
-      },
-      {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_NatOp",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_NatOp",
             "label": "NatOp",
+            "type": "text"
+      },
+      {
+            "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
+            "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
+            "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
+            "label": "Ccy",
+            "type": "text"
+      },
+      {
+            "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
+            "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
+            "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -2585,7 +2585,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "name": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_DenomBenif",
@@ -2608,7 +2608,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -2703,22 +2703,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldDebMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldDebMois.Ccy"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldfinMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldfinMois.Ccy"
       },
       {
@@ -2738,22 +2738,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "path": "RefOperation.MntOpDev.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDev.Ccy"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "path": "RefOperation.MntOpDin.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDin.Ccy"
       },
       {
@@ -2879,36 +2879,36 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "label": "DateclotureCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "label": "DateGelCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -2932,25 +2932,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -2993,7 +2993,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "name": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_DenomBenif",
@@ -3016,7 +3016,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -3111,22 +3111,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldDebMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldDebMois.Ccy"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldfinMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldfinMois.Ccy"
       },
       {
@@ -3146,22 +3146,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "path": "RefOperation.MntOpDev.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDev.Ccy"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "path": "RefOperation.MntOpDin.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDin.Ccy"
       },
       {
@@ -3295,13 +3295,13 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "label": "DateclotureCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "label": "DateGelCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_NumAutBCT",
@@ -3313,30 +3313,30 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateAutBCT",
             "name": "Extraits_Extrait_Entete_RefCompte_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -3360,25 +3360,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -3421,7 +3421,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_RefFicheInformation_DateFicheInformation",
             "name": "Extraits_Extrait_Details_Detail_RefFicheInformation_DateFicheInformation",
             "label": "DateFicheInformation",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefAutorisationBct_NumAutBCT",
@@ -3433,7 +3433,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "name": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_DecDouane_NumDecD",
@@ -3445,7 +3445,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_DecDouane_DateDecD",
             "name": "Extraits_Extrait_Details_Detail_DecDouane_DateDecD",
             "label": "DateDecD",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_DenomBenif",
@@ -3468,7 +3468,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -3548,22 +3548,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldDebMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldDebMois.Ccy"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldfinMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldfinMois.Ccy"
       },
       {
@@ -3593,22 +3593,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "path": "RefOperation.MntOpDev.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDev.Ccy"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "path": "RefOperation.MntOpDin.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDin.Ccy"
       },
       {
@@ -3696,36 +3696,36 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "label": "DateclotureCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "label": "DateGelCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -3761,25 +3761,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -3821,7 +3821,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -3926,22 +3926,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldDebMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldDebMois.Ccy"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "path": "_entete.RefCompte.SoldfinMois.Value"
       },
       {
             "key": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "path": "_entete.RefCompte.SoldfinMois.Ccy"
       },
       {
@@ -3961,22 +3961,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "path": "RefOperation.MntOpDev.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDev.Ccy"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "path": "RefOperation.MntOpDin.Value"
       },
       {
             "key": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "path": "RefOperation.MntOpDin.Ccy"
       },
       {
@@ -4112,13 +4112,13 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateclotureCpte",
             "label": "DateclotureCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "name": "Extraits_Extrait_Entete_RefCompte_DateGelCpte",
             "label": "DateGelCpte",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_NumAutBCT",
@@ -4130,30 +4130,30 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Entete_RefCompte_DateAutBCT",
             "name": "Extraits_Extrait_Entete_RefCompte_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Value",
-            "label": "SoldDebMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldDebMois_Ccy",
-            "label": "Ccy (le solde début du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Value",
-            "label": "SoldfinMois",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
             "name": "Extraits_Extrait_Entete_RefCompte_SoldfinMois_Ccy",
-            "label": "Ccy (le solde fin du mois objet de déclaration)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -4177,25 +4177,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Value",
-            "label": "MntOpDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDev_Ccy",
-            "label": "Ccy (Montant de l’opération en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Value",
-            "label": "MntOpDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
             "name": "Extraits_Extrait_Details_Detail_RefOperation_MntOpDin_Ccy",
-            "label": "Ccy (la CV en TND du montant de l’opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -4244,7 +4244,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "name": "Extraits_Extrait_Details_Detail_RefAutorisationBct_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Extraits_Extrait_Details_Detail_NomFourniClient",
@@ -4273,7 +4273,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -4307,9 +4307,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_2",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -4397,19 +4397,19 @@ export const GENERATED_CONFIGS: any = {
             "path": "Bourse.BoursEtude"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_Bourse_MntBoursDev_Value",
+            "key": "Transferts_Transfert_Details_Detail_Bourse_MntBoursDev",
             "label": "MntBoursDev",
-            "path": "Bourse.MntBoursDev.Value"
+            "path": "Bourse.MntBoursDev"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_Bourse_CodDevMntBourse_Value",
+            "key": "Transferts_Transfert_Details_Detail_Bourse_CodDevMntBourse",
             "label": "CodDevMntBourse",
-            "path": "Bourse.CodDevMntBourse.Value"
+            "path": "Bourse.CodDevMntBourse"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_Bourse_MntBoursTnd_Value",
+            "key": "Transferts_Transfert_Details_Detail_Bourse_MntBoursTnd",
             "label": "MntBoursTnd",
-            "path": "Bourse.MntBoursTnd.Value"
+            "path": "Bourse.MntBoursTnd"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Bourse_DureBours",
@@ -4425,6 +4425,21 @@ export const GENERATED_CONFIGS: any = {
             "key": "Transferts_Transfert_Details_Detail_Bourse_DatFinBours",
             "label": "DatFinBours",
             "path": "Bourse.DatFinBours"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefClotureDosScol_DatClotDosScolIat",
+            "label": "DatClotDosScolIat",
+            "path": "RefClotureDosScol.DatClotDosScolIat"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefClotureDosScol_CodIATClot",
+            "label": "CodIATClot",
+            "path": "RefClotureDosScol.CodIATClot"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_CodPaysDest",
+            "label": "CodPaysDest",
+            "path": "CodPaysDest"
       }
 ],
     fields: [
@@ -4441,8 +4456,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_2",
-            "name": "Transferts_Transfert_Entete_PeriodDec_2",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -4516,7 +4531,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_DomScolarite_DatDomDosScol",
             "name": "Transferts_Transfert_Details_Detail_DomScolarite_DatDomDosScol",
             "label": "DatDomDosScol",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_DomScolarite_OuvRenDosScol",
@@ -4528,7 +4543,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_DomScolarite_DatOuvRen",
             "name": "Transferts_Transfert_Details_Detail_DomScolarite_DatOuvRen",
             "label": "DatOuvRen",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_DomScolarite_NumAutBCT",
@@ -4540,7 +4555,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_DomScolarite_DateAutBCT",
             "name": "Transferts_Transfert_Details_Detail_DomScolarite_DateAutBCT",
             "label": "DateAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_Bourse_BoursEtude",
@@ -4549,20 +4564,20 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_Bourse_MntBoursDev_Value",
-            "name": "Transferts_Transfert_Details_Detail_Bourse_MntBoursDev_Value",
+            "id": "Transferts_Transfert_Details_Detail_Bourse_MntBoursDev",
+            "name": "Transferts_Transfert_Details_Detail_Bourse_MntBoursDev",
             "label": "MntBoursDev",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_Bourse_CodDevMntBourse_Value",
-            "name": "Transferts_Transfert_Details_Detail_Bourse_CodDevMntBourse_Value",
+            "id": "Transferts_Transfert_Details_Detail_Bourse_CodDevMntBourse",
+            "name": "Transferts_Transfert_Details_Detail_Bourse_CodDevMntBourse",
             "label": "CodDevMntBourse",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_Bourse_MntBoursTnd_Value",
-            "name": "Transferts_Transfert_Details_Detail_Bourse_MntBoursTnd_Value",
+            "id": "Transferts_Transfert_Details_Detail_Bourse_MntBoursTnd",
+            "name": "Transferts_Transfert_Details_Detail_Bourse_MntBoursTnd",
             "label": "MntBoursTnd",
             "type": "text"
       },
@@ -4576,12 +4591,30 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_Bourse_DatDebBours",
             "name": "Transferts_Transfert_Details_Detail_Bourse_DatDebBours",
             "label": "DatDebBours",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_Bourse_DatFinBours",
             "name": "Transferts_Transfert_Details_Detail_Bourse_DatFinBours",
             "label": "DatFinBours",
+            "type": "date"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefClotureDosScol_DatClotDosScolIat",
+            "name": "Transferts_Transfert_Details_Detail_RefClotureDosScol_DatClotDosScolIat",
+            "label": "DatClotDosScolIat",
+            "type": "date"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefClotureDosScol_CodIATClot",
+            "name": "Transferts_Transfert_Details_Detail_RefClotureDosScol_CodIATClot",
+            "label": "CodIATClot",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_CodPaysDest",
+            "name": "Transferts_Transfert_Details_Detail_CodPaysDest",
+            "label": "CodPaysDest",
             "type": "text"
       }
 ],
@@ -4593,7 +4626,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -4627,9 +4660,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_2",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -4652,14 +4685,24 @@ export const GENERATED_CONFIGS: any = {
             "path": "OperationTransf.LibOp"
       },
       {
-            "key": "MntTransDev Ccy_7",
-            "label": "MntTransDev Ccy",
-            "path": "MntTransDev Ccy_7"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
+            "label": "Value",
+            "path": "OperationTransf.MntTransDev.Value"
       },
       {
-            "key": "CvMntTnd Ccy_8",
-            "label": "CvMntTnd Ccy",
-            "path": "CvMntTnd Ccy_8"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
+            "label": "Ccy",
+            "path": "OperationTransf.MntTransDev.Ccy"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
+            "label": "Value",
+            "path": "OperationTransf.CvMntTnd.Value"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
+            "label": "Ccy",
+            "path": "OperationTransf.CvMntTnd.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_DatTrans",
@@ -4726,8 +4769,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_2",
-            "name": "Transferts_Transfert_Entete_PeriodDec_2",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -4747,7 +4790,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_DomScolarite_DateDomDosScol",
             "name": "Transferts_Transfert_Details_Detail_DomScolarite_DateDomDosScol",
             "label": "DateDomDosScol",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_LibOp",
@@ -4756,15 +4799,27 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "MntTransDev Ccy_7",
-            "name": "MntTransDev Ccy_7",
-            "label": "MntTransDev Ccy",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "CvMntTnd Ccy_8",
-            "name": "CvMntTnd Ccy_8",
-            "label": "CvMntTnd Ccy",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -4795,7 +4850,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_DatAutBctSD",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_DatAutBctSD",
             "label": "DatAutBctSD",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_NatOp",
@@ -4813,7 +4868,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
             "name": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
             "label": "DatAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefFichInfo_NumFichInfo",
@@ -4825,7 +4880,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "name": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "label": "DatFichInfo",
-            "type": "text"
+            "type": "date"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -4836,7 +4891,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -4870,9 +4925,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_2",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -4966,18 +5021,103 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "path": "OperationTransf.MntTransDev.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant du transfert en devises)",
+            "label": "Ccy",
             "path": "OperationTransf.MntTransDev.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "path": "OperationTransf.CvMntTnd.Value"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
+            "label": "Ccy",
+            "path": "OperationTransf.CvMntTnd.Ccy"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_NumAutBctSD",
+            "label": "NumAutBctSD",
+            "path": "OperationTransf.NumAutBctSD"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_DatAutBctSD",
+            "label": "DatAutBctSD",
+            "path": "OperationTransf.DatAutBctSD"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefFichInfo_NumFichInfo",
+            "label": "NumFichInfo",
+            "path": "RefFichInfo.NumFichInfo"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
+            "label": "DatFichInfo",
+            "path": "RefFichInfo.DatFichInfo"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_Retroc",
+            "label": "Retroc",
+            "path": "RefRetrocession.Retroc"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_DatRetroc",
+            "label": "DatRetroc",
+            "path": "RefRetrocession.DatRetroc"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_IaRetroc",
+            "label": "IaRetroc",
+            "path": "RefRetrocession.IaRetroc"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_MotRetroc",
+            "label": "MotRetroc",
+            "path": "RefRetrocession.MotRetroc"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_DatRetVoy",
+            "label": "DatRetVoy",
+            "path": "RefRetrocession.DatRetVoy"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_MntRetrocDev",
+            "label": "MntRetrocDev",
+            "path": "RefRetrocession.MntRetrocDev"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_DevMntRetroc",
+            "label": "DevMntRetroc",
+            "path": "RefRetrocession.DevMntRetroc"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_CvMntRetTnd",
+            "label": "CvMntRetTnd",
+            "path": "RefRetrocession.CvMntRetTnd"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_DecDouane_NumDecD",
+            "label": "NumDecD",
+            "path": "DecDouane.NumDecD"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_DecDouane_DatDecD",
+            "label": "DatDecD",
+            "path": "DecDouane.DatDecD"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_CodPaysDest",
+            "label": "CodPaysDest",
+            "path": "CodPaysDest"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_NatOp",
+            "label": "NatOp",
+            "path": "NatOp"
       }
 ],
     fields: [
@@ -4994,8 +5134,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_2",
-            "name": "Transferts_Transfert_Entete_PeriodDec_2",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -5110,20 +5250,122 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant du transfert en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
+            "label": "Ccy",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_NumAutBctSD",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_NumAutBctSD",
+            "label": "NumAutBctSD",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_DatAutBctSD",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_DatAutBctSD",
+            "label": "DatAutBctSD",
+            "type": "date"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefFichInfo_NumFichInfo",
+            "name": "Transferts_Transfert_Details_Detail_RefFichInfo_NumFichInfo",
+            "label": "NumFichInfo",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
+            "name": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
+            "label": "DatFichInfo",
+            "type": "date"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_Retroc",
+            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_Retroc",
+            "label": "Retroc",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_DatRetroc",
+            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_DatRetroc",
+            "label": "DatRetroc",
+            "type": "date"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_IaRetroc",
+            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_IaRetroc",
+            "label": "IaRetroc",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_MotRetroc",
+            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_MotRetroc",
+            "label": "MotRetroc",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_DatRetVoy",
+            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_DatRetVoy",
+            "label": "DatRetVoy",
+            "type": "date"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_MntRetrocDev",
+            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_MntRetrocDev",
+            "label": "MntRetrocDev",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_DevMntRetroc",
+            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_DevMntRetroc",
+            "label": "DevMntRetroc",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_CvMntRetTnd",
+            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_CvMntRetTnd",
+            "label": "CvMntRetTnd",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_DecDouane_NumDecD",
+            "name": "Transferts_Transfert_Details_Detail_DecDouane_NumDecD",
+            "label": "NumDecD",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_DecDouane_DatDecD",
+            "name": "Transferts_Transfert_Details_Detail_DecDouane_DatDecD",
+            "label": "DatDecD",
+            "type": "date"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_CodPaysDest",
+            "name": "Transferts_Transfert_Details_Detail_CodPaysDest",
+            "label": "CodPaysDest",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_NatOp",
+            "name": "Transferts_Transfert_Details_Detail_NatOp",
+            "label": "NatOp",
+            "type": "text"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -5134,7 +5376,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -5168,9 +5410,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_2",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -5243,14 +5485,49 @@ export const GENERATED_CONFIGS: any = {
             "path": "OperationTransf.NatOp"
       },
       {
-            "key": "MntTransDev Ccy_17",
-            "label": "MntTransDev Ccy",
-            "path": "MntTransDev Ccy_17"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
+            "label": "Value",
+            "path": "OperationTransf.MntTransDev.Value"
       },
       {
-            "key": "CvMntTnd Ccy_18",
-            "label": "CvMntTnd Ccy",
-            "path": "CvMntTnd Ccy_18"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
+            "label": "Ccy",
+            "path": "OperationTransf.MntTransDev.Ccy"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
+            "label": "Value",
+            "path": "OperationTransf.CvMntTnd.Value"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
+            "label": "Ccy",
+            "path": "OperationTransf.CvMntTnd.Ccy"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_ModTrans",
+            "label": "ModTrans",
+            "path": "OperationTransf.ModTrans"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_NumAutBctSD",
+            "label": "NumAutBctSD",
+            "path": "OperationTransf.NumAutBctSD"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_DatAutBctSD",
+            "label": "DatAutBctSD",
+            "path": "OperationTransf.DatAutBctSD"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefAutorisationBct_NumAutBCT",
+            "label": "NumAutBCT",
+            "path": "RefAutorisationBct.NumAutBCT"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
+            "label": "DatAutBCT",
+            "path": "RefAutorisationBct.DatAutBCT"
       }
 ],
     fields: [
@@ -5267,8 +5544,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_2",
-            "name": "Transferts_Transfert_Entete_PeriodDec_2",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -5357,16 +5634,58 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "MntTransDev Ccy_17",
-            "name": "MntTransDev Ccy_17",
-            "label": "MntTransDev Ccy",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "CvMntTnd Ccy_18",
-            "name": "CvMntTnd Ccy_18",
-            "label": "CvMntTnd Ccy",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
+            "label": "Ccy",
             "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_ModTrans",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_ModTrans",
+            "label": "ModTrans",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_NumAutBctSD",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_NumAutBctSD",
+            "label": "NumAutBctSD",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_DatAutBctSD",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_DatAutBctSD",
+            "label": "DatAutBctSD",
+            "type": "date"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefAutorisationBct_NumAutBCT",
+            "name": "Transferts_Transfert_Details_Detail_RefAutorisationBct_NumAutBCT",
+            "label": "NumAutBCT",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
+            "name": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
+            "label": "DatAutBCT",
+            "type": "date"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -5377,7 +5696,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -5411,9 +5730,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_2",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -5462,22 +5781,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "path": "OperationTransf.MntTransDev.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant de l'opération en devises)",
+            "label": "Ccy",
             "path": "OperationTransf.MntTransDev.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "path": "OperationTransf.CvMntTnd.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
-            "label": "Ccy (Contre valeur en dinars du Montant du transfert)",
+            "label": "Ccy",
             "path": "OperationTransf.CvMntTnd.Ccy"
       },
       {
@@ -5535,8 +5854,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_2",
-            "name": "Transferts_Transfert_Entete_PeriodDec_2",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -5597,25 +5916,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant de l'opération en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
-            "label": "Ccy (Contre valeur en dinars du Montant du transfert)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -5658,7 +5977,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "name": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "label": "DatFichInfo",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_CodSwift",
@@ -5675,7 +5994,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -5709,9 +6028,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_2",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -5754,23 +6073,23 @@ export const GENERATED_CONFIGS: any = {
             "path": "TxPart"
       },
       {
-            "key": "MntTrsf_11",
-            "label": "MntTrsf",
-            "path": "MntTrsf_11"
+            "key": "Transferts_Transfert_Details_Detail_MntTrsf_Value",
+            "label": "Value",
+            "path": "MntTrsf.Value"
       },
       {
-            "key": "Ccy_12",
+            "key": "Transferts_Transfert_Details_Detail_MntTrsf_Ccy",
             "label": "Ccy",
-            "path": "Ccy_12"
+            "path": "MntTrsf.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "path": "CvMntTnd.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_CvMntTnd_Ccy",
-            "label": "Ccy (Contre valeur en dinars du Montant du transfert)",
+            "label": "Ccy",
             "path": "CvMntTnd.Ccy"
       },
       {
@@ -5828,8 +6147,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_2",
-            "name": "Transferts_Transfert_Entete_PeriodDec_2",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -5882,27 +6201,27 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "MntTrsf_11",
-            "name": "MntTrsf_11",
-            "label": "MntTrsf",
-            "type": "text"
+            "id": "Transferts_Transfert_Details_Detail_MntTrsf_Value",
+            "name": "Transferts_Transfert_Details_Detail_MntTrsf_Value",
+            "label": "Value",
+            "type": "number"
       },
       {
-            "id": "Ccy_12",
-            "name": "Ccy_12",
+            "id": "Transferts_Transfert_Details_Detail_MntTrsf_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_MntTrsf_Ccy",
             "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_CvMntTnd_Value",
             "name": "Transferts_Transfert_Details_Detail_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_CvMntTnd_Ccy",
             "name": "Transferts_Transfert_Details_Detail_CvMntTnd_Ccy",
-            "label": "Ccy (Contre valeur en dinars du Montant du transfert)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -5915,7 +6234,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "name": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "label": "DatFichInfo",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefSocietetNR_IdentifiantSocNR",
@@ -5962,7 +6281,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -6001,14 +6320,14 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_AnneDec_3",
+            "key": "Transferts_Transfert_Details_Detail_AnneDec",
             "label": "AnneDec",
-            "path": "_entete.AnneDec"
+            "path": "AnneDec"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_4",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -6052,22 +6371,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefEmprunt_MntEmp_Value",
-            "label": "MntEmp",
+            "label": "Value",
             "path": "RefEmprunt.MntEmp.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefEmprunt_MntEmp_Ccy",
-            "label": "Ccy (Montant de l’emprunt)",
+            "label": "Ccy",
             "path": "RefEmprunt.MntEmp.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefEmprunt_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "path": "RefEmprunt.CvMntTnd.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefEmprunt_CvMntTnd_Ccy",
-            "label": "Ccy (Contre-valeur en dinars du montant de l’emprunt)",
+            "label": "Ccy",
             "path": "RefEmprunt.CvMntTnd.Ccy"
       },
       {
@@ -6136,14 +6455,14 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_AnneDec_3",
-            "name": "Transferts_Transfert_Entete_AnneDec_3",
+            "id": "Transferts_Transfert_Details_Detail_AnneDec",
+            "name": "Transferts_Transfert_Details_Detail_AnneDec",
             "label": "AnneDec",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_4",
-            "name": "Transferts_Transfert_Entete_PeriodDec_4",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -6163,7 +6482,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefDomConvention_DatDomConv",
             "name": "Transferts_Transfert_Details_Detail_RefDomConvention_DatDomConv",
             "label": "DatDomConv",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefSocEmprunteuse_MatFiscalSocEmp",
@@ -6198,25 +6517,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Transferts_Transfert_Details_Detail_RefEmprunt_MntEmp_Value",
             "name": "Transferts_Transfert_Details_Detail_RefEmprunt_MntEmp_Value",
-            "label": "MntEmp",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefEmprunt_MntEmp_Ccy",
             "name": "Transferts_Transfert_Details_Detail_RefEmprunt_MntEmp_Ccy",
-            "label": "Ccy (Montant de l’emprunt)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefEmprunt_CvMntTnd_Value",
             "name": "Transferts_Transfert_Details_Detail_RefEmprunt_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefEmprunt_CvMntTnd_Ccy",
             "name": "Transferts_Transfert_Details_Detail_RefEmprunt_CvMntTnd_Ccy",
-            "label": "Ccy (Contre-valeur en dinars du montant de l’emprunt)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -6259,7 +6578,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefFicheInvest_DatFichInvt",
             "name": "Transferts_Transfert_Details_Detail_RefFicheInvest_DatFichInvt",
             "label": "DatFichInvt",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefAutorisationBct_NumAutBCT",
@@ -6271,7 +6590,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
             "name": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
             "label": "DatAutBCT",
-            "type": "text"
+            "type": "date"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -6282,7 +6601,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -6306,9 +6625,29 @@ export const GENERATED_CONFIGS: any = {
     apiPath: 'api/periodes/add-data',
     tableColumns: [
       {
+            "key": "Transferts_Transfert_Entete_AnneDec",
+            "label": "AnneDec",
+            "path": "_entete.AnneDec"
+      },
+      {
+            "key": "Transferts_Transfert_Entete_PeriodDec",
+            "label": "PeriodDec",
+            "path": "_entete.PeriodDec"
+      },
+      {
             "key": "Transferts_Transfert_Entete_NbrEcritures",
             "label": "NbrEcritures",
             "path": "_entete.NbrEcritures"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_AnneDec",
+            "label": "AnneDec",
+            "path": "AnneDec"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "label": "PeriodDec",
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -6316,96 +6655,165 @@ export const GENERATED_CONFIGS: any = {
             "path": "Agence"
       },
       {
-            "key": "TypeOp_2",
-            "label": "TypeOp",
-            "path": "TypeOp_2"
+            "key": "Transferts_Transfert_Details_Detail_RefDomConvention_NumDomConv",
+            "label": "NumDomConv",
+            "path": "RefDomConvention.NumDomConv"
       },
       {
-            "key": "TypeIdentifiant_3",
-            "label": "TypeIdentifiant",
-            "path": "TypeIdentifiant_3"
+            "key": "Transferts_Transfert_Details_Detail_RefDomConvention_DatDomConv",
+            "label": "DatDomConv",
+            "path": "RefDomConvention.DatDomConv"
       },
       {
-            "key": "CodeIdentifiant_4",
-            "label": "CodeIdentifiant",
-            "path": "CodeIdentifiant_4"
+            "key": "Transferts_Transfert_Details_Detail_EmprunteurPreteur_MatFiscalSocEmp",
+            "label": "MatFiscalSocEmp",
+            "path": "EmprunteurPreteur.MatFiscalSocEmp"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_EmprunteurPreteur_DenomSocEmp",
-            "label": "Nom",
+            "label": "DenomSocEmp",
             "path": "EmprunteurPreteur.DenomSocEmp"
       },
       {
-            "key": "Prenom_6",
-            "label": "Prenom",
-            "path": "Prenom_6"
+            "key": "Transferts_Transfert_Details_Detail_EmprunteurPreteur_DenomOrgPret",
+            "label": "DenomOrgPret",
+            "path": "EmprunteurPreteur.DenomOrgPret"
       },
       {
-            "key": "RaisSociale_7",
-            "label": "RaisSociale",
-            "path": "RaisSociale_7"
+            "key": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntTotRembTrsfDev_Value",
+            "label": "Value",
+            "path": "MntTransfDevise.MntTotRembTrsfDev.Value"
       },
       {
-            "key": "NatMvtOp_8",
-            "label": "NatMvtOp",
-            "path": "NatMvtOp_8"
-      },
-      {
-            "key": "MntOpDev_9",
-            "label": "MntOpDev",
-            "path": "MntOpDev_9"
-      },
-      {
-            "key": "Ccy_10",
+            "key": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntTotRembTrsfDev_Ccy",
             "label": "Ccy",
-            "path": "Ccy_10"
+            "path": "MntTransfDevise.MntTotRembTrsfDev.Ccy"
       },
       {
-            "key": "MntOpDin_11",
-            "label": "MntOpDin",
-            "path": "MntOpDin_11"
+            "key": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntPrincTrsfDev_Value",
+            "label": "Value",
+            "path": "MntTransfDevise.MntPrincTrsfDev.Value"
       },
       {
-            "key": "Ccy_12",
+            "key": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntPrincTrsfDev_Ccy",
             "label": "Ccy",
-            "path": "Ccy_12"
+            "path": "MntTransfDevise.MntPrincTrsfDev.Ccy"
       },
       {
-            "key": "DateMvt_13",
-            "label": "DateMvt",
-            "path": "DateMvt_13"
+            "key": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntInteretsTrsfDev_Value",
+            "label": "Value",
+            "path": "MntTransfDevise.MntInteretsTrsfDev.Value"
       },
       {
-            "key": "EncoursPlac_14",
-            "label": "EncoursPlac",
-            "path": "EncoursPlac_14"
+            "key": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntInteretsTrsfDev_Ccy",
+            "label": "Ccy",
+            "path": "MntTransfDevise.MntInteretsTrsfDev.Ccy"
       },
       {
-            "key": "NatOp_15",
-            "label": "NatOp",
-            "path": "NatOp_15"
+            "key": "Transferts_Transfert_Details_Detail_MntTransfDevise_AutresChargesTrsfDev_Value",
+            "label": "Value",
+            "path": "MntTransfDevise.AutresChargesTrsfDev.Value"
       },
       {
-            "key": "SuppOp_16",
-            "label": "SuppOp",
-            "path": "SuppOp_16"
+            "key": "Transferts_Transfert_Details_Detail_MntTransfDevise_AutresChargesTrsfDev_Ccy",
+            "label": "Ccy",
+            "path": "MntTransfDevise.AutresChargesTrsfDev.Ccy"
       },
       {
-            "key": "NumSupp_17",
-            "label": "NumSupp",
-            "path": "NumSupp_17"
+            "key": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndTotTrsf_Value",
+            "label": "Value",
+            "path": "ConterValMontant.CVMntTndTotTrsf.Value"
       },
       {
-            "key": "DateSupp_18",
-            "label": "DateSupp",
-            "path": "DateSupp_18"
+            "key": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndTotTrsf_Ccy",
+            "label": "Ccy",
+            "path": "ConterValMontant.CVMntTndTotTrsf.Ccy"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndPrinTrsf_Value",
+            "label": "Value",
+            "path": "ConterValMontant.CVMntTndPrinTrsf.Value"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndPrinTrsf_Ccy",
+            "label": "Ccy",
+            "path": "ConterValMontant.CVMntTndPrinTrsf.Ccy"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_ConterValMontant_InteretsTndTrsf_Value",
+            "label": "Value",
+            "path": "ConterValMontant.InteretsTndTrsf.Value"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_ConterValMontant_InteretsTndTrsf_Ccy",
+            "label": "Ccy",
+            "path": "ConterValMontant.InteretsTndTrsf.Ccy"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_ConterValMontant_CVAutresChargesTrsf_Value",
+            "label": "Value",
+            "path": "ConterValMontant.CVAutresChargesTrsf.Value"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_ConterValMontant_CVAutresChargesTrsf_Ccy",
+            "label": "Ccy",
+            "path": "ConterValMontant.CVAutresChargesTrsf.Ccy"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_ConterValMontant_TauxInterets",
+            "label": "TauxInterets",
+            "path": "ConterValMontant.TauxInterets"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefFicheInfo_NumFichInfo",
+            "label": "NumFichInfo",
+            "path": "RefFicheInfo.NumFichInfo"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_RefFicheInfo_DatFichInfo",
+            "label": "DatFichInfo",
+            "path": "RefFicheInfo.DatFichInfo"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_ReliquatMntPrRemb_Value",
+            "label": "Value",
+            "path": "ReliquatMntPrRemb.Value"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_ReliquatMntPrRemb_Ccy",
+            "label": "Ccy",
+            "path": "ReliquatMntPrRemb.Ccy"
       }
 ],
     fields: [
       {
+            "id": "Transferts_Transfert_Entete_AnneDec",
+            "name": "Transferts_Transfert_Entete_AnneDec",
+            "label": "AnneDec",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Entete_PeriodDec",
+            "name": "Transferts_Transfert_Entete_PeriodDec",
+            "label": "PeriodDec",
+            "type": "text"
+      },
+      {
             "id": "Transferts_Transfert_Entete_NbrEcritures",
             "name": "Transferts_Transfert_Entete_NbrEcritures",
             "label": "NbrEcritures",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_AnneDec",
+            "name": "Transferts_Transfert_Details_Detail_AnneDec",
+            "label": "AnneDec",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "label": "PeriodDec",
             "type": "text"
       },
       {
@@ -6415,105 +6823,159 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "TypeOp_2",
-            "name": "TypeOp_2",
-            "label": "TypeOp",
+            "id": "Transferts_Transfert_Details_Detail_RefDomConvention_NumDomConv",
+            "name": "Transferts_Transfert_Details_Detail_RefDomConvention_NumDomConv",
+            "label": "NumDomConv",
             "type": "text"
       },
       {
-            "id": "TypeIdentifiant_3",
-            "name": "TypeIdentifiant_3",
-            "label": "TypeIdentifiant",
-            "type": "text"
+            "id": "Transferts_Transfert_Details_Detail_RefDomConvention_DatDomConv",
+            "name": "Transferts_Transfert_Details_Detail_RefDomConvention_DatDomConv",
+            "label": "DatDomConv",
+            "type": "date"
       },
       {
-            "id": "CodeIdentifiant_4",
-            "name": "CodeIdentifiant_4",
-            "label": "CodeIdentifiant",
+            "id": "Transferts_Transfert_Details_Detail_EmprunteurPreteur_MatFiscalSocEmp",
+            "name": "Transferts_Transfert_Details_Detail_EmprunteurPreteur_MatFiscalSocEmp",
+            "label": "MatFiscalSocEmp",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_EmprunteurPreteur_DenomSocEmp",
             "name": "Transferts_Transfert_Details_Detail_EmprunteurPreteur_DenomSocEmp",
-            "label": "Nom",
+            "label": "DenomSocEmp",
             "type": "text"
       },
       {
-            "id": "Prenom_6",
-            "name": "Prenom_6",
-            "label": "Prenom",
+            "id": "Transferts_Transfert_Details_Detail_EmprunteurPreteur_DenomOrgPret",
+            "name": "Transferts_Transfert_Details_Detail_EmprunteurPreteur_DenomOrgPret",
+            "label": "DenomOrgPret",
             "type": "text"
       },
       {
-            "id": "RaisSociale_7",
-            "name": "RaisSociale_7",
-            "label": "RaisSociale",
-            "type": "text"
+            "id": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntTotRembTrsfDev_Value",
+            "name": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntTotRembTrsfDev_Value",
+            "label": "Value",
+            "type": "number"
       },
       {
-            "id": "NatMvtOp_8",
-            "name": "NatMvtOp_8",
-            "label": "NatMvtOp",
-            "type": "text"
-      },
-      {
-            "id": "MntOpDev_9",
-            "name": "MntOpDev_9",
-            "label": "MntOpDev",
-            "type": "text"
-      },
-      {
-            "id": "Ccy_10",
-            "name": "Ccy_10",
+            "id": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntTotRembTrsfDev_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntTotRembTrsfDev_Ccy",
             "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "MntOpDin_11",
-            "name": "MntOpDin_11",
-            "label": "MntOpDin",
-            "type": "text"
+            "id": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntPrincTrsfDev_Value",
+            "name": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntPrincTrsfDev_Value",
+            "label": "Value",
+            "type": "number"
       },
       {
-            "id": "Ccy_12",
-            "name": "Ccy_12",
+            "id": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntPrincTrsfDev_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntPrincTrsfDev_Ccy",
             "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "DateMvt_13",
-            "name": "DateMvt_13",
-            "label": "DateMvt",
+            "id": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntInteretsTrsfDev_Value",
+            "name": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntInteretsTrsfDev_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntInteretsTrsfDev_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_MntTransfDevise_MntInteretsTrsfDev_Ccy",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "EncoursPlac_14",
-            "name": "EncoursPlac_14",
-            "label": "EncoursPlac",
+            "id": "Transferts_Transfert_Details_Detail_MntTransfDevise_AutresChargesTrsfDev_Value",
+            "name": "Transferts_Transfert_Details_Detail_MntTransfDevise_AutresChargesTrsfDev_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_MntTransfDevise_AutresChargesTrsfDev_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_MntTransfDevise_AutresChargesTrsfDev_Ccy",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "NatOp_15",
-            "name": "NatOp_15",
-            "label": "NatOp",
+            "id": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndTotTrsf_Value",
+            "name": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndTotTrsf_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndTotTrsf_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndTotTrsf_Ccy",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "SuppOp_16",
-            "name": "SuppOp_16",
-            "label": "SuppOp",
+            "id": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndPrinTrsf_Value",
+            "name": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndPrinTrsf_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndPrinTrsf_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_ConterValMontant_CVMntTndPrinTrsf_Ccy",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "NumSupp_17",
-            "name": "NumSupp_17",
-            "label": "NumSupp",
+            "id": "Transferts_Transfert_Details_Detail_ConterValMontant_InteretsTndTrsf_Value",
+            "name": "Transferts_Transfert_Details_Detail_ConterValMontant_InteretsTndTrsf_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_ConterValMontant_InteretsTndTrsf_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_ConterValMontant_InteretsTndTrsf_Ccy",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "DateSupp_18",
-            "name": "DateSupp_18",
-            "label": "DateSupp",
+            "id": "Transferts_Transfert_Details_Detail_ConterValMontant_CVAutresChargesTrsf_Value",
+            "name": "Transferts_Transfert_Details_Detail_ConterValMontant_CVAutresChargesTrsf_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_ConterValMontant_CVAutresChargesTrsf_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_ConterValMontant_CVAutresChargesTrsf_Ccy",
+            "label": "Ccy",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_ConterValMontant_TauxInterets",
+            "name": "Transferts_Transfert_Details_Detail_ConterValMontant_TauxInterets",
+            "label": "TauxInterets",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefFicheInfo_NumFichInfo",
+            "name": "Transferts_Transfert_Details_Detail_RefFicheInfo_NumFichInfo",
+            "label": "NumFichInfo",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_RefFicheInfo_DatFichInfo",
+            "name": "Transferts_Transfert_Details_Detail_RefFicheInfo_DatFichInfo",
+            "label": "DatFichInfo",
+            "type": "date"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_ReliquatMntPrRemb_Value",
+            "name": "Transferts_Transfert_Details_Detail_ReliquatMntPrRemb_Value",
+            "label": "Value",
+            "type": "number"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_ReliquatMntPrRemb_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_ReliquatMntPrRemb_Ccy",
+            "label": "Ccy",
             "type": "text"
       }
 ],
@@ -6525,7 +6987,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -6564,14 +7026,14 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_AnneDec_3",
+            "key": "Transferts_Transfert_Details_Detail_AnneDec",
             "label": "AnneDec",
-            "path": "_entete.AnneDec"
+            "path": "AnneDec"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_4",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -6584,9 +7046,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "Benificiaire.TypeIdentifiant"
       },
       {
-            "key": "CodIdentifiant_7",
+            "key": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
             "label": "CodIdentifiant",
-            "path": "CodIdentifiant_7"
+            "path": "Benificiaire.CodIdentifiant"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Benificiaire_Nom",
@@ -6634,43 +7096,43 @@ export const GENERATED_CONFIGS: any = {
             "path": "OperationTransf.BoursForm"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntBoursDev_Value",
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntBoursDev",
             "label": "MntBoursDev",
-            "path": "OperationTransf.MntBoursDev.Value"
+            "path": "OperationTransf.MntBoursDev"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_OperationTransf_DevMntBours_Value",
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_DevMntBours",
             "label": "DevMntBours",
-            "path": "OperationTransf.DevMntBours.Value"
+            "path": "OperationTransf.DevMntBours"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocDev_Value",
-            "label": "MntAllocDev",
+            "label": "Value",
             "path": "OperationTransf.MntAllocDev.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocDev_Ccy",
-            "label": "Ccy (Montant de l'allocation en devises)",
+            "label": "Ccy",
             "path": "OperationTransf.MntAllocDev.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTrans_Value",
-            "label": "MntTrans",
+            "label": "Value",
             "path": "OperationTransf.MntTrans.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTrans_Ccy",
-            "label": "Ccy (Montant du transfert)",
+            "label": "Ccy",
             "path": "OperationTransf.MntTrans.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvTndMntGlob_Value",
-            "label": "CvTndMntGlob",
+            "label": "Value",
             "path": "OperationTransf.CvTndMntGlob.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvTndMntGlob_Ccy",
-            "label": "Ccy (C/V en TND du montant global)",
+            "label": "Ccy",
             "path": "OperationTransf.CvTndMntGlob.Ccy"
       },
       {
@@ -6759,14 +7221,14 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_AnneDec_3",
-            "name": "Transferts_Transfert_Entete_AnneDec_3",
+            "id": "Transferts_Transfert_Details_Detail_AnneDec",
+            "name": "Transferts_Transfert_Details_Detail_AnneDec",
             "label": "AnneDec",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_4",
-            "name": "Transferts_Transfert_Entete_PeriodDec_4",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -6783,8 +7245,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "CodIdentifiant_7",
-            "name": "CodIdentifiant_7",
+            "id": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
+            "name": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
             "label": "CodIdentifiant",
             "type": "text"
       },
@@ -6834,7 +7296,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_DatDomDosForm",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_DatDomDosForm",
             "label": "DatDomDosForm",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_BoursForm",
@@ -6843,51 +7305,51 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntBoursDev_Value",
-            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntBoursDev_Value",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntBoursDev",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntBoursDev",
             "label": "MntBoursDev",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_OperationTransf_DevMntBours_Value",
-            "name": "Transferts_Transfert_Details_Detail_OperationTransf_DevMntBours_Value",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_DevMntBours",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_DevMntBours",
             "label": "DevMntBours",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocDev_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocDev_Value",
-            "label": "MntAllocDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocDev_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocDev_Ccy",
-            "label": "Ccy (Montant de l'allocation en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTrans_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTrans_Value",
-            "label": "MntTrans",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTrans_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTrans_Ccy",
-            "label": "Ccy (Montant du transfert)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvTndMntGlob_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvTndMntGlob_Value",
-            "label": "CvTndMntGlob",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvTndMntGlob_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvTndMntGlob_Ccy",
-            "label": "Ccy (C/V en TND du montant global)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -6912,7 +7374,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "name": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "label": "DatFichInfo",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefAutSortDev_NumAutBctSD",
@@ -6924,7 +7386,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefAutSortDev_DatAutBctSD",
             "name": "Transferts_Transfert_Details_Detail_RefAutSortDev_DatAutBctSD",
             "label": "DatAutBctSD",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefFormation_DureForm",
@@ -6936,13 +7398,13 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefFormation_DatDebBenifForm",
             "name": "Transferts_Transfert_Details_Detail_RefFormation_DatDebBenifForm",
             "label": "DatDebBenifForm",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefFormation_DatFinBenifForm",
             "name": "Transferts_Transfert_Details_Detail_RefFormation_DatFinBenifForm",
             "label": "DatFinBenifForm",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefFormation_CodPaysForm",
@@ -6966,7 +7428,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
             "name": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
             "label": "DatAutBCT",
-            "type": "text"
+            "type": "date"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -6977,7 +7439,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -7011,9 +7473,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_2",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -7071,19 +7533,19 @@ export const GENERATED_CONFIGS: any = {
             "path": "RefRetrocession.DatRetro"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_MntRetroDev_Value",
+            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_MntRetroDev",
             "label": "MntRetroDev",
-            "path": "RefRetrocession.MntRetroDev.Value"
+            "path": "RefRetrocession.MntRetroDev"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_DevMntRetro_Value",
+            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_DevMntRetro",
             "label": "DevMntRetro",
-            "path": "RefRetrocession.DevMntRetro.Value"
+            "path": "RefRetrocession.DevMntRetro"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_CVMntRetro_Value",
+            "key": "Transferts_Transfert_Details_Detail_RefRetrocession_CVMntRetro",
             "label": "CVMntRetro",
-            "path": "RefRetrocession.CVMntRetro.Value"
+            "path": "RefRetrocession.CVMntRetro"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefRetrocession_NumAutBctSD",
@@ -7130,8 +7592,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_2",
-            "name": "Transferts_Transfert_Entete_PeriodDec_2",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -7199,23 +7661,23 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefRetrocession_DatRetro",
             "name": "Transferts_Transfert_Details_Detail_RefRetrocession_DatRetro",
             "label": "DatRetro",
-            "type": "text"
+            "type": "date"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_MntRetroDev_Value",
-            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_MntRetroDev_Value",
+            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_MntRetroDev",
+            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_MntRetroDev",
             "label": "MntRetroDev",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_DevMntRetro_Value",
-            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_DevMntRetro_Value",
+            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_DevMntRetro",
+            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_DevMntRetro",
             "label": "DevMntRetro",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_CVMntRetro_Value",
-            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_CVMntRetro_Value",
+            "id": "Transferts_Transfert_Details_Detail_RefRetrocession_CVMntRetro",
+            "name": "Transferts_Transfert_Details_Detail_RefRetrocession_CVMntRetro",
             "label": "CVMntRetro",
             "type": "text"
       },
@@ -7235,7 +7697,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefRetrocession_DatRetVoy",
             "name": "Transferts_Transfert_Details_Detail_RefRetrocession_DatRetVoy",
             "label": "DatRetVoy",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_DecDouane_NumDecD",
@@ -7247,13 +7709,13 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_DecDouane_DatDecD",
             "name": "Transferts_Transfert_Details_Detail_DecDouane_DatDecD",
             "label": "DatDecD",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_DatDelivAllocTouris",
             "name": "Transferts_Transfert_Details_Detail_DatDelivAllocTouris",
             "label": "DatDelivAllocTouris",
-            "type": "text"
+            "type": "date"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -7264,7 +7726,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -7298,9 +7760,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_2",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -7313,9 +7775,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "Benificiaire.TypeIdentifiant"
       },
       {
-            "key": "CodIdentifiant_5",
+            "key": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
             "label": "CodIdentifiant",
-            "path": "CodIdentifiant_5"
+            "path": "Benificiaire.CodIdentifiant"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Benificiaire_CategBenif",
@@ -7354,33 +7816,33 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Value",
-            "label": "MntInitDinCartInter",
+            "label": "Value",
             "path": "OperationTransf.MntInitDinCartInter.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Ccy",
-            "label": "Ccy (Montant initialement délivré en dinar par carte internationale)",
+            "label": "Ccy",
             "path": "OperationTransf.MntInitDinCartInter.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Value",
-            "label": "MntDin",
+            "label": "Value",
             "path": "OperationTransf.MntDin.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Ccy",
-            "label": "Ccy (Montant en dinars effectif utilisé)",
+            "label": "Ccy",
             "path": "OperationTransf.MntDin.Ccy"
       },
       {
-            "key": "MntDev_17",
-            "label": "MntDev",
-            "path": "MntDev_17"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Value",
+            "label": "Value",
+            "path": "OperationTransf.MntDev.Value"
       },
       {
-            "key": "Ccy_18",
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Ccy",
             "label": "Ccy",
-            "path": "Ccy_18"
+            "path": "OperationTransf.MntDev.Ccy"
       }
 ],
     fields: [
@@ -7397,8 +7859,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_2",
-            "name": "Transferts_Transfert_Entete_PeriodDec_2",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -7415,8 +7877,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "CodIdentifiant_5",
-            "name": "CodIdentifiant_5",
+            "id": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
+            "name": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
             "label": "CodIdentifiant",
             "type": "text"
       },
@@ -7465,36 +7927,36 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Value",
-            "label": "MntInitDinCartInter",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Ccy",
-            "label": "Ccy (Montant initialement délivré en dinar par carte internationale)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Value",
-            "label": "MntDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Ccy",
-            "label": "Ccy (Montant en dinars effectif utilisé)",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "MntDev_17",
-            "name": "MntDev_17",
-            "label": "MntDev",
-            "type": "text"
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Value",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Value",
+            "label": "Value",
+            "type": "number"
       },
       {
-            "id": "Ccy_18",
-            "name": "Ccy_18",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Ccy",
             "label": "Ccy",
             "type": "text"
       }
@@ -7507,7 +7969,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -7536,9 +7998,29 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.PeriodDec"
       },
       {
+            "key": "Transferts_Transfert_Entete_NbrEcritures",
+            "label": "NbrEcritures",
+            "path": "_entete.NbrEcritures"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "label": "PeriodDec",
+            "path": "PeriodDec"
+      },
+      {
             "key": "Transferts_Transfert_Details_Detail_Agence",
             "label": "Agence",
             "path": "Agence"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_Benificiaire_TypeIdentifiant",
+            "label": "TypeIdentifiant",
+            "path": "Benificiaire.TypeIdentifiant"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
+            "label": "CodIdentifiant",
+            "path": "Benificiaire.CodIdentifiant"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Benificiaire_CategBenif",
@@ -7549,16 +8031,6 @@ export const GENERATED_CONFIGS: any = {
             "key": "Transferts_Transfert_Details_Detail_Benificiaire_Age",
             "label": "Age",
             "path": "Benificiaire.Age"
-      },
-      {
-            "key": "Transferts_Transfert_Details_Detail_Benificiaire_TypeIdentifiant",
-            "label": "TypeIdentifiant",
-            "path": "Benificiaire.TypeIdentifiant"
-      },
-      {
-            "key": "CodIdentifiant_5",
-            "label": "CodIdentifiant",
-            "path": "CodIdentifiant_5"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Benificiaire_Nom",
@@ -7576,64 +8048,44 @@ export const GENERATED_CONFIGS: any = {
             "path": "Benificiaire.Nationalite"
       },
       {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_NatOp",
+            "label": "NatOp",
+            "path": "OperationTransf.NatOp"
+      },
+      {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_EcoSalaire",
             "label": "EcoSalaire",
             "path": "OperationTransf.EcoSalaire"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_OperationTransf_CodPaysDest",
-            "label": "CodPaysDest",
-            "path": "OperationTransf.CodPaysDest"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Value",
+            "label": "Value",
+            "path": "OperationTransf.MntInitDinCartInter.Value"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_OperationTransf_ModDeliv",
-            "label": "ModDeliv",
-            "path": "OperationTransf.ModDeliv"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Ccy",
+            "label": "Ccy",
+            "path": "OperationTransf.MntInitDinCartInter.Ccy"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocTourDev_Value",
-            "label": "MntAllocTourDev",
-            "path": "OperationTransf.MntAllocTourDev.Value"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Value",
+            "label": "Value",
+            "path": "OperationTransf.MntDin.Value"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocTourDev_Ccy",
-            "label": "Ccy (Montant de l'allocation touristique en devises)",
-            "path": "OperationTransf.MntAllocTourDev.Ccy"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Ccy",
+            "label": "Ccy",
+            "path": "OperationTransf.MntDin.Ccy"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntAlloc_Value",
-            "label": "MntAlloc",
-            "path": "OperationTransf.MntAlloc.Value"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Value",
+            "label": "Value",
+            "path": "OperationTransf.MntDev.Value"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntAlloc_Ccy",
-            "label": "Ccy (Montant de l'allocation en dinars)",
-            "path": "OperationTransf.MntAlloc.Ccy"
-      },
-      {
-            "key": "Transferts_Transfert_Details_Detail_OperationTransf_DatDelivAllocTour",
-            "label": "DatDelivAllocTour",
-            "path": "OperationTransf.DatDelivAllocTour"
-      },
-      {
-            "key": "Transferts_Transfert_Details_Detail_OperationTransf_NumAutBctSD",
-            "label": "NumAutBctSD",
-            "path": "OperationTransf.NumAutBctSD"
-      },
-      {
-            "key": "Transferts_Transfert_Details_Detail_OperationTransf_DatAutBctSD",
-            "label": "DatAutBctSD",
-            "path": "OperationTransf.DatAutBctSD"
-      },
-      {
-            "key": "Transferts_Transfert_Details_Detail_RefAutorisationBct_NumAutBCT",
-            "label": "NumAutBCT",
-            "path": "RefAutorisationBct.NumAutBCT"
-      },
-      {
-            "key": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
-            "label": "DatAutBCT",
-            "path": "RefAutorisationBct.DatAutBCT"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Ccy",
+            "label": "Ccy",
+            "path": "OperationTransf.MntDev.Ccy"
       }
 ],
     fields: [
@@ -7644,9 +8096,33 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
+            "id": "Transferts_Transfert_Entete_NbrEcritures",
+            "name": "Transferts_Transfert_Entete_NbrEcritures",
+            "label": "NbrEcritures",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "label": "PeriodDec",
+            "type": "text"
+      },
+      {
             "id": "Transferts_Transfert_Details_Detail_Agence",
             "name": "Transferts_Transfert_Details_Detail_Agence",
             "label": "Agence",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_Benificiaire_TypeIdentifiant",
+            "name": "Transferts_Transfert_Details_Detail_Benificiaire_TypeIdentifiant",
+            "label": "TypeIdentifiant",
+            "type": "text"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
+            "name": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
+            "label": "CodIdentifiant",
             "type": "text"
       },
       {
@@ -7659,18 +8135,6 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_Benificiaire_Age",
             "name": "Transferts_Transfert_Details_Detail_Benificiaire_Age",
             "label": "Age",
-            "type": "text"
-      },
-      {
-            "id": "Transferts_Transfert_Details_Detail_Benificiaire_TypeIdentifiant",
-            "name": "Transferts_Transfert_Details_Detail_Benificiaire_TypeIdentifiant",
-            "label": "TypeIdentifiant",
-            "type": "text"
-      },
-      {
-            "id": "CodIdentifiant_5",
-            "name": "CodIdentifiant_5",
-            "label": "CodIdentifiant",
             "type": "text"
       },
       {
@@ -7692,75 +8156,51 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_NatOp",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_NatOp",
+            "label": "NatOp",
+            "type": "text"
+      },
+      {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_EcoSalaire",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_EcoSalaire",
             "label": "EcoSalaire",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_OperationTransf_CodPaysDest",
-            "name": "Transferts_Transfert_Details_Detail_OperationTransf_CodPaysDest",
-            "label": "CodPaysDest",
-            "type": "text"
-      },
-      {
-            "id": "Transferts_Transfert_Details_Detail_OperationTransf_ModDeliv",
-            "name": "Transferts_Transfert_Details_Detail_OperationTransf_ModDeliv",
-            "label": "ModDeliv",
-            "type": "text"
-      },
-      {
-            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocTourDev_Value",
-            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocTourDev_Value",
-            "label": "MntAllocTourDev",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Value",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Value",
+            "label": "Value",
             "type": "number"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocTourDev_Ccy",
-            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntAllocTourDev_Ccy",
-            "label": "Ccy (Montant de l'allocation touristique en devises)",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntInitDinCartInter_Ccy",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntAlloc_Value",
-            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntAlloc_Value",
-            "label": "MntAlloc",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Value",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Value",
+            "label": "Value",
             "type": "number"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntAlloc_Ccy",
-            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntAlloc_Ccy",
-            "label": "Ccy (Montant de l'allocation en dinars)",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntDin_Ccy",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_OperationTransf_DatDelivAllocTour",
-            "name": "Transferts_Transfert_Details_Detail_OperationTransf_DatDelivAllocTour",
-            "label": "DatDelivAllocTour",
-            "type": "date"
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Value",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Value",
+            "label": "Value",
+            "type": "number"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_OperationTransf_NumAutBctSD",
-            "name": "Transferts_Transfert_Details_Detail_OperationTransf_NumAutBctSD",
-            "label": "NumAutBctSD",
-            "type": "text"
-      },
-      {
-            "id": "Transferts_Transfert_Details_Detail_OperationTransf_DatAutBctSD",
-            "name": "Transferts_Transfert_Details_Detail_OperationTransf_DatAutBctSD",
-            "label": "DatAutBctSD",
-            "type": "text"
-      },
-      {
-            "id": "Transferts_Transfert_Details_Detail_RefAutorisationBct_NumAutBCT",
-            "name": "Transferts_Transfert_Details_Detail_RefAutorisationBct_NumAutBCT",
-            "label": "NumAutBCT",
-            "type": "text"
-      },
-      {
-            "id": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
-            "name": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
-            "label": "DatAutBCT",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Ccy",
+            "label": "Ccy",
             "type": "text"
       }
 ],
@@ -7772,7 +8212,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -7806,9 +8246,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_2",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -7826,9 +8266,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "Benificiaire.TypeIdentifiant"
       },
       {
-            "key": "CodIdentifiant_6",
+            "key": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
             "label": "CodIdentifiant",
-            "path": "CodIdentifiant_6"
+            "path": "Benificiaire.CodIdentifiant"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Benificiaire_RaisSocial",
@@ -7857,42 +8297,42 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntInsAllocDin_Value",
-            "label": "MntInsAllocDin",
+            "label": "Value",
             "path": "RefMntAllocation.MntInsAllocDin.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntInsAllocDin_Ccy",
-            "label": "Ccy (Montant inscrit de l'allocation en dinars)",
+            "label": "Ccy",
             "path": "RefMntAllocation.MntInsAllocDin.Ccy"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatAlimCart_Value",
+            "key": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatAlimCart",
             "label": "DatAlimCart",
-            "path": "RefMntAllocation.DatAlimCart.Value"
+            "path": "RefMntAllocation.DatAlimCart"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntAllocTrsfDin_Value",
-            "label": "MntAllocTrsfDin",
+            "label": "Value",
             "path": "RefMntAllocation.MntAllocTrsfDin.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntAllocTrsfDin_Ccy",
-            "label": "Ccy (Montant de l'allocation transféré en dinars)",
+            "label": "Ccy",
             "path": "RefMntAllocation.MntAllocTrsfDin.Ccy"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatTrans_Value",
+            "key": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatTrans",
             "label": "DatTrans",
-            "path": "RefMntAllocation.DatTrans.Value"
+            "path": "RefMntAllocation.DatTrans"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntRapaCartDin_Value",
-            "label": "MntRapaCartDin",
+            "label": "Value",
             "path": "RefMntAllocation.MntRapaCartDin.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntRapaCartDin_Ccy",
-            "label": "Ccy (Montant rapatrié sur la carte en dinars)",
+            "label": "Ccy",
             "path": "RefMntAllocation.MntRapaCartDin.Ccy"
       },
       {
@@ -7920,8 +8360,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_2",
-            "name": "Transferts_Transfert_Entete_PeriodDec_2",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -7944,8 +8384,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "CodIdentifiant_6",
-            "name": "CodIdentifiant_6",
+            "id": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
+            "name": "Transferts_Transfert_Details_Detail_Benificiaire_CodIdentifiant",
             "label": "CodIdentifiant",
             "type": "text"
       },
@@ -7982,49 +8422,49 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntInsAllocDin_Value",
             "name": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntInsAllocDin_Value",
-            "label": "MntInsAllocDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntInsAllocDin_Ccy",
             "name": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntInsAllocDin_Ccy",
-            "label": "Ccy (Montant inscrit de l'allocation en dinars)",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatAlimCart_Value",
-            "name": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatAlimCart_Value",
+            "id": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatAlimCart",
+            "name": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatAlimCart",
             "label": "DatAlimCart",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntAllocTrsfDin_Value",
             "name": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntAllocTrsfDin_Value",
-            "label": "MntAllocTrsfDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntAllocTrsfDin_Ccy",
             "name": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntAllocTrsfDin_Ccy",
-            "label": "Ccy (Montant de l'allocation transféré en dinars)",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatTrans_Value",
-            "name": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatTrans_Value",
+            "id": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatTrans",
+            "name": "Transferts_Transfert_Details_Detail_RefMntAllocation_DatTrans",
             "label": "DatTrans",
             "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntRapaCartDin_Value",
             "name": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntRapaCartDin_Value",
-            "label": "MntRapaCartDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntRapaCartDin_Ccy",
             "name": "Transferts_Transfert_Details_Detail_RefMntAllocation_MntRapaCartDin_Ccy",
-            "label": "Ccy (Montant rapatrié sur la carte en dinars)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -8037,7 +8477,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
             "name": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
             "label": "DatAutBCT",
-            "type": "text"
+            "type": "date"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -8048,7 +8488,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -8082,9 +8522,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_2",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -8122,9 +8562,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "Benifiicaire.TypeBenifAsso"
       },
       {
-            "key": "CodIdentifiant_10",
+            "key": "Transferts_Transfert_Details_Detail_Benifiicaire_CodIdentifiant",
             "label": "CodIdentifiant",
-            "path": "CodIdentifiant_10"
+            "path": "Benifiicaire.CodIdentifiant"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Benifiicaire_NumVisa",
@@ -8157,29 +8597,34 @@ export const GENERATED_CONFIGS: any = {
             "path": "OperationTransf.NatOp"
       },
       {
-            "key": "MntDev_17",
-            "label": "MntDev",
-            "path": "MntDev_17"
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Value",
+            "label": "Value",
+            "path": "OperationTransf.MntDev.Value"
       },
       {
-            "key": "Ccy_18",
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Ccy",
             "label": "Ccy",
-            "path": "Ccy_18"
+            "path": "OperationTransf.MntDev.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CVMntDin_Value",
-            "label": "CVMntDin",
+            "label": "Value",
             "path": "OperationTransf.CVMntDin.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CVMntDin_Ccy",
-            "label": "Ccy (CV en dinars du montant de l'opération)",
+            "label": "Ccy",
             "path": "OperationTransf.CVMntDin.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_DatOp",
             "label": "DatOp",
             "path": "OperationTransf.DatOp"
+      },
+      {
+            "key": "Transferts_Transfert_Details_Detail_OperationTransf_RefMsgSwift",
+            "label": "RefMsgSwift",
+            "path": "OperationTransf.RefMsgSwift"
       }
 ],
     fields: [
@@ -8196,8 +8641,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_2",
-            "name": "Transferts_Transfert_Entete_PeriodDec_2",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -8244,8 +8689,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "CodIdentifiant_10",
-            "name": "CodIdentifiant_10",
+            "id": "Transferts_Transfert_Details_Detail_Benifiicaire_CodIdentifiant",
+            "name": "Transferts_Transfert_Details_Detail_Benifiicaire_CodIdentifiant",
             "label": "CodIdentifiant",
             "type": "text"
       },
@@ -8286,27 +8731,27 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "MntDev_17",
-            "name": "MntDev_17",
-            "label": "MntDev",
-            "type": "text"
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Value",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Value",
+            "label": "Value",
+            "type": "number"
       },
       {
-            "id": "Ccy_18",
-            "name": "Ccy_18",
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Ccy",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntDev_Ccy",
             "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CVMntDin_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CVMntDin_Value",
-            "label": "CVMntDin",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CVMntDin_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CVMntDin_Ccy",
-            "label": "Ccy (CV en dinars du montant de l'opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -8314,6 +8759,12 @@ export const GENERATED_CONFIGS: any = {
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_DatOp",
             "label": "DatOp",
             "type": "date"
+      },
+      {
+            "id": "Transferts_Transfert_Details_Detail_OperationTransf_RefMsgSwift",
+            "name": "Transferts_Transfert_Details_Detail_OperationTransf_RefMsgSwift",
+            "label": "RefMsgSwift",
+            "type": "text"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -8324,7 +8775,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -8363,14 +8814,14 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_AnneDec_3",
+            "key": "Transferts_Transfert_Details_Detail_AnneDec",
             "label": "AnneDec",
-            "path": "_entete.AnneDec"
+            "path": "AnneDec"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_4",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -8409,22 +8860,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "path": "OperationTransf.MntTransDev.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant de transfert en devises)",
+            "label": "Ccy",
             "path": "OperationTransf.MntTransDev.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "path": "OperationTransf.CvMntTnd.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
-            "label": "Ccy (C/V du montant en dinars)",
+            "label": "Ccy",
             "path": "OperationTransf.CvMntTnd.Ccy"
       },
       {
@@ -8513,14 +8964,14 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_AnneDec_3",
-            "name": "Transferts_Transfert_Entete_AnneDec_3",
+            "id": "Transferts_Transfert_Details_Detail_AnneDec",
+            "name": "Transferts_Transfert_Details_Detail_AnneDec",
             "label": "AnneDec",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_4",
-            "name": "Transferts_Transfert_Entete_PeriodDec_4",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -8569,25 +9020,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant de transfert en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
-            "label": "Ccy (C/V du montant en dinars)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -8654,7 +9105,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "name": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "label": "DatFichInfo",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_CodSwift",
@@ -8677,7 +9128,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -8716,14 +9167,14 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_AnneDec_3",
+            "key": "Transferts_Transfert_Details_Detail_AnneDec",
             "label": "AnneDec",
-            "path": "_entete.AnneDec"
+            "path": "AnneDec"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_4",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -8762,22 +9213,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "path": "OperationTransf.MntTransDev.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant de transfert en devises)",
+            "label": "Ccy",
             "path": "OperationTransf.MntTransDev.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "path": "OperationTransf.CvMntTnd.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
-            "label": "Ccy (C/V du montant en dinars)",
+            "label": "Ccy",
             "path": "OperationTransf.CvMntTnd.Ccy"
       },
       {
@@ -8866,14 +9317,14 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_AnneDec_3",
-            "name": "Transferts_Transfert_Entete_AnneDec_3",
+            "id": "Transferts_Transfert_Details_Detail_AnneDec",
+            "name": "Transferts_Transfert_Details_Detail_AnneDec",
             "label": "AnneDec",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_4",
-            "name": "Transferts_Transfert_Entete_PeriodDec_4",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -8922,25 +9373,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant de transfert en devises)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
-            "label": "Ccy (C/V du montant en dinars)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -9007,7 +9458,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "name": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "label": "DatFichInfo",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_CodSwift",
@@ -9030,7 +9481,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -9064,9 +9515,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_JrDec_2",
+            "key": "Transferts_Transfert_Details_Detail_JrDec",
             "label": "JrDec",
-            "path": "_entete.JrDec"
+            "path": "JrDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -9120,22 +9571,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "path": "OperationTransf.MntTransDev.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant de l'opération en devise)",
+            "label": "Ccy",
             "path": "OperationTransf.MntTransDev.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "path": "OperationTransf.CvMntTnd.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
-            "label": "Ccy (CV en TND du montant du transfert)",
+            "label": "Ccy",
             "path": "OperationTransf.CvMntTnd.Ccy"
       },
       {
@@ -9203,8 +9654,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_JrDec_2",
-            "name": "Transferts_Transfert_Entete_JrDec_2",
+            "id": "Transferts_Transfert_Details_Detail_JrDec",
+            "name": "Transferts_Transfert_Details_Detail_JrDec",
             "label": "JrDec",
             "type": "text"
       },
@@ -9230,7 +9681,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefIdentification_DatRefIden",
             "name": "Transferts_Transfert_Details_Detail_RefIdentification_DatRefIden",
             "label": "DatRefIden",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_CodRD",
@@ -9271,25 +9722,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant de l'opération en devise)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
-            "label": "Ccy (CV en TND du montant du transfert)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -9344,7 +9795,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
             "name": "Transferts_Transfert_Details_Detail_RefAutorisationBct_DatAutBCT",
             "label": "DatAutBCT",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_CodSwift",
@@ -9361,7 +9812,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -9405,19 +9856,19 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Transferts_Transfert_Entete_AnneDec_4",
+            "key": "Transferts_Transfert_Details_Detail_AnneDec",
             "label": "AnneDec",
-            "path": "_entete.AnneDec"
+            "path": "AnneDec"
       },
       {
-            "key": "Transferts_Transfert_Entete_MoisDec_5",
+            "key": "Transferts_Transfert_Details_Detail_MoisDec",
             "label": "MoisDec",
-            "path": "_entete.MoisDec"
+            "path": "MoisDec"
       },
       {
-            "key": "Transferts_Transfert_Entete_PeriodDec_6",
+            "key": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Agence",
@@ -9430,9 +9881,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "CodTitre"
       },
       {
-            "key": "Transferts_Transfert_Details_Detail_RefFichInfo",
+            "key": "Transferts_Transfert_Details_Detail_RefFichInfo_RefFichInfo",
             "label": "RefFichInfo",
-            "path": "RefFichInfo"
+            "path": "RefFichInfo.RefFichInfo"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
@@ -9450,9 +9901,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "Demandeur.TypeIdentifiant"
       },
       {
-            "key": "CodIdentifiant_13",
+            "key": "Transferts_Transfert_Details_Detail_Demandeur_CodIdentifiant",
             "label": "CodIdentifiant",
-            "path": "CodIdentifiant_13"
+            "path": "Demandeur.CodIdentifiant"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_Demandeur_Nom",
@@ -9471,22 +9922,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "path": "OperationTransf.MntTransDev.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant du transfert)",
+            "label": "Ccy",
             "path": "OperationTransf.MntTransDev.Ccy"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "path": "OperationTransf.CvMntTnd.Value"
       },
       {
             "key": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
-            "label": "Ccy (CV en TND du montant du transfert)",
+            "label": "Ccy",
             "path": "OperationTransf.CvMntTnd.Ccy"
       },
       {
@@ -9551,20 +10002,20 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_AnneDec_4",
-            "name": "Transferts_Transfert_Entete_AnneDec_4",
+            "id": "Transferts_Transfert_Details_Detail_AnneDec",
+            "name": "Transferts_Transfert_Details_Detail_AnneDec",
             "label": "AnneDec",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_MoisDec_5",
-            "name": "Transferts_Transfert_Entete_MoisDec_5",
+            "id": "Transferts_Transfert_Details_Detail_MoisDec",
+            "name": "Transferts_Transfert_Details_Detail_MoisDec",
             "label": "MoisDec",
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Entete_PeriodDec_6",
-            "name": "Transferts_Transfert_Entete_PeriodDec_6",
+            "id": "Transferts_Transfert_Details_Detail_PeriodDec",
+            "name": "Transferts_Transfert_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
@@ -9581,8 +10032,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Transferts_Transfert_Details_Detail_RefFichInfo",
-            "name": "Transferts_Transfert_Details_Detail_RefFichInfo",
+            "id": "Transferts_Transfert_Details_Detail_RefFichInfo_RefFichInfo",
+            "name": "Transferts_Transfert_Details_Detail_RefFichInfo_RefFichInfo",
             "label": "RefFichInfo",
             "type": "text"
       },
@@ -9590,7 +10041,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "name": "Transferts_Transfert_Details_Detail_RefFichInfo_DatFichInfo",
             "label": "DatFichInfo",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_DatTrans",
@@ -9605,8 +10056,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "CodIdentifiant_13",
-            "name": "CodIdentifiant_13",
+            "id": "Transferts_Transfert_Details_Detail_Demandeur_CodIdentifiant",
+            "name": "Transferts_Transfert_Details_Detail_Demandeur_CodIdentifiant",
             "label": "CodIdentifiant",
             "type": "text"
       },
@@ -9631,25 +10082,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Value",
-            "label": "MntTransDev",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_MntTransDev_Ccy",
-            "label": "Ccy (Montant du transfert)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Value",
-            "label": "CvMntTnd",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
             "name": "Transferts_Transfert_Details_Detail_OperationTransf_CvMntTnd_Ccy",
-            "label": "Ccy (CV en TND du montant du transfert)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -9703,7 +10154,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -9832,14 +10283,19 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.DatAutBCT"
       },
       {
-            "key": "Decomptes_Decompte_Entete_PeriodDec_21",
-            "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "key": "Decomptes_Decompte_Entete_NbrEcritures",
+            "label": "NbrEcritures",
+            "path": "_entete.NbrEcritures"
       },
       {
-            "key": "Decomptes_Decompte_Entete_NumDosAVA_22",
+            "key": "Decomptes_Decompte_Details_Detail_PeriodDec",
+            "label": "PeriodDec",
+            "path": "PeriodDec"
+      },
+      {
+            "key": "Decomptes_Decompte_Details_Detail_NumDosAVA",
             "label": "NumDosAVA",
-            "path": "_entete.NumDosAVA"
+            "path": "NumDosAVA"
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_TypOp",
@@ -9868,12 +10324,12 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_MntDinOp_Value",
-            "label": "MntDinOp",
+            "label": "Value",
             "path": "MntDinOp.Value"
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_MntDinOp_Ccy",
-            "label": "Ccy (Montant en dinars de l’opération)",
+            "label": "Ccy",
             "path": "MntDinOp.Ccy"
       },
       {
@@ -9893,27 +10349,27 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_DroitTransCumm_Value",
-            "label": "DroitTransCumm",
+            "label": "Value",
             "path": "DroitTransCumm.Value"
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_DroitTransCumm_Ccy",
-            "label": "Ccy (Droits à transferts cumulés)",
+            "label": "Ccy",
             "path": "DroitTransCumm.Ccy"
       },
       {
-            "key": "Decomptes_Decompte_Details_Detail_MntImport_Value",
+            "key": "Decomptes_Decompte_Details_Detail_MntImport",
             "label": "MntImport",
-            "path": "MntImport.Value"
+            "path": "MntImport"
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_MntTransCum_Value",
-            "label": "MntTransCum",
+            "label": "Value",
             "path": "MntTransCum.Value"
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_MntTransCum_Ccy",
-            "label": "Ccy (Montants des transferts cumulés)",
+            "label": "Ccy",
             "path": "MntTransCum.Ccy"
       },
       {
@@ -9927,9 +10383,9 @@ export const GENERATED_CONFIGS: any = {
             "path": "Benificiaire.TypeIdentifiant"
       },
       {
-            "key": "CodIdentifiant_40",
+            "key": "Decomptes_Decompte_Details_Detail_Benificiaire_CodIdentifiant",
             "label": "CodIdentifiant",
-            "path": "CodIdentifiant_40"
+            "path": "Benificiaire.CodIdentifiant"
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_Benificiaire_Nom",
@@ -10025,13 +10481,13 @@ export const GENERATED_CONFIGS: any = {
             "id": "Decomptes_Decompte_Entete_DatSusp",
             "name": "Decomptes_Decompte_Entete_DatSusp",
             "label": "DatSusp",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Decomptes_Decompte_Entete_DebPeriodFon",
             "name": "Decomptes_Decompte_Entete_DebPeriodFon",
             "label": "DebPeriodFon",
-            "type": "date"
+            "type": "text"
       },
       {
             "id": "Decomptes_Decompte_Entete_FinPeriodFon",
@@ -10067,17 +10523,23 @@ export const GENERATED_CONFIGS: any = {
             "id": "Decomptes_Decompte_Entete_DatAutBCT",
             "name": "Decomptes_Decompte_Entete_DatAutBCT",
             "label": "DatAutBCT",
+            "type": "date"
+      },
+      {
+            "id": "Decomptes_Decompte_Entete_NbrEcritures",
+            "name": "Decomptes_Decompte_Entete_NbrEcritures",
+            "label": "NbrEcritures",
             "type": "text"
       },
       {
-            "id": "Decomptes_Decompte_Entete_PeriodDec_21",
-            "name": "Decomptes_Decompte_Entete_PeriodDec_21",
+            "id": "Decomptes_Decompte_Details_Detail_PeriodDec",
+            "name": "Decomptes_Decompte_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
       {
-            "id": "Decomptes_Decompte_Entete_NumDosAVA_22",
-            "name": "Decomptes_Decompte_Entete_NumDosAVA_22",
+            "id": "Decomptes_Decompte_Details_Detail_NumDosAVA",
+            "name": "Decomptes_Decompte_Details_Detail_NumDosAVA",
             "label": "NumDosAVA",
             "type": "text"
       },
@@ -10097,7 +10559,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Decomptes_Decompte_Details_Detail_DatConcContrat",
             "name": "Decomptes_Decompte_Details_Detail_DatConcContrat",
             "label": "DatConcContrat",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Decomptes_Decompte_Details_Detail_IaEncRest",
@@ -10114,20 +10576,20 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Decomptes_Decompte_Details_Detail_MntDinOp_Value",
             "name": "Decomptes_Decompte_Details_Detail_MntDinOp_Value",
-            "label": "MntDinOp",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Decomptes_Decompte_Details_Detail_MntDinOp_Ccy",
             "name": "Decomptes_Decompte_Details_Detail_MntDinOp_Ccy",
-            "label": "Ccy (Montant en dinars de l’opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Decomptes_Decompte_Details_Detail_DatEncProdExport",
             "name": "Decomptes_Decompte_Details_Detail_DatEncProdExport",
             "label": "DatEncProdExport",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Decomptes_Decompte_Details_Detail_CodOrigFond",
@@ -10144,31 +10606,31 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Decomptes_Decompte_Details_Detail_DroitTransCumm_Value",
             "name": "Decomptes_Decompte_Details_Detail_DroitTransCumm_Value",
-            "label": "DroitTransCumm",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Decomptes_Decompte_Details_Detail_DroitTransCumm_Ccy",
             "name": "Decomptes_Decompte_Details_Detail_DroitTransCumm_Ccy",
-            "label": "Ccy (Droits à transferts cumulés)",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "Decomptes_Decompte_Details_Detail_MntImport_Value",
-            "name": "Decomptes_Decompte_Details_Detail_MntImport_Value",
+            "id": "Decomptes_Decompte_Details_Detail_MntImport",
+            "name": "Decomptes_Decompte_Details_Detail_MntImport",
             "label": "MntImport",
             "type": "text"
       },
       {
             "id": "Decomptes_Decompte_Details_Detail_MntTransCum_Value",
             "name": "Decomptes_Decompte_Details_Detail_MntTransCum_Value",
-            "label": "MntTransCum",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Decomptes_Decompte_Details_Detail_MntTransCum_Ccy",
             "name": "Decomptes_Decompte_Details_Detail_MntTransCum_Ccy",
-            "label": "Ccy (Montants des transferts cumulés)",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -10184,8 +10646,8 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "CodIdentifiant_40",
-            "name": "CodIdentifiant_40",
+            "id": "Decomptes_Decompte_Details_Detail_Benificiaire_CodIdentifiant",
+            "name": "Decomptes_Decompte_Details_Detail_Benificiaire_CodIdentifiant",
             "label": "CodIdentifiant",
             "type": "text"
       },
@@ -10210,7 +10672,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -10310,38 +10772,38 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Decomptes_Decompte_Entete_MntGlobal_Value",
-            "label": "MntGlobal",
+            "label": "Value",
             "path": "_entete.MntGlobal.Value"
       },
       {
             "key": "Decomptes_Decompte_Entete_MntGlobal_Ccy",
-            "label": "Ccy (Montant global du marché)",
+            "label": "Ccy",
             "path": "_entete.MntGlobal.Ccy"
       },
       {
             "key": "Decomptes_Decompte_Entete_MntLocale_Value",
-            "label": "MntLocale",
+            "label": "Value",
             "path": "_entete.MntLocale.Value"
       },
       {
             "key": "Decomptes_Decompte_Entete_MntLocale_Ccy",
-            "label": "Ccy (Montant de la part en monnaie non convertible  ( monnaie locale ))",
+            "label": "Ccy",
             "path": "_entete.MntLocale.Ccy"
       },
       {
             "key": "Decomptes_Decompte_Entete_MntConvertible_Value",
-            "label": "MntConvertible",
+            "label": "Value",
             "path": "_entete.MntConvertible.Value"
       },
       {
             "key": "Decomptes_Decompte_Entete_MntConvertible_Ccy",
-            "label": "Ccy (Montant de la part en monnaie convertible ( devise ))",
+            "label": "Ccy",
             "path": "_entete.MntConvertible.Ccy"
       },
       {
-            "key": "Decomptes_Decompte_Entete_AvanceMarchPourMntMarche_Value",
+            "key": "Decomptes_Decompte_Entete_AvanceMarchPourMntMarche",
             "label": "AvanceMarchPourMntMarche",
-            "path": "_entete.AvanceMarchPourMntMarche.Value"
+            "path": "_entete.AvanceMarchPourMntMarche"
       },
       {
             "key": "Decomptes_Decompte_Entete_DateConcContratMarche",
@@ -10354,19 +10816,24 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.DureeMarcheMois"
       },
       {
-            "key": "Decomptes_Decompte_Entete_AnneDec_24",
+            "key": "Decomptes_Decompte_Entete_NbrEcritures",
+            "label": "NbrEcritures",
+            "path": "_entete.NbrEcritures"
+      },
+      {
+            "key": "Decomptes_Decompte_Details_Detail_AnneDec",
             "label": "AnneDec",
-            "path": "_entete.AnneDec"
+            "path": "AnneDec"
       },
       {
-            "key": "Decomptes_Decompte_Entete_PeriodDec_25",
+            "key": "Decomptes_Decompte_Details_Detail_PeriodDec",
             "label": "PeriodDec",
-            "path": "_entete.PeriodDec"
+            "path": "PeriodDec"
       },
       {
-            "key": "Decomptes_Decompte_Entete_IdMarche_26",
+            "key": "Decomptes_Decompte_Details_Detail_IdMarche",
             "label": "IdMarche",
-            "path": "_entete.IdMarche"
+            "path": "IdMarche"
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_LibOp",
@@ -10390,22 +10857,22 @@ export const GENERATED_CONFIGS: any = {
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_MntOp_Value",
-            "label": "MntOp",
+            "label": "Value",
             "path": "MntOp.Value"
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_MntOp_Ccy",
-            "label": "Ccy (Montant de l'opération)",
+            "label": "Ccy",
             "path": "MntOp.Ccy"
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_CVDinTot_Value",
-            "label": "CVDinTot",
+            "label": "Value",
             "path": "CVDinTot.Value"
       },
       {
             "key": "Decomptes_Decompte_Details_Detail_CVDinTot_Ccy",
-            "label": "Ccy (C/V en Dinar (total))",
+            "label": "Ccy",
             "path": "CVDinTot.Ccy"
       },
       {
@@ -10528,42 +10995,42 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Decomptes_Decompte_Entete_MntGlobal_Value",
             "name": "Decomptes_Decompte_Entete_MntGlobal_Value",
-            "label": "MntGlobal",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Decomptes_Decompte_Entete_MntGlobal_Ccy",
             "name": "Decomptes_Decompte_Entete_MntGlobal_Ccy",
-            "label": "Ccy (Montant global du marché)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Decomptes_Decompte_Entete_MntLocale_Value",
             "name": "Decomptes_Decompte_Entete_MntLocale_Value",
-            "label": "MntLocale",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Decomptes_Decompte_Entete_MntLocale_Ccy",
             "name": "Decomptes_Decompte_Entete_MntLocale_Ccy",
-            "label": "Ccy (Montant de la part en monnaie non convertible  ( monnaie locale ))",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Decomptes_Decompte_Entete_MntConvertible_Value",
             "name": "Decomptes_Decompte_Entete_MntConvertible_Value",
-            "label": "MntConvertible",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Decomptes_Decompte_Entete_MntConvertible_Ccy",
             "name": "Decomptes_Decompte_Entete_MntConvertible_Ccy",
-            "label": "Ccy (Montant de la part en monnaie convertible ( devise ))",
+            "label": "Ccy",
             "type": "text"
       },
       {
-            "id": "Decomptes_Decompte_Entete_AvanceMarchPourMntMarche_Value",
-            "name": "Decomptes_Decompte_Entete_AvanceMarchPourMntMarche_Value",
+            "id": "Decomptes_Decompte_Entete_AvanceMarchPourMntMarche",
+            "name": "Decomptes_Decompte_Entete_AvanceMarchPourMntMarche",
             "label": "AvanceMarchPourMntMarche",
             "type": "text"
       },
@@ -10580,20 +11047,26 @@ export const GENERATED_CONFIGS: any = {
             "type": "text"
       },
       {
-            "id": "Decomptes_Decompte_Entete_AnneDec_24",
-            "name": "Decomptes_Decompte_Entete_AnneDec_24",
+            "id": "Decomptes_Decompte_Entete_NbrEcritures",
+            "name": "Decomptes_Decompte_Entete_NbrEcritures",
+            "label": "NbrEcritures",
+            "type": "text"
+      },
+      {
+            "id": "Decomptes_Decompte_Details_Detail_AnneDec",
+            "name": "Decomptes_Decompte_Details_Detail_AnneDec",
             "label": "AnneDec",
             "type": "text"
       },
       {
-            "id": "Decomptes_Decompte_Entete_PeriodDec_25",
-            "name": "Decomptes_Decompte_Entete_PeriodDec_25",
+            "id": "Decomptes_Decompte_Details_Detail_PeriodDec",
+            "name": "Decomptes_Decompte_Details_Detail_PeriodDec",
             "label": "PeriodDec",
             "type": "text"
       },
       {
-            "id": "Decomptes_Decompte_Entete_IdMarche_26",
-            "name": "Decomptes_Decompte_Entete_IdMarche_26",
+            "id": "Decomptes_Decompte_Details_Detail_IdMarche",
+            "name": "Decomptes_Decompte_Details_Detail_IdMarche",
             "label": "IdMarche",
             "type": "text"
       },
@@ -10624,25 +11097,25 @@ export const GENERATED_CONFIGS: any = {
       {
             "id": "Decomptes_Decompte_Details_Detail_MntOp_Value",
             "name": "Decomptes_Decompte_Details_Detail_MntOp_Value",
-            "label": "MntOp",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Decomptes_Decompte_Details_Detail_MntOp_Ccy",
             "name": "Decomptes_Decompte_Details_Detail_MntOp_Ccy",
-            "label": "Ccy (Montant de l'opération)",
+            "label": "Ccy",
             "type": "text"
       },
       {
             "id": "Decomptes_Decompte_Details_Detail_CVDinTot_Value",
             "name": "Decomptes_Decompte_Details_Detail_CVDinTot_Value",
-            "label": "CVDinTot",
+            "label": "Value",
             "type": "number"
       },
       {
             "id": "Decomptes_Decompte_Details_Detail_CVDinTot_Ccy",
             "name": "Decomptes_Decompte_Details_Detail_CVDinTot_Ccy",
-            "label": "Ccy (C/V en Dinar (total))",
+            "label": "Ccy",
             "type": "text"
       },
       {
@@ -10661,7 +11134,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Decomptes_Decompte_Details_Detail_RefFichInfo_DatFichInfo",
             "name": "Decomptes_Decompte_Details_Detail_RefFichInfo_DatFichInfo",
             "label": "DatFichInfo",
-            "type": "text"
+            "type": "date"
       },
       {
             "id": "Decomptes_Decompte_Details_Detail_RefAutorisationBct_NumAutBCT",
@@ -10673,7 +11146,7 @@ export const GENERATED_CONFIGS: any = {
             "id": "Decomptes_Decompte_Details_Detail_RefAutorisationBct_DatAutBCT",
             "name": "Decomptes_Decompte_Details_Detail_RefAutorisationBct_DatAutBCT",
             "label": "DatAutBCT",
-            "type": "text"
+            "type": "date"
       }
 ],
     payloadMapper: (formData: any, contextualData: any) => {
@@ -10684,7 +11157,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -10711,6 +11184,11 @@ export const GENERATED_CONFIGS: any = {
             "key": "Dossiers_Dossier_Entete_NbrEcritures",
             "label": "NbrEcritures",
             "path": "_entete.NbrEcritures"
+      },
+      {
+            "key": "Dossiers_Dossier_Details_Detail_Agence",
+            "label": "Agence",
+            "path": "Agence"
       },
       {
             "key": "Dossiers_Dossier_Details_Detail_MatFiscal",
@@ -10748,6 +11226,12 @@ export const GENERATED_CONFIGS: any = {
             "id": "Dossiers_Dossier_Entete_NbrEcritures",
             "name": "Dossiers_Dossier_Entete_NbrEcritures",
             "label": "NbrEcritures",
+            "type": "text"
+      },
+      {
+            "id": "Dossiers_Dossier_Details_Detail_Agence",
+            "name": "Dossiers_Dossier_Details_Detail_Agence",
+            "label": "Agence",
             "type": "text"
       },
       {
@@ -10795,7 +11279,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -10824,6 +11308,11 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
+            "key": "Dossiers_Dossier_Details_Detail_Agence",
+            "label": "Agence",
+            "path": "Agence"
+      },
+      {
             "key": "Dossiers_Dossier_Details_Detail_MatFiscal",
             "label": "MatFiscal",
             "path": "MatFiscal"
@@ -10854,6 +11343,12 @@ export const GENERATED_CONFIGS: any = {
             "id": "Dossiers_Dossier_Entete_NbrEcritures",
             "name": "Dossiers_Dossier_Entete_NbrEcritures",
             "label": "NbrEcritures",
+            "type": "text"
+      },
+      {
+            "id": "Dossiers_Dossier_Details_Detail_Agence",
+            "name": "Dossiers_Dossier_Details_Detail_Agence",
+            "label": "Agence",
             "type": "text"
       },
       {
@@ -10895,7 +11390,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -10924,6 +11419,11 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
+            "key": "Dossiers_Dossier_Details_Detail_Agence",
+            "label": "Agence",
+            "path": "Agence"
+      },
+      {
             "key": "Dossiers_Dossier_Details_Detail_MatFiscal",
             "label": "MatFiscal",
             "path": "MatFiscal"
@@ -10954,6 +11454,12 @@ export const GENERATED_CONFIGS: any = {
             "id": "Dossiers_Dossier_Entete_NbrEcritures",
             "name": "Dossiers_Dossier_Entete_NbrEcritures",
             "label": "NbrEcritures",
+            "type": "text"
+      },
+      {
+            "id": "Dossiers_Dossier_Details_Detail_Agence",
+            "name": "Dossiers_Dossier_Details_Detail_Agence",
+            "label": "Agence",
             "type": "text"
       },
       {
@@ -10995,7 +11501,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -11024,6 +11530,11 @@ export const GENERATED_CONFIGS: any = {
             "path": "_entete.NbrEcritures"
       },
       {
+            "key": "Dossiers_Dossier_Details_Detail_Agence",
+            "label": "Agence",
+            "path": "Agence"
+      },
+      {
             "key": "Dossiers_Dossier_Details_Detail_MatFiscal",
             "label": "MatFiscal",
             "path": "MatFiscal"
@@ -11054,6 +11565,12 @@ export const GENERATED_CONFIGS: any = {
             "id": "Dossiers_Dossier_Entete_NbrEcritures",
             "name": "Dossiers_Dossier_Entete_NbrEcritures",
             "label": "NbrEcritures",
+            "type": "text"
+      },
+      {
+            "id": "Dossiers_Dossier_Details_Detail_Agence",
+            "name": "Dossiers_Dossier_Details_Detail_Agence",
+            "label": "Agence",
             "type": "text"
       },
       {
@@ -11095,7 +11612,7 @@ export const GENERATED_CONFIGS: any = {
            const path = i.replace(/_\d+$/, ''); 
            const keys = path.split('_');
            keys.reduce((r, e, j) => {
-             const key = e.charAt(0).toLowerCase() + e.slice(1);
+             const key = e;
              if (keys.length - 1 === j) {
                 r[key] = data[i];
              } else {
@@ -11112,3 +11629,4 @@ export const GENERATED_CONFIGS: any = {
     }
   },
 };
+

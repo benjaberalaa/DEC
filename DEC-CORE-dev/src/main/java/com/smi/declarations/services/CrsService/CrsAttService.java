@@ -2,7 +2,7 @@ package com.smi.declarations.services.CrsService;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.smi.declarations.controllers.PeriodeController;
+import com.smi.declarations.services.GenericDeclarationService;
 import com.smi.declarations.entities.Periode;
 import com.smi.declarations.repositories.PeriodeRepository;
 import com.smi.generated.crs_att.*;
@@ -29,6 +29,9 @@ public class CrsAttService {
 
     @Autowired
     private PeriodeRepository periodeRepository;
+
+    @Autowired
+    private GenericDeclarationService genericDeclarationService;
 
     private static final Logger logger = LoggerFactory.getLogger(CrsAttService.class);
 
@@ -229,7 +232,7 @@ public class CrsAttService {
         String existingDetails = periode.getDetails();
         String updatedDetails = (existingDetails == null || existingDetails.isEmpty())
                 ? transfert.toString()
-                : PeriodeController.mergeJson(existingDetails, transfert.toString());
+                : genericDeclarationService.mergeJsonDynamic(existingDetails, transfert.toString(), periode.getTypePeriode(), periode.getPeriodDec());
 
         periode.setDetails(updatedDetails);
         return periodeRepository.save(periode);
