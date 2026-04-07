@@ -1,4 +1,4 @@
-﻿export const GENERATED_CONFIGS: any = {
+export const GENERATED_CONFIGS: any = {
   'CRS_CPD_OSM': {
     type: 'CRS_CPD_OSM',
     label: 'Déclaration CRS_CPD_OSM',
@@ -11626,7 +11626,841 @@
       return {
         details: unflatten(formData)
       };
+    },
+  },
+
+  'VUC_G1_S1': {
+    type: 'VUC_G1_S1',
+    label: 'Déclaration VUC-G1_S1',
+    codeAnnexe: 'VUC_G1_S1',
+    apiPath: 'api/periodes/add-data',
+    tableColumns: [
+      {
+            "key": "depositor_id",
+            "label": "ID Déposant",
+            "path": "depositor_id"
+      },
+      {
+            "key": "action_type",
+            "label": "Action",
+            "path": "action_type"
+      },
+      {
+            "key": "person_type",
+            "label": "Type Personne",
+            "path": "person_type"
+      },
+      {
+            "key": "first_name",
+            "label": "Prénom",
+            "path": "first_name"
+      },
+      {
+            "key": "last_name",
+            "label": "Nom",
+            "path": "last_name"
+      },
+      {
+            "key": "cin_num",
+            "label": "CIN/Pass",
+            "path": "cin_num"
+      },
+      {
+            "key": "company_name",
+            "label": "Entreprise",
+            "path": "company_name"
+      },
+      {
+            "key": "rne",
+            "label": "RNE",
+            "path": "rne"
+      }
+],
+    fields: [
+      {
+            "id": "depositor_id",
+            "name": "depositor_id",
+            "label": "ID Déposant",
+            "type": "text",
+            "required": true
+      },
+      {
+            "id": "action_type",
+            "name": "action_type",
+            "label": "Action",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "ADD",
+                        "value": "ADD"
+                  },
+                  {
+                        "label": "UPDATE",
+                        "value": "UPDATE"
+                  },
+                  {
+                        "label": "DELETE",
+                        "value": "DELETE"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "person_type",
+            "name": "person_type",
+            "label": "Type Personne",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "Physique",
+                        "value": "PP"
+                  },
+                  {
+                        "label": "Morale",
+                        "value": "PM"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "first_name",
+            "name": "first_name",
+            "label": "Prénom",
+            "type": "text"
+      },
+      {
+            "id": "last_name",
+            "name": "last_name",
+            "label": "Nom",
+            "type": "text"
+      },
+      {
+            "id": "cin_num",
+            "name": "cin_num",
+            "label": "CIN",
+            "type": "text"
+      },
+      {
+            "id": "company_name",
+            "name": "company_name",
+            "label": "Entreprise",
+            "type": "text"
+      },
+      {
+            "id": "rne",
+            "name": "rne",
+            "label": "RNE",
+            "type": "text"
+      }
+],
+    payloadMapper: (formData: any, contextualData: any) => {
+      return { details: formData };
+    }
+  },
+  'VUC_G1_S2': {
+    type: 'VUC_G1_S2',
+    label: 'Déclaration VUC-G1_S2',
+    codeAnnexe: 'VUC_G1_S2',
+    apiPath: 'api/periodes/add-data',
+    tableColumns: [
+      {
+            "key": "depositor_id",
+            "label": "ID Déposant",
+            "path": "depositor_id"
+      },
+      {
+            "key": "action_type",
+            "label": "Action",
+            "path": "action_type"
+      },
+      {
+            "key": "person_type",
+            "label": "Type Personne",
+            "path": "person_type"
+      },
+      {
+            "key": "first_name",
+            "label": "Prénom",
+            "path": "first_name"
+      },
+      {
+            "key": "last_name",
+            "label": "Nom",
+            "path": "last_name"
+      },
+      {
+            "key": "cin_num",
+            "label": "CIN/Pass",
+            "path": "cin_num"
+      },
+      {
+            "key": "company_name",
+            "label": "Entreprise",
+            "path": "company_name"
+      },
+      {
+            "key": "rne",
+            "label": "RNE",
+            "path": "rne"
+      }
+],
+    fields: [
+      {
+            "id": "depositor_id",
+            "name": "depositor_id",
+            "label": "ID Déposant",
+            "type": "text",
+            "required": true
+      },
+      {
+            "id": "action_type",
+            "name": "action_type",
+            "label": "Action",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "ADD",
+                        "value": "ADD"
+                  },
+                  {
+                        "label": "UPDATE",
+                        "value": "UPDATE"
+                  },
+                  {
+                        "label": "DELETE",
+                        "value": "DELETE"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "person_type",
+            "name": "person_type",
+            "label": "Type Personne",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "Physique",
+                        "value": "PP"
+                  },
+                  {
+                        "label": "Morale",
+                        "value": "PM"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "first_name",
+            "name": "first_name",
+            "label": "Prénom",
+            "type": "text"
+      },
+      {
+            "id": "last_name",
+            "name": "last_name",
+            "label": "Nom",
+            "type": "text"
+      },
+      {
+            "id": "cin_num",
+            "name": "cin_num",
+            "label": "CIN",
+            "type": "text"
+      },
+      {
+            "id": "company_name",
+            "name": "company_name",
+            "label": "Entreprise",
+            "type": "text"
+      },
+      {
+            "id": "rne",
+            "name": "rne",
+            "label": "RNE",
+            "type": "text"
+      }
+],
+    payloadMapper: (formData: any, contextualData: any) => {
+      return { details: formData };
+    }
+  },
+  'VUC_G1_A': {
+    type: 'VUC_G1_A',
+    label: 'Déclaration VUC-G1_A',
+    codeAnnexe: 'VUC_G1_A',
+    apiPath: 'api/periodes/add-data',
+    tableColumns: [
+      {
+            "key": "depositor_id",
+            "label": "ID Déposant",
+            "path": "depositor_id"
+      },
+      {
+            "key": "action_type",
+            "label": "Action",
+            "path": "action_type"
+      },
+      {
+            "key": "person_type",
+            "label": "Type Personne",
+            "path": "person_type"
+      },
+      {
+            "key": "first_name",
+            "label": "Prénom",
+            "path": "first_name"
+      },
+      {
+            "key": "last_name",
+            "label": "Nom",
+            "path": "last_name"
+      },
+      {
+            "key": "cin_num",
+            "label": "CIN/Pass",
+            "path": "cin_num"
+      },
+      {
+            "key": "company_name",
+            "label": "Entreprise",
+            "path": "company_name"
+      },
+      {
+            "key": "rne",
+            "label": "RNE",
+            "path": "rne"
+      }
+],
+    fields: [
+      {
+            "id": "depositor_id",
+            "name": "depositor_id",
+            "label": "ID Déposant",
+            "type": "text",
+            "required": true
+      },
+      {
+            "id": "action_type",
+            "name": "action_type",
+            "label": "Action",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "ADD",
+                        "value": "ADD"
+                  },
+                  {
+                        "label": "UPDATE",
+                        "value": "UPDATE"
+                  },
+                  {
+                        "label": "DELETE",
+                        "value": "DELETE"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "person_type",
+            "name": "person_type",
+            "label": "Type Personne",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "Physique",
+                        "value": "PP"
+                  },
+                  {
+                        "label": "Morale",
+                        "value": "PM"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "first_name",
+            "name": "first_name",
+            "label": "Prénom",
+            "type": "text"
+      },
+      {
+            "id": "last_name",
+            "name": "last_name",
+            "label": "Nom",
+            "type": "text"
+      },
+      {
+            "id": "cin_num",
+            "name": "cin_num",
+            "label": "CIN",
+            "type": "text"
+      },
+      {
+            "id": "company_name",
+            "name": "company_name",
+            "label": "Entreprise",
+            "type": "text"
+      },
+      {
+            "id": "rne",
+            "name": "rne",
+            "label": "RNE",
+            "type": "text"
+      }
+],
+    payloadMapper: (formData: any, contextualData: any) => {
+      return { details: formData };
+    }
+  },
+  'VUC_G2_S1': {
+    type: 'VUC_G2_S1',
+    label: 'Déclaration VUC-G2_S1',
+    codeAnnexe: 'VUC_G2_S1',
+    apiPath: 'api/periodes/add-data',
+    tableColumns: [
+      {
+            "key": "depositor_id",
+            "label": "ID Déposant",
+            "path": "depositor_id"
+      },
+      {
+            "key": "action_type",
+            "label": "Action",
+            "path": "action_type"
+      },
+      {
+            "key": "person_type",
+            "label": "Type Personne",
+            "path": "person_type"
+      },
+      {
+            "key": "first_name",
+            "label": "Prénom",
+            "path": "first_name"
+      },
+      {
+            "key": "last_name",
+            "label": "Nom",
+            "path": "last_name"
+      },
+      {
+            "key": "cin_num",
+            "label": "CIN/Pass",
+            "path": "cin_num"
+      },
+      {
+            "key": "company_name",
+            "label": "Entreprise",
+            "path": "company_name"
+      },
+      {
+            "key": "rne",
+            "label": "RNE",
+            "path": "rne"
+      },
+      {
+            "key": "account_number",
+            "label": "Compte",
+            "path": "account_number"
+      },
+      {
+            "key": "account_balance",
+            "label": "Solde",
+            "path": "account_balance"
+      }
+],
+    fields: [
+      {
+            "id": "depositor_id",
+            "name": "depositor_id",
+            "label": "ID Déposant",
+            "type": "text",
+            "required": true
+      },
+      {
+            "id": "action_type",
+            "name": "action_type",
+            "label": "Action",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "ADD",
+                        "value": "ADD"
+                  },
+                  {
+                        "label": "UPDATE",
+                        "value": "UPDATE"
+                  },
+                  {
+                        "label": "DELETE",
+                        "value": "DELETE"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "person_type",
+            "name": "person_type",
+            "label": "Type Personne",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "Physique",
+                        "value": "PP"
+                  },
+                  {
+                        "label": "Morale",
+                        "value": "PM"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "first_name",
+            "name": "first_name",
+            "label": "Prénom",
+            "type": "text"
+      },
+      {
+            "id": "last_name",
+            "name": "last_name",
+            "label": "Nom",
+            "type": "text"
+      },
+      {
+            "id": "cin_num",
+            "name": "cin_num",
+            "label": "CIN",
+            "type": "text"
+      },
+      {
+            "id": "company_name",
+            "name": "company_name",
+            "label": "Entreprise",
+            "type": "text"
+      },
+      {
+            "id": "rne",
+            "name": "rne",
+            "label": "RNE",
+            "type": "text"
+      },
+      {
+            "id": "account_number",
+            "name": "account_number",
+            "label": "Numéro Compte",
+            "type": "text"
+      },
+      {
+            "id": "account_balance",
+            "name": "account_balance",
+            "label": "Solde",
+            "type": "number"
+      }
+],
+    payloadMapper: (formData: any, contextualData: any) => {
+      return { details: formData };
+    }
+  },
+  'VUC_G2_S2': {
+    type: 'VUC_G2_S2',
+    label: 'Déclaration VUC-G2_S2',
+    codeAnnexe: 'VUC_G2_S2',
+    apiPath: 'api/periodes/add-data',
+    tableColumns: [
+      {
+            "key": "depositor_id",
+            "label": "ID Déposant",
+            "path": "depositor_id"
+      },
+      {
+            "key": "action_type",
+            "label": "Action",
+            "path": "action_type"
+      },
+      {
+            "key": "person_type",
+            "label": "Type Personne",
+            "path": "person_type"
+      },
+      {
+            "key": "first_name",
+            "label": "Prénom",
+            "path": "first_name"
+      },
+      {
+            "key": "last_name",
+            "label": "Nom",
+            "path": "last_name"
+      },
+      {
+            "key": "cin_num",
+            "label": "CIN/Pass",
+            "path": "cin_num"
+      },
+      {
+            "key": "company_name",
+            "label": "Entreprise",
+            "path": "company_name"
+      },
+      {
+            "key": "rne",
+            "label": "RNE",
+            "path": "rne"
+      },
+      {
+            "key": "account_number",
+            "label": "Compte",
+            "path": "account_number"
+      },
+      {
+            "key": "account_balance",
+            "label": "Solde",
+            "path": "account_balance"
+      }
+],
+    fields: [
+      {
+            "id": "depositor_id",
+            "name": "depositor_id",
+            "label": "ID Déposant",
+            "type": "text",
+            "required": true
+      },
+      {
+            "id": "action_type",
+            "name": "action_type",
+            "label": "Action",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "ADD",
+                        "value": "ADD"
+                  },
+                  {
+                        "label": "UPDATE",
+                        "value": "UPDATE"
+                  },
+                  {
+                        "label": "DELETE",
+                        "value": "DELETE"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "person_type",
+            "name": "person_type",
+            "label": "Type Personne",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "Physique",
+                        "value": "PP"
+                  },
+                  {
+                        "label": "Morale",
+                        "value": "PM"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "first_name",
+            "name": "first_name",
+            "label": "Prénom",
+            "type": "text"
+      },
+      {
+            "id": "last_name",
+            "name": "last_name",
+            "label": "Nom",
+            "type": "text"
+      },
+      {
+            "id": "cin_num",
+            "name": "cin_num",
+            "label": "CIN",
+            "type": "text"
+      },
+      {
+            "id": "company_name",
+            "name": "company_name",
+            "label": "Entreprise",
+            "type": "text"
+      },
+      {
+            "id": "rne",
+            "name": "rne",
+            "label": "RNE",
+            "type": "text"
+      },
+      {
+            "id": "account_number",
+            "name": "account_number",
+            "label": "Numéro Compte",
+            "type": "text"
+      },
+      {
+            "id": "account_balance",
+            "name": "account_balance",
+            "label": "Solde",
+            "type": "number"
+      }
+],
+    payloadMapper: (formData: any, contextualData: any) => {
+      return { details: formData };
+    }
+  },
+  'VUC_G2_A': {
+    type: 'VUC_G2_A',
+    label: 'Déclaration VUC-G2_A',
+    codeAnnexe: 'VUC_G2_A',
+    apiPath: 'api/periodes/add-data',
+    tableColumns: [
+      {
+            "key": "depositor_id",
+            "label": "ID Déposant",
+            "path": "depositor_id"
+      },
+      {
+            "key": "action_type",
+            "label": "Action",
+            "path": "action_type"
+      },
+      {
+            "key": "person_type",
+            "label": "Type Personne",
+            "path": "person_type"
+      },
+      {
+            "key": "first_name",
+            "label": "Prénom",
+            "path": "first_name"
+      },
+      {
+            "key": "last_name",
+            "label": "Nom",
+            "path": "last_name"
+      },
+      {
+            "key": "cin_num",
+            "label": "CIN/Pass",
+            "path": "cin_num"
+      },
+      {
+            "key": "company_name",
+            "label": "Entreprise",
+            "path": "company_name"
+      },
+      {
+            "key": "rne",
+            "label": "RNE",
+            "path": "rne"
+      },
+      {
+            "key": "account_number",
+            "label": "Compte",
+            "path": "account_number"
+      },
+      {
+            "key": "account_balance",
+            "label": "Solde",
+            "path": "account_balance"
+      }
+],
+    fields: [
+      {
+            "id": "depositor_id",
+            "name": "depositor_id",
+            "label": "ID Déposant",
+            "type": "text",
+            "required": true
+      },
+      {
+            "id": "action_type",
+            "name": "action_type",
+            "label": "Action",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "ADD",
+                        "value": "ADD"
+                  },
+                  {
+                        "label": "UPDATE",
+                        "value": "UPDATE"
+                  },
+                  {
+                        "label": "DELETE",
+                        "value": "DELETE"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "person_type",
+            "name": "person_type",
+            "label": "Type Personne",
+            "type": "select",
+            "options": [
+                  {
+                        "label": "Physique",
+                        "value": "PP"
+                  },
+                  {
+                        "label": "Morale",
+                        "value": "PM"
+                  }
+            ],
+            "required": true
+      },
+      {
+            "id": "first_name",
+            "name": "first_name",
+            "label": "Prénom",
+            "type": "text"
+      },
+      {
+            "id": "last_name",
+            "name": "last_name",
+            "label": "Nom",
+            "type": "text"
+      },
+      {
+            "id": "cin_num",
+            "name": "cin_num",
+            "label": "CIN",
+            "type": "text"
+      },
+      {
+            "id": "company_name",
+            "name": "company_name",
+            "label": "Entreprise",
+            "type": "text"
+      },
+      {
+            "id": "rne",
+            "name": "rne",
+            "label": "RNE",
+            "type": "text"
+      },
+      {
+            "id": "account_number",
+            "name": "account_number",
+            "label": "Numéro Compte",
+            "type": "text"
+      },
+      {
+            "id": "account_balance",
+            "name": "account_balance",
+            "label": "Solde",
+            "type": "number"
+      }
+],
+    payloadMapper: (formData: any, contextualData: any) => {
+      return { details: formData };
     }
   },
 };
-

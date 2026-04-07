@@ -1222,6 +1222,46 @@
 }
 
 						}
-					}
+					},
+        "VUC": {
+            "EnteteDoc": [
+                "vuc_id",
+                "declaration_type",
+                "year_declaration",
+                "group_type"
+            ],
+            "Models": {
+                "G1-S1": {
+                    "description": "Central Reporting - VUC G1 Premier Semestre",
+                    "BodyHeader": { "depositors_count": "Nombre de déposants VUC" },
+                    "Details": [ { "Detail": { "depositor_id": "ID Déposant", "action_type": "Action", "person_type": "Type Personne" } } ]
+                },
+                "G1-S2": {
+                    "description": "Central Reporting - VUC G1 Second Semestre",
+                    "BodyHeader": { "depositors_count": "Nombre de déposants VUC" },
+                    "Details": [ { "Detail": { "depositor_id": "ID Déposant", "action_type": "Action", "person_type": "Type Personne" } } ]
+                },
+                "G1-A": {
+                    "description": "Central Reporting - VUC G1 Annuel",
+                    "BodyHeader": { "depositors_count": "Nombre de déposants VUC" },
+                    "Details": [ { "Detail": { "depositor_id": "ID Déposant", "action_type": "Action", "person_type": "Type Personne" } } ]
+                },
+                "G2-S1": {
+                    "description": "Central Reporting - VUC G2 Premier Semestre",
+                    "BodyHeader": { "depositors_count": "Nombre de déposants VUC" },
+                    "Details": [ { "Detail": { "depositor_id": "ID Déposant", "action_type": "Action", "person_type": "Type Personne" } } ]
+                },
+                "G2-S2": {
+                    "description": "Central Reporting - VUC G2 Second Semestre",
+                    "BodyHeader": { "depositors_count": "Nombre de déposants VUC" },
+                    "Details": [ { "Detail": { "depositor_id": "ID Déposant", "action_type": "Action", "person_type": "Type Personne" } } ]
+                },
+                "G2-A": {
+                    "description": "Central Reporting - VUC G2 Annuel",
+                    "BodyHeader": { "depositors_count": "Nombre de déposants VUC" },
+                    "Details": [ { "Detail": { "depositor_id": "ID Déposant", "action_type": "Action", "person_type": "Type Personne" } } ]
+                }
+            }
+        }
 			}
 }

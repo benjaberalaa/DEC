@@ -28,6 +28,7 @@ import { AuditComponent } from './audit/audit.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { SettingsComponent } from './settings/settings.component';
 import { CommonModule } from '@angular/common';
+import { TimelineComponent } from './timeline/timeline.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     AuditComponent,
     UserManagementComponent,
-    SettingsComponent
+    SettingsComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,

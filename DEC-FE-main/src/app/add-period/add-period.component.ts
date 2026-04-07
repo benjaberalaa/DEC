@@ -93,8 +93,15 @@ const PERIODICITY_MAP: { [key: string]: string } = {
   // DS
   'DS_IETR': 'MONTHLY',
   'DS_IESuivi': 'MONTHLY',
-  'DS_Startup_IE_TR': 'MONTHLY',
   'DS_Startup_IE_SUIVI': 'MONTHLY',
+
+  // VUC
+  'VUC_G1_S1': 'SEMESTER',
+  'VUC_G1_S2': 'SEMESTER',
+  'VUC_G1_A': 'ANNUAL',
+  'VUC_G2_S1': 'SEMESTER',
+  'VUC_G2_S2': 'SEMESTER',
+  'VUC_G2_A': 'ANNUAL',
 };
 
 
@@ -169,8 +176,7 @@ export class AddPeriodComponent implements  OnInit,AfterViewInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const periodType = params.get('type');
-      this.checkOpenPeriods();
-
+      
       if (periodType) {
         const formattedType = periodType.replace('-', '_').toUpperCase();
         this.selectedType = formattedType;
@@ -180,11 +186,13 @@ export class AddPeriodComponent implements  OnInit,AfterViewInit {
         const periodicity = PERIODICITY_MAP[formattedType] || '';
         this.form.get('periodicity')?.setValue(periodicity);
 
+        this.checkOpenPeriods(formattedType); // Update open period status for this type
         this.loadPeriodsByType(formattedType);
       } else {
         this.selectedType = null;
         this.form.get('typePeriode')?.setValue('');
         this.form.get('periodicity')?.setValue('');
+        this.checkOpenPeriods(); // Update open period status generally
         this.loadPeriods();
       }
     });
@@ -425,6 +433,10 @@ export class AddPeriodComponent implements  OnInit,AfterViewInit {
 
   get isOpenButtonDisabled(): boolean {
     return this.filteredPeriods.some(p => p.status === 'EN_COURS');
+  }
+
+  get currentPhase(): number {
+    return this.hasOpenPeriod ? 1 : 0;
   }
 
   goBack(): void {

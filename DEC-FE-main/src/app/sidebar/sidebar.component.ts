@@ -36,7 +36,8 @@ export class SidebarComponent implements OnInit,OnDestroy{
   private intervalId: any;
   showParameter: boolean = false;
   showTable: boolean = false;
-  types: string[] = [];
+  decTypes: string[] = [];
+  vucTypes: string[] = [];
   models: { [key: string]: string[] } = {};
   collapsedTypes: { [key: string]: boolean } = {};
 
@@ -58,9 +59,12 @@ export class SidebarComponent implements OnInit,OnDestroy{
 
   private initializeData(): void {
     if (rulesJson && rulesJson.rules) {
-      this.types = Object.keys(rulesJson.rules);
+      const allTypes = Object.keys(rulesJson.rules);
+      
+      this.vucTypes = allTypes.filter(type => type === 'VUC');
+      this.decTypes = allTypes.filter(type => type !== 'VUC');
 
-      this.types.forEach((type) => {
+      allTypes.forEach((type) => {
         const models = rulesJson.rules[type]?.Models;
         this.models[type] = models ? Object.keys(models) : [];
         this.collapsedTypes[type] = true;

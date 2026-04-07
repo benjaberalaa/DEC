@@ -1,6 +1,7 @@
 <div class="modern-container">
-  
-  <div class="page-header">
+  <app-timeline [currentPhase]="currentPhase"></app-timeline>
+
+  <div class="page-header mt-4">
     <div class="header-top">
       <button class="back-btn" (click)="goToPath()" title="Retour">
         <i class="bi bi-arrow-left fs-4"></i>

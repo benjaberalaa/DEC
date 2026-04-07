@@ -20,6 +20,17 @@ export class GenericOperationsComponent implements OnInit {
   periodDec: string | null = null;
   operations: any[] = [];
   
+  get currentPhase(): number {
+    if (this.status === 'CLOTUREE' || this.status === 'GENEREE') {
+      return 5;
+    }
+    if (this.operations && this.operations.length > 0) {
+      const hasErrors = this.operations.some(op => op.errors && op.errors.length > 0);
+      return hasErrors ? 3 : 4;
+    }
+    return 2;
+  }
+  
   transactionForm: FormGroup;
   showAddTransactionModal = false;
   showXmlPreviewModal = false;
@@ -95,7 +106,7 @@ export class GenericOperationsComponent implements OnInit {
     let rawList: any[] = [];
     
     // Resilient extraction for different containers
-    const containers = ['transferts', 'extraits', 'decomptes', 'dossiers'];
+    const containers = ['transferts', 'extraits', 'decomptes', 'dossiers', 'depositors'];
     let containerKey = null;
     
     for (const c of containers) {
@@ -122,6 +133,40 @@ export class GenericOperationsComponent implements OnInit {
     }
 
     this.operations = rawList.flatMap((entry: any, i: number) => {
+      // VUC specific logic: the entry itself might have identification fields directly or nested under pp/pm
+      const isVuc = !!(this.config?.type?.startsWith('VUC_'));
+      
+      if (isVuc) {
+        // Flatten VUC identification fields for easier binding
+        const pp = this.findKeyIgnoreCase(entry, 'depositor_identification_pp');
+        const pm = this.findKeyIgnoreCase(entry, 'depositor_identification_pm');
+        const identification = (pp ? entry[pp] : (pm ? entry[pm] : {}));
+        
+        // Also check for accounts_identification if G2
+        const accsKey = this.findKeyIgnoreCase(entry, 'accounts_identification');
+        let accountFields = {};
+        if (accsKey) {
+          const container = entry[accsKey];
+          if (container) {
+            const accKey = this.findKeyIgnoreCase(container, 'account');
+            if (accKey) {
+              const accounts = container[accKey];
+              const firstAccount = Array.isArray(accounts) ? accounts[0] : accounts;
+              if (firstAccount) accountFields = firstAccount;
+            }
+          }
+        }
+
+        return [{
+          ...entry,
+          ...identification,
+          ...accountFields,
+          _entryIndex: i,
+          _detailIndex: 0
+        }];
+      }
+
+      // Standard logic for other declarations
       const detailsKey = this.findKeyIgnoreCase(entry, 'details');
       const entryDetails = detailsKey ? entry[detailsKey] : null;
       
@@ -402,16 +447,27 @@ export class GenericOperationsComponent implements OnInit {
     
     return op.errors.some((err: any) => {
         if (!err) return false;
-        const errMsg = typeof err === 'string' ? err : (err.message || '');
-        const fieldName = err.fieldName ? err.fieldName.toLowerCase() : null;
         
-        // Match by fieldName from XSD if available, else fallback to path matching
-        if (fieldName) {
-            return fieldName === lastPart || fieldName === path.toLowerCase();
+        if (err.fieldName) {
+            const fieldNameLower = err.fieldName.toLowerCase();
+            if (fieldNameLower === lastPart || fieldNameLower === path.toLowerCase()) {
+                return true;
+            }
+        }
+
+        const errMsg = typeof err === 'string' ? err : (err.message || '');
+        const lowerErr = errMsg.toLowerCase();
+        
+        const elementMatch = errMsg.match(/element '([^']+)'/i) || errMsg.match(/élément '([^']+)'/i) || errMsg.match(/{"":([^}]+)}/); 
+        if (elementMatch && elementMatch[1]) {
+            const extractedField = elementMatch[1].toLowerCase();
+            return extractedField === lastPart || extractedField === path.toLowerCase();
         }
         
-        const lowerErr = errMsg.toLowerCase();
-        return lowerErr.includes(lastPart) || lowerErr.includes(path.toLowerCase());
+        if (lastPart === 'value' || lastPart === 'ccy' || lastPart === 'montant') return false; 
+        
+        const wordRegex = new RegExp(`\\b${lastPart}\\b`, 'i');
+        return wordRegex.test(errMsg);
     });
   }
 
@@ -425,6 +481,10 @@ export class GenericOperationsComponent implements OnInit {
         cleanOp[key] = op[key];
       }
     });
+
+    if (op._entete) {
+        cleanOp.enteteUpdate = op._entete;
+    }
     
     const updateRequest = {
       _entryIndex: op._entryIndex,

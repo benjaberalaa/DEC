@@ -162,6 +162,17 @@ export class OperationsComponent implements OnInit {
     });
   }
 
+  get currentPhase(): number {
+    if (this.status === 'CLOTUREE' || this.status === 'GENEREE') {
+      return 5;
+    }
+    if (this.operations && this.operations.length > 0) {
+      const hasErrors = this.operations.some(op => op.errors && op.errors.length > 0);
+      return hasErrors ? 3 : 4;
+    }
+    return 2;
+  }
+
   showNotification(message: string, type: string = 'success', duration: number = 5000): void {
     this.notification = { show: true, message, type };
     setTimeout(() => {

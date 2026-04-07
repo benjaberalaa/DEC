@@ -7,17 +7,22 @@
 .modern-sidebar {
   background-color: #1e293b;
   width: 260px;
-  height: 100vh;
-  padding-top: 60px; /* Space for navbar */
+  height: calc(100vh - 80px); /* Hauteur réduite */
+  margin: 10px;
+  margin-top: 70px; /* Aligné sous la navbar */
+  padding-top: 20px; 
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
   overflow-x: hidden;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.15); /* Ombre plus douce */
   flex-shrink: 0;
+  border-radius: 24px; /* Coins arrondis ovales */
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
 .modern-sidebar.sidebar-collapsed {
   width: 80px;
+  margin-top: 70px;
 }
 
 .sidebar-body {

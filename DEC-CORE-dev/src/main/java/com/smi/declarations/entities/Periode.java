@@ -78,7 +78,14 @@ public class Periode {
         DS_IETR,
         DS_IESuivi,
         DS_Startup_IE_TR,
-        DS_Startup_IE_SUIVI
+        DS_Startup_IE_SUIVI,
+
+        VUC_G1_S1,
+        VUC_G1_S2,
+        VUC_G1_A,
+        VUC_G2_S1,
+        VUC_G2_S2,
+        VUC_G2_A
     }
 
 }

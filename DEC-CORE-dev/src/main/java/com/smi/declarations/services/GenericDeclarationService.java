@@ -297,11 +297,31 @@ public class GenericDeclarationService {
     }
 
     private Object convertValue(String value, Class<?> type) {
-        if (value == null) return null;
+        if (value == null || value.trim().isEmpty()) return null;
         if (type == String.class) return value;
         if (type == java.math.BigDecimal.class) return new java.math.BigDecimal(value.replace(",", "."));
         if (type == java.math.BigInteger.class) return new java.math.BigInteger(new java.math.BigDecimal(value).toBigInteger().toString());
         if (type == int.class || type == Integer.class) return Integer.parseInt(value);
+        if (type == double.class || type == Double.class) return Double.parseDouble(value.replace(",", "."));
+        if (type == float.class || type == Float.class) return Float.parseFloat(value.replace(",", "."));
+        if (type == long.class || type == Long.class) return Long.parseLong(value);
+        if (type.getSimpleName().equals("XMLGregorianCalendar")) {
+            try {
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                java.util.Date date;
+                try {
+                    date = sdf.parse(value);
+                } catch (Exception e) {
+                    sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                    date = sdf.parse(value);
+                }
+                java.util.GregorianCalendar gc = new java.util.GregorianCalendar();
+                gc.setTime(date);
+                return javax.xml.datatype.DatatypeFactory.newInstance().newXMLGregorianCalendar(gc);
+            } catch (Exception e) {
+                return null;
+            }
+        }
         if (type.getSimpleName().equals("TMontant")) {
              // Special case for TMontant
              try {
@@ -594,9 +614,27 @@ public class GenericDeclarationService {
                             if (dFieldNames.hasNext()) {
                                 String dArrayKey = dFieldNames.next();
                                 com.fasterxml.jackson.databind.node.ArrayNode dList = (com.fasterxml.jackson.databind.node.ArrayNode) detailsObj.get(dArrayKey);
-                                if (detailIndex < dList.size()) {
-                                    dList.set(detailIndex, normalizedData);
-                                }
+                                    if (detailIndex < dList.size()) {
+                                        dList.set(detailIndex, normalizedData);
+                                        // Extract and apply parent 'entete' updates if any
+                                        if (normalizedData.isObject() && normalizedData.has("enteteUpdate")) {
+                                            com.fasterxml.jackson.databind.node.ObjectNode normObj = (com.fasterxml.jackson.databind.node.ObjectNode) normalizedData;
+                                            com.fasterxml.jackson.databind.JsonNode enteteUpdate = normObj.get("enteteUpdate");
+                                            
+                                            String enteteKey = null;
+                                            java.util.Iterator<String> eFields = entry.fieldNames();
+                                            while (eFields.hasNext()) {
+                                                String ef = eFields.next();
+                                                if (ef.equalsIgnoreCase("entete") || ef.equalsIgnoreCase("Entete")) { enteteKey = ef; break; }
+                                            }
+                                            if (enteteKey != null) {
+                                                entry.set(enteteKey, enteteUpdate);
+                                            } else {
+                                                entry.set("entete", enteteUpdate);
+                                            }
+                                            normObj.remove("enteteUpdate");
+                                        }
+                                    }
                             }
                         }
                     }

@@ -1,0 +1,15 @@
+<div class="timeline-container">
+  <div class="timeline-progress-bar">
+    <div class="timeline-progress-fill" [style.width.%]="progressWidth"></div>
+  </div>
+
+  <div class="timeline-step" *ngFor="let step of steps" 
+      [class.active]="step.id === currentPhase" 
+      [class.completed]="step.id < currentPhase">
+    
+    <div class="timeline-icon">
+      <i class="bi" [ngClass]="step.icon"></i>
+    </div>
+    <div class="timeline-label">{{ step.label }}</div>
+  </div>
+</div>
