@@ -107,3 +107,9 @@
   margin-top: 0.25rem;
   font-weight: 500;
 }
+.login-logo {
+  width: 300px;
+  height: auto;
+  display: block;
+  margin: auto;
+}

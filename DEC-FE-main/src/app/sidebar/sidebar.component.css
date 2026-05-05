@@ -7,10 +7,10 @@
 .modern-sidebar {
   background-color: #1e293b;
   width: 260px;
-  height: calc(100vh - 80px); /* Hauteur réduite */
+  height: calc(100vh - 95px); /* Hauteur réduite */
   margin: 10px;
-  margin-top: 70px; /* Aligné sous la navbar */
-  padding-top: 20px; 
+  margin-top: 85px; /* Aligné sous la navbar */
+  padding-top: 20px;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
   overflow-x: hidden;
@@ -22,7 +22,7 @@
 
 .modern-sidebar.sidebar-collapsed {
   width: 80px;
-  margin-top: 70px;
+  margin-top: 85px;
 }
 
 .sidebar-body {
@@ -104,3 +104,18 @@
   background: rgba(255,255,255,0.3);
 }
 
+.navbar-logo {
+  height: 60px;
+  width: auto;
+  max-width: 260px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: transparent;
+  padding: 4px;
+}
+
+.navbar-title{
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}

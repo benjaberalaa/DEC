@@ -33,6 +33,10 @@ public class GenericDeclarationService {
             return readExcelToJsonLegacy(type, excelFile);
         }
 
+        if (type.name().startsWith("VUC_")) {
+            return readExcelToJsonGeneric(type, excelFile, periodDec, "transferts", "transfert");
+        }
+
         com.fasterxml.jackson.databind.JsonNode typeMapping = mappingNode.get(type.name());
         com.fasterxml.jackson.databind.JsonNode paths = typeMapping.get("paths");
         String codeAnnexe = typeMapping.get("codeAnnexe").asText();
@@ -105,26 +109,80 @@ public class GenericDeclarationService {
             }
         }
 
-        // Hook for CRS_CPD_OSM mandatory DecDouane
-        if (type == Periode.TypePeriod.CRS_CPD_OSM) {
-            com.smi.generated.crs_cpd_osm.Document doc = (com.smi.generated.crs_cpd_osm.Document) document;
-            if (doc.getExtraits() != null) {
-                for (com.smi.generated.crs_cpd_osm.Document.Extraits.Extrait ext : doc.getExtraits().getExtrait()) {
-                    if (ext.getDetails() != null) {
-                        for (com.smi.generated.crs_cpd_osm.Document.Extraits.Extrait.Details.Detail det : ext.getDetails().getDetail()) {
-                            if (det.getDecDouane() == null) {
-                                det.setDecDouane(new com.smi.generated.crs_cpd_osm.ObjectFactory().createDocumentExtraitsExtraitDetailsDetailDecDouane());
-                            }
-                        }
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(document);
+    }
+
+    private String readExcelToJsonGeneric(Periode.TypePeriod type, org.springframework.web.multipart.MultipartFile excelFile, String periodDec, String container, String item) throws Exception {
+        com.fasterxml.jackson.databind.JsonNode typeMapping = mappingNode.get(type.name());
+        com.fasterxml.jackson.databind.JsonNode paths = typeMapping.get("paths");
+        
+        String codeAnnexe = typeMapping.has("codeAnnexe") ? typeMapping.get("codeAnnexe").asText() : "";
+        
+        java.util.Map<String, Object> root = new java.util.LinkedHashMap<>();
+        
+        // Add root EnteteDoc for XSD compliance
+        java.util.Map<String, Object> enteteDoc = new java.util.HashMap<>();
+        enteteDoc.put("codeIAT", "01");
+        enteteDoc.put("dateDec", new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date()));
+        enteteDoc.put("codeAnnexe", codeAnnexe);
+        root.put("enteteDoc", enteteDoc);
+
+        java.util.Map<String, Object> containerMap = new java.util.HashMap<>();
+        java.util.List<java.util.Map<String, Object>> items = new java.util.ArrayList<>();
+        
+        root.put(container, containerMap);
+        containerMap.put(item, items);
+
+        try (java.io.InputStream is = excelFile.getInputStream();
+             org.apache.poi.ss.usermodel.Workbook workbook = new org.apache.poi.xssf.usermodel.XSSFWorkbook(is)) {
+            
+            org.apache.poi.ss.usermodel.DataFormatter dataFormatter = new org.apache.poi.ss.usermodel.DataFormatter();
+            org.apache.poi.ss.usermodel.Sheet sheet = workbook.getSheetAt(0);
+            java.util.Iterator<org.apache.poi.ss.usermodel.Row> rowIterator = sheet.iterator();
+            if (rowIterator.hasNext()) rowIterator.next(); // Skip header
+
+            while (rowIterator.hasNext()) {
+                org.apache.poi.ss.usermodel.Row row = rowIterator.next();
+                
+                java.util.Map<String, Object> rowData = new java.util.LinkedHashMap<>();
+                boolean hasData = false;
+                
+                for (int i = 0; i < paths.size(); i++) {
+                    String path = paths.get(i).asText();
+                    // Path is expected to be container_item_field or deeper (e.g. transferts_transfert_details_detail_depositorId)
+                    String fieldName = path;
+                    String[] parts = path.split("_");
+                    if (parts.length > 0) {
+                        fieldName = parts[parts.length - 1];
                     }
+
+                    org.apache.poi.ss.usermodel.Cell cell = row.getCell(i);
+                    String value = getCellValueAsString(cell, dataFormatter);
+                    if (value != null && !value.trim().isEmpty()) {
+                        hasData = true;
+                        rowData.put(fieldName, value);
+                    }
+                }
+                if (hasData) {
+                    // Wrap in JAXB-compliant structure for fallback (Transfert -> Details -> Detail)
+                    java.util.Map<String, Object> transfert = new java.util.HashMap<>();
+                    java.util.Map<String, Object> entete = new java.util.HashMap<>();
+                    entete.put("PeriodDec", periodDec != null ? periodDec : "");
+                    entete.put("NbrEcritures", "000001");
+                    
+                    java.util.Map<String, Object> detailsWrapper = new java.util.HashMap<>();
+                    java.util.List<java.util.Map<String, Object>> detailList = new java.util.ArrayList<>();
+                    detailList.add(rowData);
+                    
+                    transfert.put("entete", entete);
+                    transfert.put("details", detailsWrapper);
+                    detailsWrapper.put("detail", detailList);
+                    
+                    items.add(transfert);
                 }
             }
         }
-
-
-
-        com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
-        return mapper.writeValueAsString(document);
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(root);
     }
 
     private String readExcelToJsonLegacy(Periode.TypePeriod type, org.springframework.web.multipart.MultipartFile excelFile) throws Exception {
@@ -378,6 +436,13 @@ public class GenericDeclarationService {
             case DS_IESuivi: return "dsIeSuiviService";
             case DS_Startup_IE_TR: return "dsStartupIeTrService";
             case DS_Startup_IE_SUIVI: return "dsStartupIeSuiviService";
+            case VUC_G1_S1:
+            case VUC_G1_S2:
+            case VUC_G1_A:
+            case VUC_G2_S1:
+            case VUC_G2_S2:
+            case VUC_G2_A:
+                return "trDonService";
             default: return "trDonService";
         }
     }
@@ -464,7 +529,7 @@ public class GenericDeclarationService {
 
     /** Finds a container field (transferts/extraits/etc) in a node, case-insensitively */
     private String findContainerKeyCI(com.fasterxml.jackson.databind.JsonNode node) {
-        String[] known = {"transferts", "extraits", "decomptes", "dossiers"};
+        String[] known = {"transferts", "extraits", "decomptes", "dossiers", "vucs"};
         java.util.Iterator<String> fieldNames = node.fieldNames();
         while (fieldNames.hasNext()) {
             String key = fieldNames.next();
@@ -492,13 +557,27 @@ public class GenericDeclarationService {
     public com.fasterxml.jackson.databind.JsonNode normalizeJsonKeys(com.fasterxml.jackson.databind.JsonNode node) {
         if (node.isObject()) {
             com.fasterxml.jackson.databind.node.ObjectNode result = objectMapper.createObjectNode();
+            java.util.List<String> protectedKeys = java.util.Arrays.asList(
+                "EnteteDoc", "Entete", "Details", "Detail", 
+                "PeriodDec", "NbrEcritures", "CodeAnnexe", "DateDec", "CodeIAT"
+            );
+            
             java.util.Iterator<java.util.Map.Entry<String, com.fasterxml.jackson.databind.JsonNode>> fields = node.fields();
             while (fields.hasNext()) {
                 java.util.Map.Entry<String, com.fasterxml.jackson.databind.JsonNode> entry = fields.next();
                 String key = entry.getKey();
-                // Convert first character to lowercase (camelCase)
-                String camelKey = key.isEmpty() ? key : Character.toLowerCase(key.charAt(0)) + key.substring(1);
-                result.set(camelKey, normalizeJsonKeys(entry.getValue()));
+                
+                // Preserve casing for protected JAXB keys
+                boolean isProtected = protectedKeys.stream().anyMatch(pk -> pk.equalsIgnoreCase(key));
+                String finalKey;
+                if (isProtected) {
+                    finalKey = protectedKeys.stream().filter(pk -> pk.equalsIgnoreCase(key)).findFirst().orElse(key);
+                } else {
+                    // Convert first character to lowercase (camelCase) for standard fields
+                    finalKey = key.isEmpty() ? key : Character.toLowerCase(key.charAt(0)) + key.substring(1);
+                }
+                
+                result.set(finalKey, normalizeJsonKeys(entry.getValue()));
             }
             return result;
         } else if (node.isArray()) {
@@ -516,6 +595,23 @@ public class GenericDeclarationService {
         if (typeMapping == null) return "{}";
         
         String codeAnnexe = typeMapping.has("codeAnnexe") ? typeMapping.get("codeAnnexe").asText() : "";
+        
+        if (type.name().startsWith("VUC_")) {
+             java.util.Map<String, Object> root = new java.util.LinkedHashMap<>();
+             
+             // Add root EnteteDoc
+             java.util.Map<String, Object> enteteDoc = new java.util.HashMap<>();
+             enteteDoc.put("codeIAT", "01");
+             enteteDoc.put("dateDec", new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date()));
+             enteteDoc.put("codeAnnexe", codeAnnexe);
+             root.put("enteteDoc", enteteDoc);
+
+             java.util.Map<String, Object> container = new java.util.HashMap<>();
+             root.put("transferts", container);
+             container.put("transfert", new java.util.ArrayList<>());
+             return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(root);
+        }
+
         Class<?> docClass = getDocumentClass(type);
         Object document = docClass.getDeclaredConstructor().newInstance();
         
@@ -574,7 +670,7 @@ public class GenericDeclarationService {
         }
 
         // Case-insensitive container search
-        String[] knownContainers = {"transferts", "extraits", "decomptes", "dossiers"};
+        String[] knownContainers = {"transferts", "extraits", "decomptes", "dossiers", "vucs"};
         java.util.Iterator<String> rootFields = root.fieldNames();
         String foundContainer = null;
         while (rootFields.hasNext()) {
@@ -740,6 +836,13 @@ public class GenericDeclarationService {
             case DS_IESuivi: return com.smi.generated.ds_ie_suivi.Document.class;
             case DS_Startup_IE_TR: return com.smi.generated.ds_stratup_ie_tr.Document.class;
             case DS_Startup_IE_SUIVI: return com.smi.generated.ds_startup_ie_suivi.Document.class;
+            case VUC_G1_S1:
+            case VUC_G1_S2:
+            case VUC_G1_A:
+            case VUC_G2_S1:
+            case VUC_G2_S2:
+            case VUC_G2_A:
+                return com.smi.generated.majc_tr_don_0312.Document.class;
             default: throw new IllegalArgumentException("Unsupported type: " + type);
         }
     }
@@ -795,6 +898,13 @@ public class GenericDeclarationService {
             case DS_IESuivi: return "xsd/XSD_V2012/DS_V2012/DS_IESuivi_V3.xsd";
             case DS_Startup_IE_TR: return "xsd/XSD_V2012/DS_V2012/DS_Startup-IE-TR_V3.xsd";
             case DS_Startup_IE_SUIVI: return "xsd/XSD_V2012/DS_V2012/DS_Startup-IE-Suivi_V4.xsd";
+            case VUC_G1_S1:
+            case VUC_G1_S2:
+            case VUC_G1_A:
+            case VUC_G2_S1:
+            case VUC_G2_S2:
+            case VUC_G2_A:
+                return "xsd/XSD_V2012/TR_V2012/MAJC_TR-DON_0312_1812.xsd";
             default: throw new IllegalArgumentException("Unsupported type: " + type);
         }
     }

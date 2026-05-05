@@ -99,8 +99,8 @@ export class SidebarComponent implements OnInit,OnDestroy{
   handleMouseOut(): void {
     this.isCollapsed = true;
   }
-  onParametrageClick(): void {
-    this.router.navigate(['/parametrage']); // Naviguez vers la route "parametrage"
+  onChatAbtClick(): void {
+    this.router.navigate(['/chat-abt']);
   }
 
   onHistoryClick(): void {

@@ -7,7 +7,6 @@ import { AddPeriodComponent } from './add-period/add-period.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { TableParametrageComponent } from './table-parametrage/table-parametrage.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatTableModule} from '@angular/material/table';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -29,13 +28,13 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { SettingsComponent } from './settings/settings.component';
 import { CommonModule } from '@angular/common';
 import { TimelineComponent } from './timeline/timeline.component';
+import { ChatAbtComponent } from './chat-abt/chat-abt.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddPeriodComponent,
     SidebarComponent,
-    TableParametrageComponent,
     DynamicTableComponent,
     GenericOperationsComponent,
     OperationsComponent,
@@ -45,7 +44,8 @@ import { TimelineComponent } from './timeline/timeline.component';
     AuditComponent,
     UserManagementComponent,
     SettingsComponent,
-    TimelineComponent
+    TimelineComponent,
+    ChatAbtComponent
   ],
   imports: [
     BrowserModule,

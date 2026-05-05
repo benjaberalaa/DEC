@@ -106,7 +106,7 @@ export class GenericOperationsComponent implements OnInit {
     let rawList: any[] = [];
     
     // Resilient extraction for different containers
-    const containers = ['transferts', 'extraits', 'decomptes', 'dossiers', 'depositors'];
+    const containers = ['transferts', 'extraits', 'decomptes', 'dossiers', 'depositors', 'vucs'];
     let containerKey = null;
     
     for (const c of containers) {
@@ -133,40 +133,7 @@ export class GenericOperationsComponent implements OnInit {
     }
 
     this.operations = rawList.flatMap((entry: any, i: number) => {
-      // VUC specific logic: the entry itself might have identification fields directly or nested under pp/pm
-      const isVuc = !!(this.config?.type?.startsWith('VUC_'));
-      
-      if (isVuc) {
-        // Flatten VUC identification fields for easier binding
-        const pp = this.findKeyIgnoreCase(entry, 'depositor_identification_pp');
-        const pm = this.findKeyIgnoreCase(entry, 'depositor_identification_pm');
-        const identification = (pp ? entry[pp] : (pm ? entry[pm] : {}));
-        
-        // Also check for accounts_identification if G2
-        const accsKey = this.findKeyIgnoreCase(entry, 'accounts_identification');
-        let accountFields = {};
-        if (accsKey) {
-          const container = entry[accsKey];
-          if (container) {
-            const accKey = this.findKeyIgnoreCase(container, 'account');
-            if (accKey) {
-              const accounts = container[accKey];
-              const firstAccount = Array.isArray(accounts) ? accounts[0] : accounts;
-              if (firstAccount) accountFields = firstAccount;
-            }
-          }
-        }
-
-        return [{
-          ...entry,
-          ...identification,
-          ...accountFields,
-          _entryIndex: i,
-          _detailIndex: 0
-        }];
-      }
-
-      // Standard logic for other declarations
+      // Standard logic for other declarations (including VUC now that it follows the nested structure)
       const detailsKey = this.findKeyIgnoreCase(entry, 'details');
       const entryDetails = detailsKey ? entry[detailsKey] : null;
       
@@ -190,7 +157,6 @@ export class GenericOperationsComponent implements OnInit {
              _detailIndex: -1
           }];
       }
-      return [];
     });
 
     console.log(`Final operations count: ${this.operations.length}`);
@@ -245,7 +211,6 @@ export class GenericOperationsComponent implements OnInit {
       this.declarationService.importData(this.periodId, file).subscribe({
         next: () => {
           this.showNotification('Importation réussie', 'success');
-          // Clear the file input so the same file can be uploaded again
           if (event.target) {
             event.target.value = '';
           }
@@ -263,12 +228,11 @@ export class GenericOperationsComponent implements OnInit {
 
   submitTransaction(): void {
     if (this.transactionForm.valid && this.periodId && this.config) {
-      const payload = this.config.payloadMapper(this.transactionForm.value, { periodDec: this.periodDec });
+      const payload = this.config.payloadMapper ? this.config.payloadMapper(this.transactionForm.value, { periodDec: this.periodDec }) : this.transactionForm.value;
       this.declarationService.addTransaction(this.periodId, payload).subscribe({
         next: () => {
           this.showNotification('Transaction ajoutée', 'success');
           this.closeAddTransactionModal();
-          // Ensure we wait a bit or ensure the backend has finished persisting
           setTimeout(() => this.loadPeriodData(), 500); 
         },
         error: (err) => this.showNotification('Erreur d’ajout: ' + (err.error || err.message), 'error')
@@ -355,7 +319,6 @@ export class GenericOperationsComponent implements OnInit {
     this.declarationService.validateOperation(this.periodId, op).subscribe({
       next: (res) => {
         this.setOpErrors(this.selectedOp, res);
-        // Also update the row in the table
         this.setOpErrors(op, res);
       },
       error: (err: any) => {
@@ -367,7 +330,6 @@ export class GenericOperationsComponent implements OnInit {
 
   revalidateOperation(op: any): void {
     if (!this.periodId) return;
-    // If there are unsaved changes, save first then the reload will re-validate
     if (op._isDirty) {
       const idx = this.operations.indexOf(op);
       this.saveOperation(op, idx);
@@ -395,12 +357,10 @@ export class GenericOperationsComponent implements OnInit {
 
   getProperty(obj: any, path: string | undefined): any {
     if (!path || !obj) return '';
-    
     const parts = path.split('.');
     let current = obj;
     for (const part of parts) {
       if (!current) return '';
-      // Try exact match first, then case-insensitive
       if (current.hasOwnProperty(part)) {
         current = current[part];
       } else {
@@ -432,7 +392,6 @@ export class GenericOperationsComponent implements OnInit {
   onCellEdit(op: any, path: string, event: any): void {
     const newValue = event.target.innerText.trim();
     const oldValue = this.getProperty(op, path);
-    
     if (newValue !== String(oldValue)) {
       this.setNestedProperty(op, path, newValue);
       op._isDirty = true;
@@ -441,62 +400,46 @@ export class GenericOperationsComponent implements OnInit {
 
   hasError(op: any, path: string): boolean {
     if (!op.errors || op.errors.length === 0) return false;
-    
     const pathParts = path.split('.');
     const lastPart = pathParts[pathParts.length - 1].toLowerCase();
-    
     return op.errors.some((err: any) => {
         if (!err) return false;
-        
         if (err.fieldName) {
             const fieldNameLower = err.fieldName.toLowerCase();
-            if (fieldNameLower === lastPart || fieldNameLower === path.toLowerCase()) {
-                return true;
-            }
+            if (fieldNameLower === lastPart || fieldNameLower === path.toLowerCase()) return true;
         }
-
         const errMsg = typeof err === 'string' ? err : (err.message || '');
-        const lowerErr = errMsg.toLowerCase();
-        
-        const elementMatch = errMsg.match(/element '([^']+)'/i) || errMsg.match(/élément '([^']+)'/i) || errMsg.match(/{"":([^}]+)}/); 
+        const elementMatch = errMsg.match(/element '([^']+)'/i) || errMsg.match(/élément '([^']+)'/i); 
         if (elementMatch && elementMatch[1]) {
             const extractedField = elementMatch[1].toLowerCase();
             return extractedField === lastPart || extractedField === path.toLowerCase();
         }
-        
         if (lastPart === 'value' || lastPart === 'ccy' || lastPart === 'montant') return false; 
-        
         const wordRegex = new RegExp(`\\b${lastPart}\\b`, 'i');
-        return wordRegex.test(errMsg);
+        return wordRegex.test(errMsg.toLowerCase());
     });
   }
 
   saveOperation(op: any, index: number): void {
     if (!this.periodId) return;
-
-    // Remove all internal tracker properties (starting with _) before sending to backend
     const cleanOp: any = {};
     Object.keys(op).forEach(key => {
       if (!key.startsWith('_') && key !== 'errors') {
         cleanOp[key] = op[key];
       }
     });
-
     if (op._entete) {
         cleanOp.enteteUpdate = op._entete;
     }
-    
     const updateRequest = {
       _entryIndex: op._entryIndex,
       _detailIndex: op._detailIndex,
       newData: cleanOp
     };
-
     this.declarationService.updateOperation(this.periodId, updateRequest).subscribe({
       next: () => {
         this.showNotification('Modifications enregistrées, re-validation en cours...', 'success');
         op._isDirty = false;
-        // Reload everything from DB to ensure display and validation are in sync
         this.loadPeriodData();
       },
       error: (err: any) => this.showNotification('Erreur d\'enregistrement : ' + (err.error?.message || err.message), 'error')

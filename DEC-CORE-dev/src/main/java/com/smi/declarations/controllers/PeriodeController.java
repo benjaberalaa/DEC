@@ -320,7 +320,6 @@ public class PeriodeController {
         try {
             Periode periode = periodeRepository.findById(id).orElseThrow(() -> new RuntimeException("Période introuvable avec l'Id fourni"));
 
-            // Vérifier que des données existent pour cette période
             if (periode.getDetails() == null || periode.getDetails().isEmpty()) {
                 return ResponseEntity.ok(Map.of(
                         "isValid", false,
@@ -335,14 +334,61 @@ public class PeriodeController {
                         .body("Fichier XSD introuvable pour le type : " + periode.getTypePeriode());
             }
 
-            // 2. Créer un fichier temporaire pour le XSD
             File tempXsdFile = File.createTempFile("schema-", ".xsd");
             try (FileOutputStream out = new FileOutputStream(tempXsdFile)) {
                 xsdStream.transferTo(out);
             }
             tempXsdFile.deleteOnExit();
 
-            // 3. Désérialiser le Document complet stocké dans periode.getDetails()
+            // === VUC: special path - no JAXB class, validate full period and return row-level errors ===
+            if (periode.getTypePeriode().name().startsWith("VUC_")) {
+                // Validate full period document (not isolated transaction) since VUC has no JAXB model
+                com.fasterxml.jackson.databind.ObjectMapper mapper2 = com.fasterxml.jackson.databind.json.JsonMapper.builder()
+                        .disable(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+                        .enable(com.fasterxml.jackson.databind.MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
+                        .build();
+                Class<?> fallbackClazz = genericDeclarationService.getDocumentClass(periode.getTypePeriode());
+                Object fullDoc = mapper2.readValue(periode.getDetails(), fallbackClazz);
+
+                List<XsdValidator.ValidationError> vucErrors = new ArrayList<>();
+                xsdValidator.validate(fullDoc, tempXsdFile.getAbsolutePath(), vucErrors);
+
+                if (vucErrors.isEmpty()) {
+                    return ResponseEntity.ok(Map.of("isValid", true, "message", "La transaction est valide selon le XSD"));
+                }
+
+                // Collect all field keys present in the operation row
+                List<String> vucFieldKeys = new java.util.ArrayList<>(operationData.keySet().stream()
+                        .filter(k -> !k.startsWith("_") && !k.equals("errors"))
+                        .collect(java.util.stream.Collectors.toList()));
+
+                // Replicate each error for every VUC field key so hasError() matches in frontend
+                List<Map<String, Object>> errorDetails = new ArrayList<>();
+                for (XsdValidator.ValidationError ve : vucErrors) {
+                    // One generic error entry (for the modal)
+                    Map<String, Object> base = new HashMap<>();
+                    base.put("message", ve.getMessage());
+                    base.put("fieldName", null);
+                    base.put("fieldPath", ve.getFieldPath());
+                    base.put("invalidValue", ve.getInvalidValue());
+                    base.put("advice", ve.getAdvice());
+                    errorDetails.add(base);
+
+                    // One entry per field key so every cell turns red
+                    for (String fieldKey : vucFieldKeys) {
+                        Map<String, Object> fieldErr = new HashMap<>();
+                        fieldErr.put("message", ve.getMessage());
+                        fieldErr.put("fieldName", fieldKey);
+                        fieldErr.put("fieldPath", fieldKey);
+                        fieldErr.put("invalidValue", ve.getInvalidValue());
+                        fieldErr.put("advice", ve.getAdvice());
+                        errorDetails.add(fieldErr);
+                    }
+                }
+                return ResponseEntity.ok(Map.of("isValid", false, "errors", errorDetails));
+            }
+
+            // === Standard path for all non-VUC declarations ===
             com.fasterxml.jackson.databind.ObjectMapper mapper = com.fasterxml.jackson.databind.json.JsonMapper.builder()
                     .disable(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
                     .enable(com.fasterxml.jackson.databind.MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES)
@@ -350,7 +396,6 @@ public class PeriodeController {
             Class<?> clazz = genericDeclarationService.getDocumentClass(periode.getTypePeriode());
             Object document = mapper.readValue(periode.getDetails(), clazz);
 
-            // 3.5. Isoler la transaction correspondante pur validation locale
             int entryIndex = operationData.containsKey("_entryIndex") && operationData.get("_entryIndex") != null 
                              ? ((Number) operationData.get("_entryIndex")).intValue() : -1;
             int detailIndex = operationData.containsKey("_detailIndex") && operationData.get("_detailIndex") != null 
@@ -360,7 +405,6 @@ public class PeriodeController {
                 genericDeclarationService.isolateTransaction(document, entryIndex, detailIndex);
             }
 
-            // 4. Valider contre le XSD
             List<XsdValidator.ValidationError> errors = new ArrayList<>();
             xsdValidator.validate(document, tempXsdFile.getAbsolutePath(), errors);
 
@@ -395,6 +439,7 @@ public class PeriodeController {
                     ));
         }
     }
+
 
     @PostMapping("/update-operation/{id}")
     public ResponseEntity<?> updateOperation(@PathVariable("id") Long id, @RequestBody Map<String, Object> updateRequest) {

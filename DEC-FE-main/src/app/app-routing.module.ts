@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { GenericOperationsComponent } from './operations/generic-operations/generic-operations.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddPeriodComponent } from './add-period/add-period.component';
-import { TableParametrageComponent } from './table-parametrage/table-parametrage.component';
+import { ChatAbtComponent } from './chat-abt/chat-abt.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { AuditComponent } from './audit/audit.component';
@@ -31,10 +31,10 @@ const routes: Routes = [
     data: { roles: ['ROLE_ADMIN', 'ROLE_USER'] }
   },
   { 
-    path: 'parametrage', 
-    component: TableParametrageComponent, 
+    path: 'chat-abt', 
+    component: ChatAbtComponent, 
     canActivate: [AuthGuard],
-    data: { roles: ['ROLE_ADMIN'] }
+    data: { roles: ['ROLE_ADMIN', 'ROLE_USER'] }
   },
   { 
     path: 'periods/:type', 
